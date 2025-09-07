@@ -9,35 +9,15 @@ import {
 	TypographyTextColor,
 	TypographySize
 } from '@/components/ui/Typography'
+import { DynamicHeaderFilter } from '@/components/layout'
 
 export default function HomePage() {
-	const t = useTranslations('HomePage')
 	const propertyT = useTranslations('Property')
 
 	return (
 		<div className="bg-background min-h-screen p-8">
-			<div className="mx-auto max-w-4xl">
-				{/* Header */}
-				<div className="mb-12 text-center">
-					<Typography
-						variant={TypographyVariant.H1}
-						fontFamily={TypographyFontFamily.CINZEL}
-						textColor={TypographyTextColor.PRIMARY}
-						className="mb-4"
-					>
-						{t('title')}
-					</Typography>
-					<Typography
-						variant={TypographyVariant.LEAD}
-						fontFamily={TypographyFontFamily.CAIRO}
-						textColor={TypographyTextColor.MUTED}
-						className="mb-8"
-					>
-						{t('description')}
-					</Typography>
-				</div>
-
-				{/* Theme and Language Switchers */}
+			<DynamicHeaderFilter />
+			<div className="container mx-auto flex min-h-screen items-center justify-center">
 				<div className="mb-12 flex justify-center gap-8">
 					<div className="bg-background border-foreground/20 dark:shadow-foreground/10 rounded-xl border p-6 shadow-lg">
 						<ThemeSwitcher />
