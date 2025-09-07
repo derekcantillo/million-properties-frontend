@@ -9,24 +9,18 @@ export default createMiddleware({
   defaultLocale,
 
   // Strategy for how to handle the root path
-  localePrefix: 'as-needed',
+  localePrefix: 'always',
 
-  // Enable automatic locale detection based on user preferences
-  localeDetection: true,
+  // Disable automatic locale detection to always use default locale first
+  localeDetection: false,
 });
 
 export const config = {
   // Match only internationalized pathnames
   matcher: [
-    // Enable a redirect to a matching locale at the root
-    '/',
-
-    // Set a cookie to remember the previous locale for
-    // all requests that have a locale prefix
-    '/(en|es)/:path*',
-
-    // Enable redirects that add missing locales
-    // (e.g. `/pathnames` -> `/en/pathnames`)
-    '/((?!_next|_vercel|.*\\..*).*)',
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\\..*).*)',
   ],
 };
