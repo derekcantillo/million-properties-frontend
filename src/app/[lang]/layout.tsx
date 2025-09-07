@@ -1,30 +1,33 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-const locales = ['en', 'es'];
-
-interface LangLayoutProps {
+type Props = {
   children: React.ReactNode;
   params: Promise<{ lang: string }>;
-}
+};
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'es' }];
 }
 
-export default async function LangLayout({
-  children,
-  params,
-}: LangLayoutProps) {
+export default async function LocaleLayout({ children, params }: Props) {
   const { lang } = await params;
 
   // Validate that the incoming `lang` parameter is valid
-  if (!locales.includes(lang as 'en' | 'es')) {
-    notFound();
-  }
+  if (!['en', 'es'].includes(lang)) notFound();
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
 
   return (
     <html lang={lang}>
-      <body>{children}</body>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

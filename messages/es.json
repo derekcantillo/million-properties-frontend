@@ -1,115 +1,39 @@
 {
-  "common": {
-    "loading": "Cargando...",
-    "error": "Error",
-    "success": "Éxito",
-    "cancel": "Cancelar",
-    "save": "Guardar",
-    "delete": "Eliminar",
-    "edit": "Editar",
-    "view": "Ver",
-    "search": "Buscar",
-    "filter": "Filtrar",
-    "clear": "Limpiar",
-    "next": "Siguiente",
-    "previous": "Anterior",
-    "close": "Cerrar",
-    "open": "Abrir",
-    "yes": "Sí",
-    "no": "No"
+  "HomePage": {
+    "title": "Million Properties",
+    "description": "Encuentra la propiedad de tus sueños con nuestra plataforma inmobiliaria avanzada",
+    "currentLanguage": "Idioma actual: {lang}",
+    "languageSwitcher": "Cambiar Idioma"
   },
-  "navigation": {
+  "Navigation": {
     "home": "Inicio",
     "properties": "Propiedades",
     "about": "Acerca de",
-    "contact": "Contacto",
-    "login": "Iniciar Sesión",
-    "logout": "Cerrar Sesión",
-    "profile": "Perfil",
-    "dashboard": "Panel",
-    "settings": "Configuración"
+    "contact": "Contacto"
   },
-  "property": {
-    "title": "Propiedad",
-    "properties": "Propiedades",
-    "type": "Tipo",
-    "status": "Estado",
-    "price": "Precio",
-    "location": "Ubicación",
-    "bedrooms": "Habitaciones",
-    "bathrooms": "Baños",
-    "area": "Área",
-    "description": "Descripción",
-    "features": "Características",
-    "images": "Imágenes",
-    "contact_agent": "Contactar Agente",
-    "schedule_visit": "Agendar Visita",
-    "save_favorite": "Guardar en Favoritos",
-    "share": "Compartir",
+  "Property": {
     "types": {
       "apartment": "Apartamento",
       "house": "Casa",
-      "condo": "Condominio",
-      "townhouse": "Casa Adosada",
-      "land": "Terreno",
-      "commercial": "Comercial"
+      "commercial": "Propiedad Comercial"
     },
-    "statuses": {
-      "available": "Disponible",
-      "sold": "Vendido",
-      "rented": "Alquilado",
-      "pending": "Pendiente",
-      "off-market": "Fuera del Mercado"
+    "descriptions": {
+      "apartment": "Apartamentos modernos en ubicaciones privilegiadas",
+      "house": "Hermosas casas para familias",
+      "commercial": "Espacios comerciales para empresas"
+    },
+    "details": {
+      "price": "Precio",
+      "bedrooms": "Habitaciones",
+      "bathrooms": "Baños",
+      "area": "Área"
     }
   },
-  "search": {
-    "title": "Buscar Propiedades",
-    "placeholder": "Buscar por ubicación, tipo o palabras clave...",
-    "filters": "Filtros",
-    "min_price": "Precio Mínimo",
-    "max_price": "Precio Máximo",
-    "property_type": "Tipo de Propiedad",
-    "bedrooms_min": "Habitaciones Mínimas",
-    "bathrooms_min": "Baños Mínimos",
-    "area_min": "Área Mínima",
-    "area_max": "Área Máxima",
-    "results": "Resultados",
-    "no_results": "No se encontraron propiedades que coincidan con tus criterios",
-    "clear_filters": "Limpiar Filtros"
-  },
-  "auth": {
-    "login": "Iniciar Sesión",
-    "register": "Registrarse",
-    "logout": "Cerrar Sesión",
-    "email": "Correo Electrónico",
-    "password": "Contraseña",
-    "confirm_password": "Confirmar Contraseña",
-    "forgot_password": "¿Olvidaste tu contraseña?",
-    "remember_me": "Recordarme",
-    "dont_have_account": "¿No tienes una cuenta?",
-    "already_have_account": "¿Ya tienes una cuenta?",
-    "sign_up": "Registrarse",
-    "sign_in": "Iniciar sesión"
-  },
-  "errors": {
-    "something_went_wrong": "Algo salió mal",
-    "page_not_found": "Página no encontrada",
-    "unauthorized": "Acceso no autorizado",
-    "forbidden": "Acceso prohibido",
-    "server_error": "Error interno del servidor",
-    "network_error": "Error de conexión de red",
-    "validation_error": "Por favor verifica tu información",
-    "required_field": "Este campo es obligatorio",
-    "invalid_email": "Por favor ingresa un correo electrónico válido",
-    "password_too_short": "La contraseña debe tener al menos 8 caracteres",
-    "passwords_dont_match": "Las contraseñas no coinciden"
-  },
-  "meta": {
-    "site_name": "Million Properties",
-    "site_description": "Encuentra la propiedad de tus sueños con nuestra plataforma inmobiliaria avanzada",
-    "home_title": "Million Properties - Plataforma Inmobiliaria",
-    "properties_title": "Propiedades en Venta y Alquiler",
-    "about_title": "Acerca de Nosotros",
-    "contact_title": "Contáctanos"
+  "Common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "retry": "Intentar de nuevo",
+    "submit": "Enviar",
+    "cancel": "Cancelar"
   }
 }

@@ -1,115 +1,39 @@
 {
-  "common": {
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success",
-    "cancel": "Cancel",
-    "save": "Save",
-    "delete": "Delete",
-    "edit": "Edit",
-    "view": "View",
-    "search": "Search",
-    "filter": "Filter",
-    "clear": "Clear",
-    "next": "Next",
-    "previous": "Previous",
-    "close": "Close",
-    "open": "Open",
-    "yes": "Yes",
-    "no": "No"
+  "HomePage": {
+    "title": "Million Properties",
+    "description": "Find your dream property with our advanced real estate platform",
+    "currentLanguage": "Current language: {lang}",
+    "languageSwitcher": "Switch Language"
   },
-  "navigation": {
+  "Navigation": {
     "home": "Home",
     "properties": "Properties",
     "about": "About",
-    "contact": "Contact",
-    "login": "Login",
-    "logout": "Logout",
-    "profile": "Profile",
-    "dashboard": "Dashboard",
-    "settings": "Settings"
+    "contact": "Contact"
   },
-  "property": {
-    "title": "Property",
-    "properties": "Properties",
-    "type": "Type",
-    "status": "Status",
-    "price": "Price",
-    "location": "Location",
-    "bedrooms": "Bedrooms",
-    "bathrooms": "Bathrooms",
-    "area": "Area",
-    "description": "Description",
-    "features": "Features",
-    "images": "Images",
-    "contact_agent": "Contact Agent",
-    "schedule_visit": "Schedule Visit",
-    "save_favorite": "Save to Favorites",
-    "share": "Share",
+  "Property": {
     "types": {
       "apartment": "Apartment",
       "house": "House",
-      "condo": "Condo",
-      "townhouse": "Townhouse",
-      "land": "Land",
-      "commercial": "Commercial"
+      "commercial": "Commercial Property"
     },
-    "statuses": {
-      "available": "Available",
-      "sold": "Sold",
-      "rented": "Rented",
-      "pending": "Pending",
-      "off-market": "Off Market"
+    "descriptions": {
+      "apartment": "Modern apartments in prime locations",
+      "house": "Beautiful houses for families",
+      "commercial": "Commercial spaces for businesses"
+    },
+    "details": {
+      "price": "Price",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "area": "Area"
     }
   },
-  "search": {
-    "title": "Search Properties",
-    "placeholder": "Search by location, type, or keywords...",
-    "filters": "Filters",
-    "min_price": "Min Price",
-    "max_price": "Max Price",
-    "property_type": "Property Type",
-    "bedrooms_min": "Min Bedrooms",
-    "bathrooms_min": "Min Bathrooms",
-    "area_min": "Min Area",
-    "area_max": "Max Area",
-    "results": "Results",
-    "no_results": "No properties found matching your criteria",
-    "clear_filters": "Clear Filters"
-  },
-  "auth": {
-    "login": "Login",
-    "register": "Register",
-    "logout": "Logout",
-    "email": "Email",
-    "password": "Password",
-    "confirm_password": "Confirm Password",
-    "forgot_password": "Forgot Password?",
-    "remember_me": "Remember me",
-    "dont_have_account": "Don't have an account?",
-    "already_have_account": "Already have an account?",
-    "sign_up": "Sign up",
-    "sign_in": "Sign in"
-  },
-  "errors": {
-    "something_went_wrong": "Something went wrong",
-    "page_not_found": "Page not found",
-    "unauthorized": "Unauthorized access",
-    "forbidden": "Access forbidden",
-    "server_error": "Internal server error",
-    "network_error": "Network connection error",
-    "validation_error": "Please check your input",
-    "required_field": "This field is required",
-    "invalid_email": "Please enter a valid email address",
-    "password_too_short": "Password must be at least 8 characters",
-    "passwords_dont_match": "Passwords don't match"
-  },
-  "meta": {
-    "site_name": "Million Properties",
-    "site_description": "Find your dream property with our advanced real estate platform",
-    "home_title": "Million Properties - Real Estate Platform",
-    "properties_title": "Properties for Sale and Rent",
-    "about_title": "About Us",
-    "contact_title": "Contact Us"
+  "Common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "submit": "Submit",
+    "cancel": "Cancel"
   }
 }

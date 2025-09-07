@@ -1,49 +1,52 @@
-import { getDictionary } from './dictionaries';
+import { useTranslations } from 'next-intl';
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 
-interface HomeProps {
-  params: Promise<{ lang: 'en' | 'es' }>;
-}
-
-export default async function Home({ params }: HomeProps) {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
+export default function HomePage() {
+  const t = useTranslations('HomePage');
+  const propertyT = useTranslations('Property');
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 text-blue-600">
-          {dict.meta.site_name}
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Current language: <strong>{lang}</strong>
-        </p>
-        <p className="text-lg text-gray-500 mb-8">
-          {dict.meta.site_description}
-        </p>
-        <div className="space-y-4">
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h3 className="font-semibold">{dict.property.types.apartment}</h3>
-          </div>
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h3 className="font-semibold">{dict.property.types.house}</h3>
-          </div>
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h3 className="font-semibold">{dict.property.types.commercial}</h3>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold mb-4 text-blue-600">
+            {t('title')}
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">{t('description')}</p>
+        </div>
+
+        {/* Language Switcher */}
+        <div className="mb-12 flex justify-center">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <LanguageSwitcher />
           </div>
         </div>
-        <div className="mt-8 space-x-4">
-          <a
-            href="/en"
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            English
-          </a>
-          <a
-            href="/es"
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-          >
-            Español
-          </a>
+
+        {/* Property Types */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              {propertyT('types.apartment')}
+            </h3>
+            <p className="text-gray-600">
+              {propertyT('descriptions.apartment')}
+            </p>
+          </div>
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              {propertyT('types.house')}
+            </h3>
+            <p className="text-gray-600">{propertyT('descriptions.house')}</p>
+          </div>
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              {propertyT('types.commercial')}
+            </h3>
+            <p className="text-gray-600">
+              {propertyT('descriptions.commercial')}
+            </p>
+          </div>
         </div>
       </div>
     </div>
