@@ -32,18 +32,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ErrorBoundary>
-          <QueryProvider>
-            <ThemeProvider defaultTheme="system">{children}</ThemeProvider>
-          </QueryProvider>
-        </ErrorBoundary>
-        <Analytics />
-        <SpeedInsights />
-      </body>
-    </html>
+    <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <ErrorBoundary>
+        <QueryProvider>
+          <ThemeProvider defaultTheme="system">{children}</ThemeProvider>
+        </QueryProvider>
+      </ErrorBoundary>
+      <Analytics />
+      <SpeedInsights />
+    </div>
   );
 }
