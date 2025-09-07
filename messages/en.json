@@ -1,39 +1,39 @@
 {
-  "HomePage": {
-    "title": "Million Properties",
-    "description": "Find your dream property with our advanced real estate platform",
-    "currentLanguage": "Current language: {lang}",
-    "languageSwitcher": "Switch Language"
-  },
-  "Navigation": {
-    "home": "Home",
-    "properties": "Properties",
-    "about": "About",
-    "contact": "Contact"
-  },
-  "Property": {
-    "types": {
-      "apartment": "Apartment",
-      "house": "House",
-      "commercial": "Commercial Property"
-    },
-    "descriptions": {
-      "apartment": "Modern apartments in prime locations",
-      "house": "Beautiful houses for families",
-      "commercial": "Commercial spaces for businesses"
-    },
-    "details": {
-      "price": "Price",
-      "bedrooms": "Bedrooms",
-      "bathrooms": "Bathrooms",
-      "area": "Area"
-    }
-  },
-  "Common": {
-    "loading": "Loading...",
-    "error": "An error occurred",
-    "retry": "Try again",
-    "submit": "Submit",
-    "cancel": "Cancel"
-  }
+	"HomePage": {
+		"title": "Million Properties",
+		"description": "Find your dream property with our advanced real estate platform",
+		"currentLanguage": "Current language: {lang}",
+		"languageSwitcher": "Switch Language"
+	},
+	"Navigation": {
+		"home": "Home",
+		"properties": "Properties",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"Property": {
+		"types": {
+			"apartment": "Apartment",
+			"house": "House",
+			"commercial": "Commercial Property"
+		},
+		"descriptions": {
+			"apartment": "Modern apartments in prime locations",
+			"house": "Beautiful houses for families",
+			"commercial": "Commercial spaces for businesses"
+		},
+		"details": {
+			"price": "Price",
+			"bedrooms": "Bedrooms",
+			"bathrooms": "Bathrooms",
+			"area": "Area"
+		}
+	},
+	"Common": {
+		"loading": "Loading...",
+		"error": "An error occurred",
+		"retry": "Try again",
+		"submit": "Submit",
+		"cancel": "Cancel"
+	}
 }

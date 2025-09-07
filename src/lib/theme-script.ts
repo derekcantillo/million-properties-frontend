@@ -34,4 +34,4 @@ export const themeScript = `
     root.style.setProperty('--foreground', '#0f171f');
   }
 })();
-`;
+`

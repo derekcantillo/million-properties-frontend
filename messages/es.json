@@ -1,39 +1,39 @@
 {
-  "HomePage": {
-    "title": "Million Properties",
-    "description": "Encuentra la propiedad de tus sueños con nuestra plataforma inmobiliaria avanzada",
-    "currentLanguage": "Idioma actual: {lang}",
-    "languageSwitcher": "Cambiar Idioma"
-  },
-  "Navigation": {
-    "home": "Inicio",
-    "properties": "Propiedades",
-    "about": "Acerca de",
-    "contact": "Contacto"
-  },
-  "Property": {
-    "types": {
-      "apartment": "Apartamento",
-      "house": "Casa",
-      "commercial": "Propiedad Comercial"
-    },
-    "descriptions": {
-      "apartment": "Apartamentos modernos en ubicaciones privilegiadas",
-      "house": "Hermosas casas para familias",
-      "commercial": "Espacios comerciales para empresas"
-    },
-    "details": {
-      "price": "Precio",
-      "bedrooms": "Habitaciones",
-      "bathrooms": "Baños",
-      "area": "Área"
-    }
-  },
-  "Common": {
-    "loading": "Cargando...",
-    "error": "Ocurrió un error",
-    "retry": "Intentar de nuevo",
-    "submit": "Enviar",
-    "cancel": "Cancelar"
-  }
+	"HomePage": {
+		"title": "Million Properties",
+		"description": "Encuentra la propiedad de tus sueños con nuestra plataforma inmobiliaria avanzada",
+		"currentLanguage": "Idioma actual: {lang}",
+		"languageSwitcher": "Cambiar Idioma"
+	},
+	"Navigation": {
+		"home": "Inicio",
+		"properties": "Propiedades",
+		"about": "Acerca de",
+		"contact": "Contacto"
+	},
+	"Property": {
+		"types": {
+			"apartment": "Apartamento",
+			"house": "Casa",
+			"commercial": "Propiedad Comercial"
+		},
+		"descriptions": {
+			"apartment": "Apartamentos modernos en ubicaciones privilegiadas",
+			"house": "Hermosas casas para familias",
+			"commercial": "Espacios comerciales para empresas"
+		},
+		"details": {
+			"price": "Precio",
+			"bedrooms": "Habitaciones",
+			"bathrooms": "Baños",
+			"area": "Área"
+		}
+	},
+	"Common": {
+		"loading": "Cargando...",
+		"error": "Ocurrió un error",
+		"retry": "Intentar de nuevo",
+		"submit": "Enviar",
+		"cancel": "Cancelar"
+	}
 }
