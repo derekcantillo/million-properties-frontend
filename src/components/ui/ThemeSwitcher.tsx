@@ -2,7 +2,13 @@
 
 import { useThemeStore } from '@/stores/useThemeStore';
 import { Button } from './Button';
-import { Typography } from './Typography';
+import {
+  Typography,
+  TypographyVariant,
+  TypographyFontFamily,
+  TypographyWeight,
+  TypographyTextColor,
+} from './Typography';
 
 const themes = [
   {
@@ -33,7 +39,11 @@ export function ThemeSwitcher() {
 
   return (
     <div className="flex flex-col items-center space-y-4">
-      <Typography variant="h6" fontFamily="cairo" className="text-center">
+      <Typography
+        variant={TypographyVariant.H6}
+        fontFamily={TypographyFontFamily.CAIRO}
+        className="text-center"
+      >
         Selector de Tema
       </Typography>
 
@@ -50,7 +60,10 @@ export function ThemeSwitcher() {
             }`}
           >
             <span className="text-lg">{themeOption.icon}</span>
-            <Typography variant="small" weight="medium">
+            <Typography
+              variant={TypographyVariant.SMALL}
+              weight={TypographyWeight.MEDIUM}
+            >
               {themeOption.name}
             </Typography>
           </Button>
@@ -58,28 +71,41 @@ export function ThemeSwitcher() {
       </div>
 
       <div className="text-center space-y-1">
-        <Typography variant="small" textColor="muted">
+        <Typography
+          variant={TypographyVariant.SMALL}
+          textColor={TypographyTextColor.MUTED}
+        >
           Tema actual: <strong>{theme}</strong>
         </Typography>
-        <Typography variant="small" textColor="muted">
+        <Typography
+          variant={TypographyVariant.SMALL}
+          textColor={TypographyTextColor.MUTED}
+        >
           Aplicado: <strong>{resolvedTheme}</strong>
         </Typography>
-        <Typography variant="small" textColor="muted">
+        <Typography
+          variant={TypographyVariant.SMALL}
+          textColor={TypographyTextColor.MUTED}
+        >
           Sistema: <strong>{systemTheme}</strong>
         </Typography>
       </div>
 
       {/* Demostración de colores */}
       <div className="mt-6 p-4 border rounded-lg space-y-2">
-        <Typography variant="small" weight="semibold" className="mb-3">
+        <Typography
+          variant={TypographyVariant.SMALL}
+          weight={TypographyWeight.SEMI_BOLD}
+          className="mb-3"
+        >
           Vista previa de colores:
         </Typography>
         <div className="flex items-center justify-between">
-          <Typography variant="small">Fondo:</Typography>
+          <Typography variant={TypographyVariant.SMALL}>Fondo:</Typography>
           <div className="w-6 h-6 rounded border-2 bg-background"></div>
         </div>
         <div className="flex items-center justify-between">
-          <Typography variant="small">Texto:</Typography>
+          <Typography variant={TypographyVariant.SMALL}>Texto:</Typography>
           <div className="w-6 h-6 rounded border-2 bg-foreground"></div>
         </div>
       </div>
