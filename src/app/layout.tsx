@@ -1,21 +1,10 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import { QueryProvider } from '@/providers/QueryProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: 'Million Properties - Real Estate Platform',
@@ -32,18 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ErrorBoundary>
-          <QueryProvider>
-            <ThemeProvider defaultTheme="system">{children}</ThemeProvider>
-          </QueryProvider>
-        </ErrorBoundary>
-        <Analytics />
-        <SpeedInsights />
-      </body>
-    </html>
+    <ErrorBoundary>
+      <QueryProvider>
+        <ThemeProvider defaultTheme="system">{children}</ThemeProvider>
+      </QueryProvider>
+      <Analytics />
+      <SpeedInsights />
+    </ErrorBoundary>
   );
 }
