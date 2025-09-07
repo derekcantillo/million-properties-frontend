@@ -8,6 +8,7 @@ import {
 	TypographyFontFamily
 } from '@/components/ui/Typography/types/typography.types'
 import { FilterButtonProps } from '@/components/layout'
+import clsx from 'clsx'
 
 export const FilterButton: React.FC<FilterButtonProps> = ({
 	label,
@@ -20,9 +21,13 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 		<button
 			ref={buttonRef}
 			type="button"
-			className={`flex flex-1 cursor-pointer flex-col p-4 transition-colors hover:bg-gray-100 ${
-				isActive ? 'bg-gray-100' : ''
-			}`}
+			className={clsx(
+				'flex flex-1 cursor-pointer flex-col',
+				'p-4 transition-colors hover:bg-gray-100',
+				{
+					'bg-gray-100': isActive
+				}
+			)}
 			onClick={onClick}
 		>
 			<Typography

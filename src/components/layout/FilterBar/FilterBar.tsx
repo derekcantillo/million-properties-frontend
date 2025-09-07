@@ -20,9 +20,9 @@ export const FilterBar = () => {
 	return (
 		<div
 			ref={containerRef}
-			className="relative container mx-auto w-1/2 bg-white"
+			className="relative container mx-auto w-1/2 rounded-lg bg-white shadow-lg"
 		>
-			<div className="flex items-center">
+			<div className="flex items-center overflow-hidden rounded-lg">
 				{filterButtons.map(button => (
 					<FilterButton key={button.label} {...button} />
 				))}
