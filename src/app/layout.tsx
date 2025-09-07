@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { QueryProvider } from '@/providers/QueryProvider';
-import { ThemeProvider } from '@/providers/ThemeProvider';
+import { ThemeInitializer } from '@/components/ThemeInitializer';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -23,7 +23,8 @@ export default function RootLayout({
   return (
     <ErrorBoundary>
       <QueryProvider>
-        <ThemeProvider defaultTheme="system">{children}</ThemeProvider>
+        <ThemeInitializer />
+        {children}
       </QueryProvider>
       <Analytics />
       <SpeedInsights />

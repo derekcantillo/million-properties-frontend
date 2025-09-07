@@ -9,7 +9,6 @@ interface AppState {
 
   // UI state
   isLoading: boolean;
-  theme: 'light' | 'dark' | 'system';
   sidebarOpen: boolean;
 
   // Search state
@@ -19,7 +18,6 @@ interface AppState {
   // Actions
   setUser: (user: User | null) => void;
   setLoading: (loading: boolean) => void;
-  setTheme: (theme: 'light' | 'dark' | 'system') => void;
   toggleSidebar: () => void;
   setSearchFilters: (filters: Partial<SearchFilters>) => void;
   setSearchResults: (results: unknown[]) => void;
@@ -30,7 +28,6 @@ const initialState = {
   user: null,
   isAuthenticated: false,
   isLoading: false,
-  theme: 'system' as const,
   sidebarOpen: false,
   searchFilters: {
     propertyTypes: [],
@@ -50,8 +47,6 @@ export const useAppStore = create<AppState>()(
           set({ user, isAuthenticated: !!user }, false, 'setUser'),
 
         setLoading: isLoading => set({ isLoading }, false, 'setLoading'),
-
-        setTheme: theme => set({ theme }, false, 'setTheme'),
 
         toggleSidebar: () =>
           set(
@@ -79,7 +74,6 @@ export const useAppStore = create<AppState>()(
         partialize: state => ({
           user: state.user,
           isAuthenticated: state.isAuthenticated,
-          theme: state.theme,
           searchFilters: state.searchFilters,
         }),
       }
