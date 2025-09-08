@@ -86,7 +86,8 @@ const typographyVariants = cva('text-foreground', {
 			[TypographyTextColor.DESTRUCTIVE]: 'text-destructive',
 			[TypographyTextColor.SUCCESS]: 'text-green-600 dark:text-green-400',
 			[TypographyTextColor.WARNING]: 'text-yellow-600 dark:text-yellow-400',
-			[TypographyTextColor.INFO]: 'text-blue-600 dark:text-blue-400'
+			[TypographyTextColor.INFO]: 'text-blue-600 dark:text-blue-400',
+			[TypographyTextColor.WHITE]: 'text-white'
 		},
 		transform: {
 			[TypographyTransform.NONE]: 'normal-case',

@@ -85,7 +85,8 @@ export enum TypographyTextColor {
 	DESTRUCTIVE = 'destructive',
 	SUCCESS = 'success',
 	WARNING = 'warning',
-	INFO = 'info'
+	INFO = 'info',
+	WHITE = 'white'
 }
 
 /**

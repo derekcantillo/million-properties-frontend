@@ -4,9 +4,11 @@ import React from 'react'
 import { Typography } from '@/components/ui/Typography'
 import {
 	TypographyVariant,
-	TypographyFontFamily
+	TypographyFontFamily,
+	TypographyTextColor
 } from '@/components/ui/Typography/types/typography.types'
 import { BaseDropdownProps } from '../../types'
+import clsx from 'clsx'
 
 export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 	isOpen,
@@ -14,13 +16,30 @@ export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 	// onClose
 }) => {
 	if (!isOpen) return null
-
+	const suggestedAreas = [
+		'All',
+		'Fisher Island',
+		'Bal Harbour',
+		'Sunny Isles',
+		'Miami Beach',
+		'Coral Gables',
+		'Key Biscayne',
+		'Aventura',
+		'South Beach',
+		'Coconut Grove',
+		'Brickell',
+		'Doral',
+		'Pinecrest',
+		'Palmetto Bay',
+		'Homestead',
+		'Cutler Bay'
+	]
 	return (
 		<div
 			className="absolute z-50 mt-2 rounded-lg border border-gray-200 bg-white shadow-lg"
 			style={{
 				top: position.top,
-				left: position.left,
+				left: 0,
 				minWidth: position.width,
 				maxWidth: '100%'
 			}}
@@ -30,12 +49,42 @@ export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 					<Typography
 						variant={TypographyVariant.SMALL}
 						className="font-medium"
-						fontFamily={TypographyFontFamily.CINZEL}
+						fontFamily={TypographyFontFamily.CAIRO}
 					>
 						Buscar por dirección
 					</Typography>
-					<div className="flex min-h-[120px] items-center justify-center text-gray-500">
-						Contenido del filtro de direcciones
+					<div className="flex min-h-[120px] items-center justify-center gap-4 text-gray-500">
+						<div className="flex flex-3/5 flex-wrap gap-2">
+							{suggestedAreas.map(area => (
+								<button
+									type="button"
+									key={area}
+									className={clsx(
+										'flex cursor-pointer items-center gap-2',
+										'rounded-md border border-gray-200 p-2 hover:bg-gray-200',
+										{
+											'bg-black': area === 'All'
+										}
+									)}
+								>
+									<Typography
+										variant={TypographyVariant.SMALL}
+										className="font-medium"
+										fontFamily={TypographyFontFamily.CAIRO}
+										textColor={
+											area === 'All'
+												? TypographyTextColor.WHITE
+												: TypographyTextColor.DEFAULT
+										}
+									>
+										{area}
+									</Typography>
+								</button>
+							))}
+						</div>
+						<div className="flex h-full flex-2/5 items-center justify-center border">
+							<Typography>Map area</Typography>
+						</div>
 					</div>
 				</div>
 			</div>
