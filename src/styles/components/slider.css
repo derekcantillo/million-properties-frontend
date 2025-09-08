@@ -1,0 +1,52 @@
+/* React Slider Styles */
+.horizontal-slider {
+	width: 100%;
+	height: 20px;
+	position: relative;
+}
+
+.slider-track {
+	position: absolute;
+	height: 4px;
+	background-color: var(--foreground);
+	border-radius: 2px;
+	top: 8px;
+}
+
+.slider-track.slider-track-0 {
+	background-color: #e5e7eb;
+}
+
+.slider-track.slider-track-1 {
+	background-color: var(--foreground);
+}
+
+.slider-track.slider-track-2 {
+	background-color: #e5e7eb;
+}
+
+.slider-thumb {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: var(--foreground);
+	border: 2px solid var(--background);
+	border-radius: 50%;
+	cursor: pointer;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	outline: none;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.slider-thumb:hover:not(:active) {
+	transform: scale(1.1);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.slider-thumb:active {
+	transition: none;
+	transform: scale(1.05);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

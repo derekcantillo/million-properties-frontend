@@ -18,7 +18,8 @@ export enum TypographyVariant {
 	MUTED = 'muted',
 	CODE = 'code',
 	LIST = 'list',
-	INLINE_CODE = 'inlineCode'
+	INLINE_CODE = 'inlineCode',
+	SPAN = 'span'
 }
 
 /**
@@ -132,7 +133,8 @@ export const VARIANT_ELEMENT_MAP: Record<
 	[TypographyVariant.MUTED]: 'p',
 	[TypographyVariant.CODE]: 'code',
 	[TypographyVariant.LIST]: 'ul',
-	[TypographyVariant.INLINE_CODE]: 'code'
+	[TypographyVariant.INLINE_CODE]: 'code',
+	[TypographyVariant.SPAN]: 'span'
 } as const
 
 /**
