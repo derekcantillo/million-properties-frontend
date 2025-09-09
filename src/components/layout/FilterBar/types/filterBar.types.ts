@@ -13,19 +13,20 @@ export interface FilterButtonProps {
 	onClick: () => void
 	buttonRef: React.RefCallback<HTMLButtonElement>
 	someTabSelected?: boolean
-	isCompact?: boolean
-	isExpanded?: boolean
 }
 
 export interface FilterBarProps {
-	isCompact?: boolean
-	isExpanded?: boolean
-	onExpand?: () => void
 	onCollapse?: () => void
+	onExpand?: () => void
 }
 
 export interface BaseDropdownProps {
 	isOpen: boolean
 	position: DropdownPosition
 	onClose: () => void
+}
+
+export interface UseFilterBarProps {
+	onCollapse?: (() => void) | undefined
+	onExpand?: (() => void) | undefined
 }

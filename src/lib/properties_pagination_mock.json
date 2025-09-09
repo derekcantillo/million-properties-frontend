@@ -1,0 +1,875 @@
+[
+	{
+		"data": [
+			{
+				"id": "prop-001",
+				"idOwner": "owner-001",
+				"name": "Condo en Brickell",
+				"addressProperty": "1451 Brickell Ave, Miami, FL",
+				"priceProperty": 850000,
+				"images": [
+					{
+						"idPropertyImage": "img-001-1",
+						"idProperty": "prop-001",
+						"file": "https://picsum.photos/id/1002/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-001-2",
+						"idProperty": "prop-001",
+						"file": "https://picsum.photos/id/1003/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-002",
+				"idOwner": "owner-002",
+				"name": "Casa frente al mar en Key Biscayne",
+				"addressProperty": "200 Harbor Dr, Key Biscayne, FL",
+				"priceProperty": 2450000,
+				"images": [
+					{
+						"idPropertyImage": "img-002-1",
+						"idProperty": "prop-002",
+						"file": "https://picsum.photos/id/1003/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-002-2",
+						"idProperty": "prop-002",
+						"file": "https://picsum.photos/id/1004/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-002-3",
+						"idProperty": "prop-002",
+						"file": "https://picsum.photos/id/1005/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-002-4",
+						"idProperty": "prop-002",
+						"file": "https://picsum.photos/id/1006/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-003",
+				"idOwner": "owner-003",
+				"name": "Apartamento en South Beach",
+				"addressProperty": "100 Collins Ave, Miami Beach, FL",
+				"priceProperty": 690000,
+				"images": [
+					{
+						"idPropertyImage": "img-003-1",
+						"idProperty": "prop-003",
+						"file": "https://picsum.photos/id/1004/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-003-2",
+						"idProperty": "prop-003",
+						"file": "https://picsum.photos/id/1005/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-003-3",
+						"idProperty": "prop-003",
+						"file": "https://picsum.photos/id/1006/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-004",
+				"idOwner": "owner-004",
+				"name": "Casa en Coral Gables",
+				"addressProperty": "450 Andalusia Ave, Coral Gables, FL",
+				"priceProperty": 1320000,
+				"images": [
+					{
+						"idPropertyImage": "img-004-1",
+						"idProperty": "prop-004",
+						"file": "https://picsum.photos/id/1005/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-004-2",
+						"idProperty": "prop-004",
+						"file": "https://picsum.photos/id/1006/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-004-3",
+						"idProperty": "prop-004",
+						"file": "https://picsum.photos/id/1007/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-004-4",
+						"idProperty": "prop-004",
+						"file": "https://picsum.photos/id/1008/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-005",
+				"idOwner": "owner-005",
+				"name": "Townhouse en Doral",
+				"addressProperty": "9800 NW 41st St, Doral, FL",
+				"priceProperty": 520000,
+				"images": [
+					{
+						"idPropertyImage": "img-005-1",
+						"idProperty": "prop-005",
+						"file": "https://picsum.photos/id/1006/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-005-2",
+						"idProperty": "prop-005",
+						"file": "https://picsum.photos/id/1007/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-005-3",
+						"idProperty": "prop-005",
+						"file": "https://picsum.photos/id/1008/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-006",
+				"idOwner": "owner-006",
+				"name": "Penthouse en Downtown Miami",
+				"addressProperty": "244 Biscayne Blvd, Miami, FL",
+				"priceProperty": 1950000,
+				"images": [
+					{
+						"idPropertyImage": "img-006-1",
+						"idProperty": "prop-006",
+						"file": "https://picsum.photos/id/1007/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-006-2",
+						"idProperty": "prop-006",
+						"file": "https://picsum.photos/id/1008/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-006-3",
+						"idProperty": "prop-006",
+						"file": "https://picsum.photos/id/1009/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-006-4",
+						"idProperty": "prop-006",
+						"file": "https://picsum.photos/id/1010/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-007",
+				"idOwner": "owner-007",
+				"name": "Casa en Kendall",
+				"addressProperty": "12000 SW 88th St, Miami, FL",
+				"priceProperty": 480000,
+				"images": [
+					{
+						"idPropertyImage": "img-007-1",
+						"idProperty": "prop-007",
+						"file": "https://picsum.photos/id/1008/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-007-2",
+						"idProperty": "prop-007",
+						"file": "https://picsum.photos/id/1009/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-007-3",
+						"idProperty": "prop-007",
+						"file": "https://picsum.photos/id/1010/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-007-4",
+						"idProperty": "prop-007",
+						"file": "https://picsum.photos/id/1011/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-008",
+				"idOwner": "owner-008",
+				"name": "Apartamento en Hialeah",
+				"addressProperty": "6800 W 12th Ave, Hialeah, FL",
+				"priceProperty": 310000,
+				"images": [
+					{
+						"idPropertyImage": "img-008-1",
+						"idProperty": "prop-008",
+						"file": "https://picsum.photos/id/1009/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-008-2",
+						"idProperty": "prop-008",
+						"file": "https://picsum.photos/id/1010/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-008-3",
+						"idProperty": "prop-008",
+						"file": "https://picsum.photos/id/1011/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-009",
+				"idOwner": "owner-009",
+				"name": "Villa en Coconut Grove",
+				"addressProperty": "3500 Main Hwy, Miami, FL",
+				"priceProperty": 1875000,
+				"images": [
+					{
+						"idPropertyImage": "img-009-1",
+						"idProperty": "prop-009",
+						"file": "https://picsum.photos/id/1010/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-009-2",
+						"idProperty": "prop-009",
+						"file": "https://picsum.photos/id/1011/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-010",
+				"idOwner": "owner-010",
+				"name": "Casa frente al canal en Fort Lauderdale",
+				"addressProperty": "1120 Las Olas Blvd, Fort Lauderdale, FL",
+				"priceProperty": 2250000,
+				"images": [
+					{
+						"idPropertyImage": "img-010-1",
+						"idProperty": "prop-010",
+						"file": "https://picsum.photos/id/1011/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-010-2",
+						"idProperty": "prop-010",
+						"file": "https://picsum.photos/id/1012/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-010-3",
+						"idProperty": "prop-010",
+						"file": "https://picsum.photos/id/1013/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-010-4",
+						"idProperty": "prop-010",
+						"file": "https://picsum.photos/id/1014/600/400",
+						"enabled": false
+					}
+				]
+			}
+		],
+		"total": 30,
+		"page": 1,
+		"pageSize": 10,
+		"totalPages": 3,
+		"hasNextPage": true,
+		"hasPreviousPage": false,
+		"isLastPage": false
+	},
+	{
+		"data": [
+			{
+				"id": "prop-011",
+				"idOwner": "owner-011",
+				"name": "Apartamento en Sunny Isles",
+				"addressProperty": "16901 Collins Ave, Sunny Isles Beach, FL",
+				"priceProperty": 920000,
+				"images": [
+					{
+						"idPropertyImage": "img-011-1",
+						"idProperty": "prop-011",
+						"file": "https://picsum.photos/id/1012/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-011-2",
+						"idProperty": "prop-011",
+						"file": "https://picsum.photos/id/1013/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-011-3",
+						"idProperty": "prop-011",
+						"file": "https://picsum.photos/id/1014/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-011-4",
+						"idProperty": "prop-011",
+						"file": "https://picsum.photos/id/1015/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-012",
+				"idOwner": "owner-012",
+				"name": "Casa en Weston",
+				"addressProperty": "4300 Pine Ridge Ln, Weston, FL",
+				"priceProperty": 875000,
+				"images": [
+					{
+						"idPropertyImage": "img-012-1",
+						"idProperty": "prop-012",
+						"file": "https://picsum.photos/id/1013/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-012-2",
+						"idProperty": "prop-012",
+						"file": "https://picsum.photos/id/1014/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-012-3",
+						"idProperty": "prop-012",
+						"file": "https://picsum.photos/id/1015/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-013",
+				"idOwner": "owner-013",
+				"name": "Condo en Aventura",
+				"addressProperty": "19501 W Country Club Dr, Aventura, FL",
+				"priceProperty": 640000,
+				"images": [
+					{
+						"idPropertyImage": "img-013-1",
+						"idProperty": "prop-013",
+						"file": "https://picsum.photos/id/1014/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-013-2",
+						"idProperty": "prop-013",
+						"file": "https://picsum.photos/id/1015/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-013-3",
+						"idProperty": "prop-013",
+						"file": "https://picsum.photos/id/1016/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-014",
+				"idOwner": "owner-014",
+				"name": "Casa en Pembroke Pines",
+				"addressProperty": "1200 NW 160th Ave, Pembroke Pines, FL",
+				"priceProperty": 495000,
+				"images": [
+					{
+						"idPropertyImage": "img-014-1",
+						"idProperty": "prop-014",
+						"file": "https://picsum.photos/id/1015/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-014-2",
+						"idProperty": "prop-014",
+						"file": "https://picsum.photos/id/1016/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-014-3",
+						"idProperty": "prop-014",
+						"file": "https://picsum.photos/id/1017/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-014-4",
+						"idProperty": "prop-014",
+						"file": "https://picsum.photos/id/1018/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-015",
+				"idOwner": "owner-015",
+				"name": "Villa en Coral Springs",
+				"addressProperty": "9500 W Sample Rd, Coral Springs, FL",
+				"priceProperty": 780000,
+				"images": [
+					{
+						"idPropertyImage": "img-015-1",
+						"idProperty": "prop-015",
+						"file": "https://picsum.photos/id/1016/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-015-2",
+						"idProperty": "prop-015",
+						"file": "https://picsum.photos/id/1017/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-016",
+				"idOwner": "owner-016",
+				"name": "Casa en Homestead",
+				"addressProperty": "300 NE 8th St, Homestead, FL",
+				"priceProperty": 350000,
+				"images": [
+					{
+						"idPropertyImage": "img-016-1",
+						"idProperty": "prop-016",
+						"file": "https://picsum.photos/id/1017/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-016-2",
+						"idProperty": "prop-016",
+						"file": "https://picsum.photos/id/1018/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-016-3",
+						"idProperty": "prop-016",
+						"file": "https://picsum.photos/id/1019/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-016-4",
+						"idProperty": "prop-016",
+						"file": "https://picsum.photos/id/1020/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-017",
+				"idOwner": "owner-017",
+				"name": "Apartamento en Bal Harbour",
+				"addressProperty": "9701 Collins Ave, Bal Harbour, FL",
+				"priceProperty": 1100000,
+				"images": [
+					{
+						"idPropertyImage": "img-017-1",
+						"idProperty": "prop-017",
+						"file": "https://picsum.photos/id/1018/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-017-2",
+						"idProperty": "prop-017",
+						"file": "https://picsum.photos/id/1019/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-017-3",
+						"idProperty": "prop-017",
+						"file": "https://picsum.photos/id/1020/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-017-4",
+						"idProperty": "prop-017",
+						"file": "https://picsum.photos/id/1021/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-018",
+				"idOwner": "owner-018",
+				"name": "Penthouse en Surfside",
+				"addressProperty": "9111 Collins Ave, Surfside, FL",
+				"priceProperty": 2500000,
+				"images": [
+					{
+						"idPropertyImage": "img-018-1",
+						"idProperty": "prop-018",
+						"file": "https://picsum.photos/id/1019/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-018-2",
+						"idProperty": "prop-018",
+						"file": "https://picsum.photos/id/1020/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-019",
+				"idOwner": "owner-019",
+				"name": "Casa en Hollywood Beach",
+				"addressProperty": "3501 N Ocean Dr, Hollywood, FL",
+				"priceProperty": 1350000,
+				"images": [
+					{
+						"idPropertyImage": "img-019-1",
+						"idProperty": "prop-019",
+						"file": "https://picsum.photos/id/1020/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-019-2",
+						"idProperty": "prop-019",
+						"file": "https://picsum.photos/id/1021/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-020",
+				"idOwner": "owner-020",
+				"name": "Townhouse en Miramar",
+				"addressProperty": "8900 Miramar Pkwy, Miramar, FL",
+				"priceProperty": 560000,
+				"images": [
+					{
+						"idPropertyImage": "img-020-1",
+						"idProperty": "prop-020",
+						"file": "https://picsum.photos/id/1021/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-020-2",
+						"idProperty": "prop-020",
+						"file": "https://picsum.photos/id/1022/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-020-3",
+						"idProperty": "prop-020",
+						"file": "https://picsum.photos/id/1023/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-020-4",
+						"idProperty": "prop-020",
+						"file": "https://picsum.photos/id/1024/600/400",
+						"enabled": false
+					}
+				]
+			}
+		],
+		"total": 30,
+		"page": 2,
+		"pageSize": 10,
+		"totalPages": 3,
+		"hasNextPage": true,
+		"hasPreviousPage": true,
+		"isLastPage": false
+	},
+	{
+		"data": [
+			{
+				"id": "prop-021",
+				"idOwner": "owner-021",
+				"name": "Apartamento en North Miami",
+				"addressProperty": "12500 Biscayne Blvd, North Miami, FL",
+				"priceProperty": 410000,
+				"images": [
+					{
+						"idPropertyImage": "img-021-1",
+						"idProperty": "prop-021",
+						"file": "https://picsum.photos/id/1022/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-021-2",
+						"idProperty": "prop-021",
+						"file": "https://picsum.photos/id/1023/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-021-3",
+						"idProperty": "prop-021",
+						"file": "https://picsum.photos/id/1024/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-022",
+				"idOwner": "owner-022",
+				"name": "Casa en Cutler Bay",
+				"addressProperty": "18500 SW 97th Ave, Cutler Bay, FL",
+				"priceProperty": 460000,
+				"images": [
+					{
+						"idPropertyImage": "img-022-1",
+						"idProperty": "prop-022",
+						"file": "https://picsum.photos/id/1023/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-022-2",
+						"idProperty": "prop-022",
+						"file": "https://picsum.photos/id/1024/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-023",
+				"idOwner": "owner-023",
+				"name": "Villa en Palmetto Bay",
+				"addressProperty": "13600 Old Cutler Rd, Palmetto Bay, FL",
+				"priceProperty": 950000,
+				"images": [
+					{
+						"idPropertyImage": "img-023-1",
+						"idProperty": "prop-023",
+						"file": "https://picsum.photos/id/1024/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-023-2",
+						"idProperty": "prop-023",
+						"file": "https://picsum.photos/id/1025/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-024",
+				"idOwner": "owner-024",
+				"name": "Casa en Miami Lakes",
+				"addressProperty": "8000 NW 154th St, Miami Lakes, FL",
+				"priceProperty": 690000,
+				"images": [
+					{
+						"idPropertyImage": "img-024-1",
+						"idProperty": "prop-024",
+						"file": "https://picsum.photos/id/1025/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-024-2",
+						"idProperty": "prop-024",
+						"file": "https://picsum.photos/id/1026/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-024-3",
+						"idProperty": "prop-024",
+						"file": "https://picsum.photos/id/1027/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-024-4",
+						"idProperty": "prop-024",
+						"file": "https://picsum.photos/id/1028/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-025",
+				"idOwner": "owner-025",
+				"name": "Apartamento en Hallandale Beach",
+				"addressProperty": "2602 E Hallandale Beach Blvd, Hallandale Beach, FL",
+				"priceProperty": 540000,
+				"images": [
+					{
+						"idPropertyImage": "img-025-1",
+						"idProperty": "prop-025",
+						"file": "https://picsum.photos/id/1026/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-025-2",
+						"idProperty": "prop-025",
+						"file": "https://picsum.photos/id/1027/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-026",
+				"idOwner": "owner-026",
+				"name": "Casa en Golden Beach",
+				"addressProperty": "399 Ocean Blvd, Golden Beach, FL",
+				"priceProperty": 4250000,
+				"images": [
+					{
+						"idPropertyImage": "img-026-1",
+						"idProperty": "prop-026",
+						"file": "https://picsum.photos/id/1027/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-026-2",
+						"idProperty": "prop-026",
+						"file": "https://picsum.photos/id/1028/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-026-3",
+						"idProperty": "prop-026",
+						"file": "https://picsum.photos/id/1029/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-026-4",
+						"idProperty": "prop-026",
+						"file": "https://picsum.photos/id/1030/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-027",
+				"idOwner": "owner-027",
+				"name": "Apartamento en Edgewater",
+				"addressProperty": "480 NE 31st St, Miami, FL",
+				"priceProperty": 880000,
+				"images": [
+					{
+						"idPropertyImage": "img-027-1",
+						"idProperty": "prop-027",
+						"file": "https://picsum.photos/id/1028/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-027-2",
+						"idProperty": "prop-027",
+						"file": "https://picsum.photos/id/1029/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-027-3",
+						"idProperty": "prop-027",
+						"file": "https://picsum.photos/id/1030/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-027-4",
+						"idProperty": "prop-027",
+						"file": "https://picsum.photos/id/1031/600/400",
+						"enabled": true
+					}
+				]
+			},
+			{
+				"id": "prop-028",
+				"idOwner": "owner-028",
+				"name": "Casa en Little Havana",
+				"addressProperty": "1300 SW 8th St, Miami, FL",
+				"priceProperty": 390000,
+				"images": [
+					{
+						"idPropertyImage": "img-028-1",
+						"idProperty": "prop-028",
+						"file": "https://picsum.photos/id/1029/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-028-2",
+						"idProperty": "prop-028",
+						"file": "https://picsum.photos/id/1030/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-029",
+				"idOwner": "owner-029",
+				"name": "Penthouse en Design District",
+				"addressProperty": "140 NE 39th St, Miami, FL",
+				"priceProperty": 2100000,
+				"images": [
+					{
+						"idPropertyImage": "img-029-1",
+						"idProperty": "prop-029",
+						"file": "https://picsum.photos/id/1030/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-029-2",
+						"idProperty": "prop-029",
+						"file": "https://picsum.photos/id/1031/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-029-3",
+						"idProperty": "prop-029",
+						"file": "https://picsum.photos/id/1032/600/400",
+						"enabled": false
+					}
+				]
+			},
+			{
+				"id": "prop-030",
+				"idOwner": "owner-030",
+				"name": "Casa en Coconut Creek",
+				"addressProperty": "4800 W Hillsboro Blvd, Coconut Creek, FL",
+				"priceProperty": 620000,
+				"images": [
+					{
+						"idPropertyImage": "img-030-1",
+						"idProperty": "prop-030",
+						"file": "https://picsum.photos/id/1031/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-030-2",
+						"idProperty": "prop-030",
+						"file": "https://picsum.photos/id/1032/600/400",
+						"enabled": true
+					},
+					{
+						"idPropertyImage": "img-030-3",
+						"idProperty": "prop-030",
+						"file": "https://picsum.photos/id/1033/600/400",
+						"enabled": false
+					},
+					{
+						"idPropertyImage": "img-030-4",
+						"idProperty": "prop-030",
+						"file": "https://picsum.photos/id/1034/600/400",
+						"enabled": false
+					}
+				]
+			}
+		],
+		"total": 30,
+		"page": 3,
+		"pageSize": 10,
+		"totalPages": 3,
+		"hasNextPage": false,
+		"hasPreviousPage": true,
+		"isLastPage": true
+	}
+]

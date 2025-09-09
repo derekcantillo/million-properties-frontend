@@ -39,9 +39,10 @@ export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 			className="absolute z-50 mt-2 rounded-lg border border-gray-200 bg-white shadow-lg"
 			style={{
 				top: position.top,
-				left: 0,
-				minWidth: position.width,
-				maxWidth: '100%'
+				left: position.left + position.width / 2,
+				transform: 'translateX(-50%)',
+				minWidth: '400px',
+				maxWidth: '90vw'
 			}}
 		>
 			<div className="flex flex-col gap-4 p-4">

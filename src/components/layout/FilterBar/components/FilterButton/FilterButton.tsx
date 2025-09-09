@@ -16,22 +16,16 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 	isActive,
 	onClick,
 	buttonRef,
-	someTabSelected,
-	isCompact = false,
-	isExpanded = false
+	someTabSelected
 }) => {
-	const shouldShowInput = !isCompact || isExpanded || isActive
-
 	return (
 		<button
 			ref={buttonRef}
 			type="button"
 			className={clsx(
-				'flex flex-1 cursor-pointer flex-col',
+				'flex flex-1 cursor-pointer flex-col p-4',
 				'bg-white transition-all duration-300 ease-in-out',
 				{
-					'p-4': shouldShowInput,
-					'p-2': !shouldShowInput,
 					'bg-gray-100 hover:bg-gray-100': !isActive && !someTabSelected,
 					'z-40 shadow-2xl': isActive && someTabSelected
 				}
@@ -52,18 +46,16 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 			>
 				{label}
 			</Typography>
-			{shouldShowInput && (
-				<input
-					type="text"
-					placeholder={placeholder}
-					className="font-cairo pointer-events-none transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
-					readOnly
-					onClick={e => {
-						e.preventDefault()
-						e.stopPropagation()
-					}}
-				/>
-			)}
+			<input
+				type="text"
+				placeholder={placeholder}
+				className="font-cairo pointer-events-none transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
+				readOnly
+				onClick={e => {
+					e.preventDefault()
+					e.stopPropagation()
+				}}
+			/>
 		</button>
 	)
 }

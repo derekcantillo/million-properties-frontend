@@ -11,43 +11,22 @@ import {
 } from '@/components/layout'
 import clsx from 'clsx'
 
-export const FilterBar = React.forwardRef<HTMLDivElement, FilterBarProps>(
-	({ isCompact = false, isExpanded = false, onExpand, onCollapse }, ref) => {
-		const {
-			activeDropdown,
-			dropdownVisible,
-			dropdownPosition,
-			filterButtons,
-			setActiveDropdown,
-			containerRef
-		} = useFilterBar({ isCompact, isExpanded, onExpand, onCollapse })
+export const FilterBar = ({ onCollapse, onExpand }: FilterBarProps) => {
+	const {
+		activeDropdown,
+		dropdownPosition,
+		filterButtons,
+		setActiveDropdown,
+		containerRef
+	} = useFilterBar({ onCollapse, onExpand })
 
-		// Combine refs properly
-		const combinedRef = React.useCallback(
-			(node: HTMLDivElement | null) => {
-				if (containerRef) {
-					containerRef.current = node
-				}
-				if (ref) {
-					if (typeof ref === 'function') {
-						ref(node)
-					} else {
-						ref.current = node
-					}
-				}
-			},
-			[ref, containerRef]
-		)
-
-		return (
+	return (
+		<div className="sticky top-0 z-60 flex w-full items-center justify-center">
 			<div
-				ref={combinedRef}
-				className={clsx(
-					'relative container rounded-lg bg-white shadow-lg',
-					'w-1/2 transition-all duration-300 ease-in-out'
-				)}
+				ref={containerRef}
+				className={clsx('relative bg-white shadow-lg', 'w-full')}
 			>
-				<div className="flex items-center overflow-hidden rounded-lg">
+				<div className="flex w-full items-center overflow-hidden rounded-lg">
 					{filterButtons.map(button => (
 						<FilterButton
 							key={button.label}
@@ -58,7 +37,7 @@ export const FilterBar = React.forwardRef<HTMLDivElement, FilterBarProps>(
 				</div>
 
 				<PropertyDropdown
-					isOpen={dropdownVisible === 'property'}
+					isOpen={activeDropdown === 'property'}
 					position={dropdownPosition}
 					onClose={() => {
 						setActiveDropdown(null)
@@ -66,7 +45,7 @@ export const FilterBar = React.forwardRef<HTMLDivElement, FilterBarProps>(
 					}}
 				/>
 				<AddressDropdown
-					isOpen={dropdownVisible === 'address'}
+					isOpen={activeDropdown === 'address'}
 					position={dropdownPosition}
 					onClose={() => {
 						setActiveDropdown(null)
@@ -74,7 +53,7 @@ export const FilterBar = React.forwardRef<HTMLDivElement, FilterBarProps>(
 					}}
 				/>
 				<PriceDropdown
-					isOpen={dropdownVisible === 'price'}
+					isOpen={activeDropdown === 'price'}
 					position={dropdownPosition}
 					onClose={() => {
 						setActiveDropdown(null)
@@ -82,8 +61,8 @@ export const FilterBar = React.forwardRef<HTMLDivElement, FilterBarProps>(
 					}}
 				/>
 			</div>
-		)
-	}
-)
+		</div>
+	)
+}
 
 FilterBar.displayName = 'FilterBar'

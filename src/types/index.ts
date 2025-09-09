@@ -121,3 +121,6 @@ export interface SearchFilters {
 	locations: string[]
 	features: string[]
 }
+
+// Export property types for the mock data structure
+export * from './property.types'
