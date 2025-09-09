@@ -13,11 +13,13 @@ export interface FilterButtonProps {
 	onClick: () => void
 	buttonRef: React.RefCallback<HTMLButtonElement>
 	someTabSelected?: boolean
+	compactMode?: boolean
 }
 
 export interface FilterBarProps {
 	onCollapse?: () => void
 	onExpand?: () => void
+	compactMode?: boolean
 }
 
 export interface BaseDropdownProps {

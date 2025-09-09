@@ -1,9 +1,46 @@
 // Property types that match the mock JSON structure
 export interface PropertyImage {
 	idPropertyImage: string
-	idProperty: string
+	idProperty?: string
 	file: string
 	enabled: boolean
+}
+
+export interface PropertyOwner {
+	idOwner: string
+	name: string
+	address: string
+	photo: string
+	birthday: string
+}
+
+export interface PropertyTrace {
+	idPropertyTrace: string
+	dateSale: string
+	name: string
+	value: number
+	tax: number
+}
+
+export interface PropertyDetail {
+	id: string
+	name: string
+	addressProperty: string
+	priceProperty: number
+	year: number
+	codeInternal: string
+	description: string
+	propertyType: string
+	status: string
+	bedrooms: number
+	bathrooms: number
+	areaSqFt: number
+	parkingSpaces: number
+	images: PropertyImage[]
+	owner: PropertyOwner
+	traces: PropertyTrace[]
+	createdAt: string
+	updatedAt: string
 }
 
 export interface Property {

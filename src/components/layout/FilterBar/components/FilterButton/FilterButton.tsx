@@ -16,7 +16,8 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 	isActive,
 	onClick,
 	buttonRef,
-	someTabSelected
+	someTabSelected,
+	compactMode
 }) => {
 	return (
 		<button
@@ -46,16 +47,18 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 			>
 				{label}
 			</Typography>
-			<input
-				type="text"
-				placeholder={placeholder}
-				className="font-cairo pointer-events-none transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
-				readOnly
-				onClick={e => {
-					e.preventDefault()
-					e.stopPropagation()
-				}}
-			/>
+			{!compactMode && (
+				<input
+					type="text"
+					placeholder={placeholder}
+					className="font-cairo pointer-events-none transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
+					readOnly
+					onClick={e => {
+						e.preventDefault()
+						e.stopPropagation()
+					}}
+				/>
+			)}
 		</button>
 	)
 }

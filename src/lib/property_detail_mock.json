@@ -1,0 +1,39 @@
+{
+    "id": "prop-001",
+    "name": "Condo en Brickell",
+    "addressProperty": "1451 Brickell Ave, Miami, FL",
+    "priceProperty": 850000,
+    "year": 2018,
+    "codeInternal": "BRK-1451-001",
+    "description": "Moderno condominio en el corazón de Brickell con vista al mar, acabados de lujo y acceso a piscina y gimnasio.",
+    "propertyType": "Condominio",
+    "status": "Disponible",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "areaSqFt": 1450,
+    "parkingSpaces": 2,
+    "images": [
+      { "idPropertyImage": "img-001-1", "file": "https://picsum.photos/id/1018/800/600", "enabled": true },
+      { "idPropertyImage": "img-001-2", "file": "https://picsum.photos/id/1020/800/600", "enabled": true },
+      { "idPropertyImage": "img-001-3", "file": "https://picsum.photos/id/1021/800/600", "enabled": true }
+    ],
+    "owner": {
+      "idOwner": "owner-001",
+      "name": "Carlos Rodríguez",
+      "address": "Coral Gables, FL",
+      "photo": "https://picsum.photos/id/1011/200/200",
+      "birthday": "1975-06-10"
+    },
+    "traces": [
+      {
+        "idPropertyTrace": "trace-001-1",
+        "dateSale": "2020-05-12",
+        "name": "Compra inicial",
+        "value": 750000,
+        "tax": 50000
+      }
+    ],
+    "createdAt": "2023-01-15T10:30:00Z",
+    "updatedAt": "2024-08-02T14:20:00Z"
+  }
+  

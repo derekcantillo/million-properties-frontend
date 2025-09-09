@@ -23,10 +23,11 @@ export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
 			onCollapse?.()
 			return
 		}
-
-		setActiveDropdown(filterType)
-		calculateDropdownPosition(buttonKey)
-		onExpand?.()
+		setTimeout(() => {
+			setActiveDropdown(filterType)
+			calculateDropdownPosition(buttonKey)
+			onExpand?.()
+		}, 500)
 	}
 
 	const calculateDropdownPosition = (buttonKey: string) => {
@@ -38,7 +39,7 @@ export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
 			const containerRect = container.getBoundingClientRect()
 
 			const newPosition = {
-				top: buttonRect.bottom - containerRect.top,
+				top: buttonRect.bottom - containerRect.top + 10,
 				left: buttonRect.left - containerRect.left,
 				width: buttonRect.width
 			}

@@ -209,7 +209,7 @@ export const Properties = () => {
 		<section className="w-full">
 			<div
 				ref={toolbarRef}
-				className="mb-6 flex flex-col gap-4 rounded-lg p-4 shadow-md sm:flex-row sm:items-center sm:justify-between"
+				className="mb-6 flex gap-4 sm:flex-row sm:items-center sm:justify-between"
 			>
 				<div className="flex flex-wrap gap-3">
 					<Button
@@ -287,26 +287,6 @@ export const Properties = () => {
 							</div>
 						)}
 					</div>
-				</div>
-
-				<div className="flex items-center gap-2 text-sm text-gray-600">
-					{(sortState.price || sortState.name) && (
-						<div className="flex items-center gap-2">
-							<span>Ordenado por:</span>
-							{sortState.price && (
-								<span className="flex items-center gap-1 rounded-md bg-blue-100 px-2 py-1 text-blue-700">
-									<CurrencyDollarIcon className="h-3 w-3" />
-									{renderSortArrow(sortState.price)}
-								</span>
-							)}
-							{sortState.name && (
-								<span className="flex items-center gap-1 rounded-md bg-blue-100 px-2 py-1 text-blue-700">
-									<LanguageIcon className="h-3 w-3" />
-									{renderSortArrow(sortState.name)}
-								</span>
-							)}
-						</div>
-					)}
 				</div>
 			</div>
 
