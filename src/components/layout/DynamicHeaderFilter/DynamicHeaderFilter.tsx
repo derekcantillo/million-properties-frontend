@@ -8,7 +8,19 @@ export const DynamicHeaderFilter = () => {
 
 	return (
 		<>
-			<Header />
+			<div className="relative h-96 border">
+				<Header />
+				<div className="absolute inset-0 h-full w-full">
+					<div className="absolute inset-0 bg-black/50" />
+					<video
+						src="assets/videos/hero.mp4"
+						autoPlay
+						muted
+						loop
+						className="h-full w-full object-cover"
+					/>
+				</div>
+			</div>
 			<FilterBar
 				onCollapse={() => setShowBackdrop(false)}
 				onExpand={() => setShowBackdrop(true)}
