@@ -4,12 +4,13 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useLocale } from 'next-intl'
 import { useTheme, Theme } from '@/stores/useThemeStore'
 import { ChevronRightIcon, Cog6ToothIcon } from '@heroicons/react/24/outline'
-import { Typography } from './Typography'
 import {
+	Typography,
 	TypographyVariant,
 	TypographyWeight,
-	TypographyTextColor
-} from './Typography/types/typography.types'
+	TypographyTextColor,
+	TypographyFontFamily
+} from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import clsx from 'clsx'
 
@@ -156,6 +157,7 @@ export const SettingsDropdown = () => {
 									variant={TypographyVariant.SPAN}
 									weight={TypographyWeight.MEDIUM}
 									textColor={TypographyTextColor.SECONDARY}
+									fontFamily={TypographyFontFamily.CAIRO}
 								>
 									Atrás
 								</Typography>
@@ -198,6 +200,7 @@ export const SettingsDropdown = () => {
 														? TypographyTextColor.PRIMARY
 														: TypographyTextColor.SECONDARY
 												}
+												fontFamily={TypographyFontFamily.CAIRO}
 											>
 												{option.label}
 											</Typography>
@@ -235,6 +238,7 @@ export const SettingsDropdown = () => {
 														? TypographyTextColor.PRIMARY
 														: TypographyTextColor.SECONDARY
 												}
+												fontFamily={TypographyFontFamily.CAIRO}
 											>
 												{option.label}
 											</Typography>
@@ -264,6 +268,7 @@ export const SettingsDropdown = () => {
 											variant={TypographyVariant.SPAN}
 											weight={TypographyWeight.NORMAL}
 											textColor={TypographyTextColor.PRIMARY}
+											fontFamily={TypographyFontFamily.CAIRO}
 										>
 											{option.label}
 										</Typography>
@@ -273,6 +278,7 @@ export const SettingsDropdown = () => {
 											variant={TypographyVariant.SMALL}
 											weight={TypographyWeight.NORMAL}
 											textColor={TypographyTextColor.MUTED}
+											fontFamily={TypographyFontFamily.CAIRO}
 										>
 											{option.currentValue}
 										</Typography>
