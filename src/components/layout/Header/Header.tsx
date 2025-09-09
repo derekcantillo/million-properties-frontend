@@ -7,6 +7,7 @@ import {
 	TypographyWeight,
 	TypographyVariant
 } from '@/components/ui/Typography/types/typography.types'
+import { ThemeSwitcher } from '@/components/ui/ThemeSwitcher'
 
 export const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false)
@@ -41,9 +42,8 @@ export const Header = () => {
 					</Typography>
 				</div>
 
-				{/* Espacio para elementos del lado derecho */}
 				<div className="flex items-center space-x-4">
-					{/* Aquí irán los elementos del lado derecho */}
+					<ThemeSwitcher />
 				</div>
 			</div>
 		</header>
