@@ -5,6 +5,15 @@
 	position: relative;
 }
 
+.slider-mark {
+	position: absolute;
+	width: 2px;
+	height: 8px;
+	background-color: #d1d5db;
+	top: 6px;
+	transform: translateX(-50%);
+}
+
 .slider-track {
 	position: absolute;
 	height: 4px;
@@ -13,6 +22,7 @@
 	top: 8px;
 }
 
+/* Estilos para slider de rango (precio) */
 .slider-track.slider-track-0 {
 	background-color: #e5e7eb;
 }
@@ -22,6 +32,19 @@
 }
 
 .slider-track.slider-track-2 {
+	background-color: #e5e7eb;
+}
+
+/* Estilos específicos para slider de vista (single value) */
+.view-slider .slider-track {
+	background-color: #e5e7eb;
+}
+
+.view-slider .slider-track.slider-track-0 {
+	background-color: var(--foreground);
+}
+
+.view-slider .slider-track.slider-track-1 {
 	background-color: #e5e7eb;
 }
 

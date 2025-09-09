@@ -7,7 +7,7 @@ export default function HomePage() {
 		<div className="bg-background relative min-h-screen">
 			<DynamicHeaderFilter />
 
-			<div className="relative z-10 pt-40">
+			<div className="relative z-10 pt-10">
 				<div className="container mx-auto px-8">
 					<Properties />
 				</div>

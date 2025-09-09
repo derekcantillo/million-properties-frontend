@@ -73,7 +73,10 @@ export const useThemeStore = create<ThemeState>()(
 				const { theme } = get()
 				const resolvedTheme = resolveTheme(theme, systemTheme)
 
-				applyTheme(resolvedTheme)
+				// Only apply theme if it hasn't been initialized by the script
+				if (!document.documentElement.dataset.themeInitialized) {
+					applyTheme(resolvedTheme)
+				}
 
 				set({ systemTheme, resolvedTheme })
 

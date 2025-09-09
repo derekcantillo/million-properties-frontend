@@ -2,6 +2,9 @@
 export const themeScript = `
 (function() {
   try {
+    // Prevent multiple executions
+    if (document.documentElement.dataset.themeInitialized) return;
+    
     const stored = localStorage.getItem('theme-storage');
     const theme = stored ? JSON.parse(stored).state.theme : 'system';
     
@@ -14,9 +17,11 @@ export const themeScript = `
     
     const root = document.documentElement;
     
+    // Remove any existing theme classes first
+    root.classList.remove('dark', 'light');
+    
     // Apply theme classes
-    root.classList.toggle('dark', isDark);
-    root.classList.toggle('light', !isDark);
+    root.classList.add(isDark ? 'dark' : 'light');
     
     // Apply CSS variables
     if (isDark) {
@@ -26,12 +31,17 @@ export const themeScript = `
       root.style.setProperty('--background', '#ffffff');
       root.style.setProperty('--foreground', '#0f171f');
     }
+    
+    // Mark as initialized
+    root.dataset.themeInitialized = 'true';
   } catch (e) {
     // Fallback to light theme if anything goes wrong
     const root = document.documentElement;
+    root.classList.remove('dark', 'light');
     root.classList.add('light');
     root.style.setProperty('--background', '#ffffff');
     root.style.setProperty('--foreground', '#0f171f');
+    root.dataset.themeInitialized = 'true';
   }
 })();
 `

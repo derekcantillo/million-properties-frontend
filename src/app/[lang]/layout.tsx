@@ -23,11 +23,18 @@ export default async function LocaleLayout({ children, params }: Props) {
 	const messages = await getMessages()
 
 	return (
-		<html lang={lang} className="transition-colors duration-300">
+		<html
+			lang={lang}
+			className="transition-colors duration-300"
+			suppressHydrationWarning
+		>
 			<head>
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 			</head>
-			<body className="bg-background text-foreground min-h-screen antialiased">
+			<body
+				className="bg-background text-foreground min-h-screen antialiased"
+				suppressHydrationWarning
+			>
 				<NextIntlClientProvider messages={messages}>
 					{children}
 				</NextIntlClientProvider>
