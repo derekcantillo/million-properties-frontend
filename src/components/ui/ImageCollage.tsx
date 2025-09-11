@@ -6,6 +6,12 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { Button } from './Button'
+import {
+	Typography,
+	TypographyWeight,
+	TypographyVariant,
+	TypographyFontFamily
+} from './Typography'
 
 interface ImageCollageProps {
 	images: PropertyImage[]
@@ -92,7 +98,8 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 						onClick={() => onImageClick?.(0)}
 						onKeyDown={e => e.key === 'Enter' && onImageClick?.(0)}
 					>
-						{renderImage(displayImages[0], 0, 'h-full w-full rounded-lg')}
+						{displayImages[0] &&
+							renderImage(displayImages[0], 0, 'h-full w-full rounded-lg')}
 					</button>
 				</div>
 			)
@@ -158,20 +165,25 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 	}
 
 	return (
-		<div className={clsx('space-y-4', className)}>
+		<div className={clsx('relative space-y-4', className)}>
 			{getLayout()}
 
 			{/* View all images button */}
 			{enabledImages.length > 0 && (
-				<div className="flex justify-end">
+				<div className="absolute right-5 bottom-5 z-10 flex justify-end">
 					<Button
-						variant="outline"
 						size="sm"
 						onClick={onViewAllClick}
-						className="gap-2"
+						className="gap-2 border border-gray-200 bg-gray-100/80 hover:bg-gray-200"
 					>
 						<PhotoIcon className="h-4 w-4" />
-						Ver todas las imágenes ({enabledImages.length})
+						<Typography
+							fontFamily={TypographyFontFamily.CAIRO}
+							variant={TypographyVariant.SMALL}
+							weight={TypographyWeight.SEMI_BOLD}
+						>
+							Ver todas las imágenes ({enabledImages.length})
+						</Typography>
 					</Button>
 				</div>
 			)}

@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/Typography/types/typography.types'
 import { SettingsDropdown } from '@/components/ui/SettingsDropdown'
 import clsx from 'clsx'
-
+import Link from 'next/link'
 interface HeaderProps {
 	isDark?: boolean
 }
@@ -27,7 +27,7 @@ export const Header = ({ isDark = false }: HeaderProps) => {
 				'transition-all duration-300 ease-in-out',
 				{
 					'py-6': !isDark,
-					'border-b border-gray-200 py-4': isDark
+					'border-b border-gray-200 bg-white py-4': isDark
 				}
 			)}
 		>
@@ -42,15 +42,17 @@ export const Header = ({ isDark = false }: HeaderProps) => {
 						'justify-self-center': isDark
 					})}
 				>
-					<Typography
-						variant={TypographyVariant.H4}
-						fontFamily={TypographyFontFamily.CINZEL}
-						weight={TypographyWeight.BOLD}
-						className="transition-all duration-300 ease-in-out"
-						textColor={textColor}
-					>
-						Million Properties
-					</Typography>
+					<Link href="/">
+						<Typography
+							variant={TypographyVariant.H4}
+							fontFamily={TypographyFontFamily.CINZEL}
+							weight={TypographyWeight.BOLD}
+							className="transition-all duration-300 ease-in-out"
+							textColor={textColor}
+						>
+							Million Properties
+						</Typography>
+					</Link>
 				</div>
 
 				{!isDark && (

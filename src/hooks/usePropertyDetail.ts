@@ -39,8 +39,8 @@ export const usePropertyDetail = ({
 					setError('Property not found')
 				}
 			} catch (err) {
+				console.error(err)
 				setError('Failed to load property details')
-				console.error('Error fetching property details:', err)
 			} finally {
 				setIsLoading(false)
 			}

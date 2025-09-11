@@ -19,6 +19,14 @@ import {
 	ArrowLeftIcon
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import {
+	Typography,
+	TypographyFontFamily,
+	TypographySize,
+	TypographyTextColor,
+	TypographyVariant,
+	TypographyWeight
+} from '@/components/ui'
 
 interface PropertyDetailPageProps {
 	params: Promise<{ slug: string; lang: string }>
@@ -85,13 +93,23 @@ export default function PropertyDetailPage({
 					</div>
 					<div className="flex flex-col items-center justify-center py-16">
 						<div className="text-center">
-							<h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+							<Typography
+								variant={TypographyVariant.H1}
+								fontFamily={TypographyFontFamily.CAIRO}
+								weight={TypographyWeight.BOLD}
+								className="text-2xl text-gray-900 dark:text-white"
+							>
 								Propiedad no encontrada
-							</h1>
-							<p className="mt-2 text-gray-600 dark:text-gray-400">
+							</Typography>
+							<Typography
+								variant={TypographyVariant.PARAGRAPH}
+								fontFamily={TypographyFontFamily.CAIRO}
+								textColor={TypographyTextColor.DEFAULT}
+								className="mt-2 text-gray-600 dark:text-gray-400"
+							>
 								{error ||
 									'La propiedad que buscas no existe o no está disponible.'}
-							</p>
+							</Typography>
 							<Button
 								onClick={() => window.history.back()}
 								className="mt-4"
@@ -106,10 +124,55 @@ export default function PropertyDetailPage({
 		)
 	}
 
+	const features = [
+		{
+			label: 'Tipo',
+			icon: HomeIcon,
+			colorClass: 'text-blue-500',
+			value: property.propertyType
+		},
+		{
+			label: 'Estado',
+			icon: TagIcon,
+			colorClass: 'text-green-500',
+			value: property.status
+		},
+		{
+			label: 'Año',
+			icon: CalendarIcon,
+			colorClass: 'text-purple-500',
+			value: property.year
+		},
+		{
+			label: 'Área',
+			icon: BuildingOfficeIcon,
+			colorClass: 'text-orange-500',
+			value: `${formatNumber(property.areaSqFt)} sq ft`
+		},
+		{
+			label: 'Habitaciones',
+			icon: HomeIcon,
+			colorClass: 'text-red-500',
+			value: property.bedrooms
+		},
+		{
+			label: 'Baños',
+			icon: HomeIcon,
+			colorClass: 'text-cyan-500',
+			value: property.bathrooms
+		},
+		{
+			label: 'Estacionamientos',
+			icon: HomeIcon,
+			colorClass: 'text-yellow-500',
+			value: property.parkingSpaces
+		}
+	] as const
+
 	return (
 		<div className="bg-background relative min-h-screen">
 			<DynamicHeaderFilter showVideo={false} showHeroText={false} />
-			<div className="container mx-auto px-8 py-8">
+			<div className="container mx-auto px-8 py-16">
 				{/* Back Button */}
 				<div className="mb-6">
 					<Button
@@ -126,21 +189,42 @@ export default function PropertyDetailPage({
 				{/* Header Section */}
 				<div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 					<div className="flex-1">
-						<h1 className="text-3xl font-bold text-gray-900 lg:text-4xl dark:text-white">
+						<Typography
+							variant={TypographyVariant.H1}
+							className="lg:text-4xle text-3xl font-bold text-gray-900"
+							fontFamily={TypographyFontFamily.CINZEL}
+						>
 							{property.name}
-						</h1>
+						</Typography>
 						<div className="mt-2 flex items-center gap-2 text-gray-600 dark:text-gray-400">
 							<MapPinIcon className="h-5 w-5" />
-							<span className="text-lg">{property.addressProperty}</span>
+							<Typography
+								variant={TypographyVariant.SPAN}
+								fontFamily={TypographyFontFamily.CAIRO}
+								textColor={TypographyTextColor.DEFAULT}
+								className="text-lg"
+							>
+								{property.addressProperty}
+							</Typography>
 						</div>
 					</div>
 					<div className="text-right">
-						<div className="text-3xl font-bold text-green-600 lg:text-4xl">
+						<Typography
+							variant={TypographyVariant.H2}
+							fontFamily={TypographyFontFamily.CAIRO}
+							weight={TypographyWeight.BOLD}
+							className="text-3xl text-green-600 lg:text-4xl"
+						>
 							{formatCurrency(property.priceProperty)}
-						</div>
-						<div className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+						</Typography>
+						<Typography
+							variant={TypographyVariant.SPAN}
+							fontFamily={TypographyFontFamily.CAIRO}
+							textColor={TypographyTextColor.DEFAULT}
+							className="mt-1 text-sm text-gray-500 dark:text-gray-400"
+						>
 							Código: {property.codeInternal}
-						</div>
+						</Typography>
 					</div>
 				</div>
 
@@ -160,98 +244,74 @@ export default function PropertyDetailPage({
 					<div className="space-y-8 lg:col-span-2">
 						{/* Description */}
 						<div>
-							<h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+							<Typography
+								fontFamily={TypographyFontFamily.CAIRO}
+								variant={TypographyVariant.H3}
+								weight={TypographyWeight.SEMI_BOLD}
+							>
 								Descripción
-							</h2>
-							<p className="leading-relaxed text-gray-700 dark:text-gray-300">
+							</Typography>
+							<Typography
+								fontFamily={TypographyFontFamily.CAIRO}
+								variant={TypographyVariant.PARAGRAPH}
+								textColor={TypographyTextColor.DEFAULT}
+							>
 								{property.description}
-							</p>
+							</Typography>
 						</div>
 
 						{/* Property Features */}
 						<div>
-							<h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+							<Typography
+								fontFamily={TypographyFontFamily.CAIRO}
+								variant={TypographyVariant.H3}
+								weight={TypographyWeight.SEMI_BOLD}
+							>
 								Características de la propiedad
-							</h2>
+							</Typography>
 							<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-								<div className="flex items-center gap-3 rounded-lg border p-3">
-									<HomeIcon className="h-5 w-5 text-blue-500" />
-									<div>
-										<span className="font-medium">Tipo:</span>
-										<span className="ml-2 text-gray-700 dark:text-gray-300">
-											{property.propertyType}
-										</span>
-									</div>
-								</div>
-
-								<div className="flex items-center gap-3 rounded-lg border p-3">
-									<TagIcon className="h-5 w-5 text-green-500" />
-									<div>
-										<span className="font-medium">Estado:</span>
-										<span className="ml-2 text-gray-700 dark:text-gray-300">
-											{property.status}
-										</span>
-									</div>
-								</div>
-
-								<div className="flex items-center gap-3 rounded-lg border p-3">
-									<CalendarIcon className="h-5 w-5 text-purple-500" />
-									<div>
-										<span className="font-medium">Año:</span>
-										<span className="ml-2 text-gray-700 dark:text-gray-300">
-											{property.year}
-										</span>
-									</div>
-								</div>
-
-								<div className="flex items-center gap-3 rounded-lg border p-3">
-									<BuildingOfficeIcon className="h-5 w-5 text-orange-500" />
-									<div>
-										<span className="font-medium">Área:</span>
-										<span className="ml-2 text-gray-700 dark:text-gray-300">
-											{formatNumber(property.areaSqFt)} sq ft
-										</span>
-									</div>
-								</div>
-
-								<div className="flex items-center gap-3 rounded-lg border p-3">
-									<HomeIcon className="h-5 w-5 text-red-500" />
-									<div>
-										<span className="font-medium">Habitaciones:</span>
-										<span className="ml-2 text-gray-700 dark:text-gray-300">
-											{property.bedrooms}
-										</span>
-									</div>
-								</div>
-
-								<div className="flex items-center gap-3 rounded-lg border p-3">
-									<HomeIcon className="h-5 w-5 text-cyan-500" />
-									<div>
-										<span className="font-medium">Baños:</span>
-										<span className="ml-2 text-gray-700 dark:text-gray-300">
-											{property.bathrooms}
-										</span>
-									</div>
-								</div>
-
-								<div className="flex items-center gap-3 rounded-lg border p-3">
-									<HomeIcon className="h-5 w-5 text-yellow-500" />
-									<div>
-										<span className="font-medium">Estacionamientos:</span>
-										<span className="ml-2 text-gray-700 dark:text-gray-300">
-											{property.parkingSpaces}
-										</span>
-									</div>
-								</div>
+								{features.map(feature => {
+									const Icon = feature.icon
+									return (
+										<div
+											key={feature.label}
+											className="flex items-center gap-3 rounded-lg bg-gray-100 p-3"
+										>
+											<Icon className={`h-5 w-5 ${feature.colorClass}`} />
+											<div>
+												<Typography
+													fontFamily={TypographyFontFamily.CAIRO}
+													variant={TypographyVariant.SPAN}
+													weight={TypographyWeight.BOLD}
+												>
+													{feature.label}:{' '}
+												</Typography>
+												<Typography
+													fontFamily={TypographyFontFamily.CAIRO}
+													variant={TypographyVariant.SPAN}
+													weight={TypographyWeight.SEMI_BOLD}
+												>
+													{feature.value}
+												</Typography>
+											</div>
+										</div>
+									)
+								})}
 							</div>
 						</div>
 
 						{/* Property Traces */}
 						{property.traces && property.traces.length > 0 && (
 							<div>
-								<h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+								<Typography
+									variant={TypographyVariant.H3}
+									fontFamily={TypographyFontFamily.CAIRO}
+									weight={TypographyWeight.BOLD}
+									size={TypographySize.XL2}
+									className="mb-4"
+								>
 									Historial de transacciones
-								</h2>
+								</Typography>
 								<div className="space-y-3">
 									{property.traces.map(trace => (
 										<div
@@ -260,22 +320,41 @@ export default function PropertyDetailPage({
 										>
 											<div className="flex items-center justify-between">
 												<div>
-													<h3 className="font-medium text-gray-900 dark:text-white">
+													<Typography
+														variant={TypographyVariant.H3}
+														fontFamily={TypographyFontFamily.CAIRO}
+														weight={TypographyWeight.MEDIUM}
+													>
 														{trace.name}
-													</h3>
-													<p className="text-sm text-gray-600 dark:text-gray-400">
+													</Typography>
+													<Typography
+														variant={TypographyVariant.SPAN}
+														fontFamily={TypographyFontFamily.CAIRO}
+														textColor={TypographyTextColor.DEFAULT}
+														size={TypographySize.SM}
+													>
 														{new Date(trace.dateSale).toLocaleDateString(
 															'es-ES'
 														)}
-													</p>
+													</Typography>
 												</div>
 												<div className="text-right">
-													<div className="font-semibold text-green-600">
+													<Typography
+														variant={TypographyVariant.SPAN}
+														fontFamily={TypographyFontFamily.CAIRO}
+														weight={TypographyWeight.SEMI_BOLD}
+														className="text-green-600"
+													>
 														{formatCurrency(trace.value)}
-													</div>
-													<div className="text-sm text-gray-500">
+													</Typography>
+													<Typography
+														variant={TypographyVariant.SPAN}
+														fontFamily={TypographyFontFamily.CAIRO}
+														textColor={TypographyTextColor.DEFAULT}
+														size={TypographySize.SM}
+													>
 														Impuestos: {formatCurrency(trace.tax)}
-													</div>
+													</Typography>
 												</div>
 											</div>
 										</div>
@@ -287,9 +366,13 @@ export default function PropertyDetailPage({
 
 					{/* Owner Information */}
 					<div>
-						<h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+						<Typography
+							fontFamily={TypographyFontFamily.CAIRO}
+							variant={TypographyVariant.H3}
+							weight={TypographyWeight.SEMI_BOLD}
+						>
 							Información del propietario
-						</h2>
+						</Typography>
 						<div className="space-y-4 rounded-lg border p-6">
 							{/* Owner photo and name */}
 							<div className="flex items-center gap-4">
@@ -302,12 +385,22 @@ export default function PropertyDetailPage({
 									/>
 								</div>
 								<div>
-									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+									<Typography
+										variant={TypographyVariant.H3}
+										fontFamily={TypographyFontFamily.CAIRO}
+										weight={TypographyWeight.SEMI_BOLD}
+										size={TypographySize.XL}
+									>
 										{property.owner.name}
-									</h3>
-									<p className="text-sm text-gray-600 dark:text-gray-400">
+									</Typography>
+									<Typography
+										variant={TypographyVariant.PARAGRAPH}
+										fontFamily={TypographyFontFamily.CAIRO}
+										textColor={TypographyTextColor.DEFAULT}
+										size={TypographySize.SM}
+									>
 										Propietario
-									</p>
+									</Typography>
 								</div>
 							</div>
 
@@ -315,23 +408,35 @@ export default function PropertyDetailPage({
 							<div className="space-y-3">
 								<div className="flex items-center gap-3">
 									<MapPinIcon className="h-5 w-5 text-gray-400" />
-									<span className="text-gray-700 dark:text-gray-300">
+									<Typography
+										variant={TypographyVariant.SPAN}
+										fontFamily={TypographyFontFamily.CAIRO}
+										textColor={TypographyTextColor.DEFAULT}
+									>
 										{property.owner.address}
-									</span>
+									</Typography>
 								</div>
 								<div className="flex items-center gap-3">
 									<CakeIcon className="h-5 w-5 text-gray-400" />
-									<span className="text-gray-700 dark:text-gray-300">
+									<Typography
+										variant={TypographyVariant.SPAN}
+										fontFamily={TypographyFontFamily.CAIRO}
+										textColor={TypographyTextColor.DEFAULT}
+									>
 										{new Date(property.owner.birthday).toLocaleDateString(
 											'es-ES'
 										)}
-									</span>
+									</Typography>
 								</div>
 								<div className="flex items-center gap-3">
 									<UserIcon className="h-5 w-5 text-gray-400" />
-									<span className="text-gray-700 dark:text-gray-300">
+									<Typography
+										variant={TypographyVariant.SPAN}
+										fontFamily={TypographyFontFamily.CAIRO}
+										textColor={TypographyTextColor.DEFAULT}
+									>
 										ID: {property.owner.idOwner}
-									</span>
+									</Typography>
 								</div>
 							</div>
 						</div>

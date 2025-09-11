@@ -26,7 +26,7 @@ export const DynamicHeaderFilter = ({
 	showHeroText = true
 }: DynamicHeaderFilterProps) => {
 	const [showBackdrop, setShowBackdrop] = useState(false)
-	const [isDark, setIsDark] = useState(false)
+	const [isDark, setIsDark] = useState(!showVideo)
 
 	// References for GSAP animations
 	const containerRef = useRef<HTMLDivElement>(null)
