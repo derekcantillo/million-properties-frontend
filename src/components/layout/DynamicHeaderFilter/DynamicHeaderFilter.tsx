@@ -12,6 +12,7 @@ import {
 } from '@/components/ui'
 import clsx from 'clsx'
 import { usePropertiesStore } from '@/stores/usePropertiesStore'
+import { useTranslations } from 'next-intl'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,6 +25,7 @@ export const DynamicHeaderFilter = ({
 	showVideo = true,
 	showHeroText = true
 }: DynamicHeaderFilterProps) => {
+	const t = useTranslations()
 	const [showBackdrop, setShowBackdrop] = useState(false)
 	const [isDark, setIsDark] = useState(!showVideo)
 	const [isMobileModalOpen, setIsMobileModalOpen] = useState(false)
@@ -181,7 +183,7 @@ export const DynamicHeaderFilter = ({
 											className="transition-all duration-300 ease-in-out"
 											textColor={TypographyTextColor.WHITE}
 										>
-											#1 TEAM IN THE US
+											{t('hero.title')}
 										</Typography>
 										<Typography
 											variant={TypographyVariant.H3}
@@ -190,7 +192,7 @@ export const DynamicHeaderFilter = ({
 											className="transition-all duration-300 ease-in-out"
 											textColor={TypographyTextColor.WHITE}
 										>
-											More Than $2.1 Billion
+											{t('hero.subtitle')}
 										</Typography>
 									</div>
 								)}
@@ -218,11 +220,10 @@ export const DynamicHeaderFilter = ({
 							setShowBackdrop(false)
 						}
 					}}
-					aria-label="Cerrar dropdown"
+					aria-label={t('common.closeDropdown')}
 				/>
 			)}
 
-			{/* Mobile Filter Modal */}
 			<MobileFilterModal
 				isOpen={isMobileModalOpen}
 				onClose={() => setIsMobileModalOpen(false)}

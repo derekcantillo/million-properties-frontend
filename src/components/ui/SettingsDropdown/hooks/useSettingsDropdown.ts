@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useTheme, Theme } from '@/stores/useThemeStore'
 
 interface SettingsOption {
@@ -16,6 +16,7 @@ interface SubOption {
 }
 
 export const useSettingsDropdown = () => {
+	const t = useTranslations()
 	const [isOpen, setIsOpen] = useState(false)
 	const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
 	const dropdownRef = useRef<HTMLDivElement>(null)
@@ -24,36 +25,36 @@ export const useSettingsDropdown = () => {
 	const { theme, resolvedTheme, setTheme } = useTheme()
 
 	const languageOptions: SubOption[] = [
-		{ value: 'en', label: 'English', emoji: '🇺🇸' },
-		{ value: 'es', label: 'Español', emoji: '🇪🇸' }
+		{ value: 'en', label: t('common.english'), emoji: '🇺🇸' },
+		{ value: 'es', label: t('common.spanish'), emoji: '🇪🇸' }
 	]
 
 	const themeOptions: SubOption[] = [
-		{ value: 'light', label: 'Light', emoji: '☀️' },
-		{ value: 'dark', label: 'Night', emoji: '🌙' },
-		{ value: 'system', label: 'System', emoji: '💻' }
+		{ value: 'light', label: t('common.light'), emoji: '☀️' },
+		{ value: 'dark', label: t('common.night'), emoji: '🌙' },
+		{ value: 'system', label: t('common.system'), emoji: '💻' }
 	]
 
 	const getCurrentLanguageLabel = () => {
 		const current = languageOptions.find(lang => lang.value === currentLocale)
-		return current ? current.label : 'English'
+		return current ? current.label : t('common.english')
 	}
 
 	const getCurrentThemeLabel = () => {
 		const current = themeOptions.find(t => t.value === theme)
-		return current ? current.label : 'System'
+		return current ? current.label : t('common.system')
 	}
 
 	const settingsOptions: SettingsOption[] = [
 		{
 			id: 'language',
-			label: 'Idioma',
+			label: t('common.language'),
 			currentValue: getCurrentLanguageLabel(),
 			emoji: '🌐'
 		},
 		{
 			id: 'theme',
-			label: 'Tema',
+			label: t('common.theme'),
 			currentValue: getCurrentThemeLabel(),
 			emoji: '🎨'
 		}

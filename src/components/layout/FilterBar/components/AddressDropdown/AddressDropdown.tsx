@@ -1,21 +1,23 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '@/components/ui/Typography'
 import {
+	Typography,
 	TypographyVariant,
 	TypographyFontFamily,
 	TypographyTextColor
-} from '@/components/ui/Typography/types/typography.types'
+} from '@/components/ui'
 import { BaseDropdownProps } from '../../types'
 import clsx from 'clsx'
 import { useFormContext } from 'react-hook-form'
+import { useTranslations } from 'next-intl'
 
 export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 	isOpen,
 	position
 	// onClose
 }) => {
+	const t = useTranslations()
 	const form = useFormContext<{ address?: string }>()
 	if (!isOpen) return null
 	const suggestedAreas = [
@@ -53,7 +55,7 @@ export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 					className="font-medium"
 					fontFamily={TypographyFontFamily.CAIRO}
 				>
-					Areas sugeridas
+					{t('filterBar.suggestedAreas')}
 				</Typography>
 				<div className="flex items-center justify-center gap-4 text-gray-500">
 					<div className="flex flex-3/5 flex-wrap gap-2">
@@ -88,7 +90,7 @@ export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 						))}
 					</div>
 					<div className="flex h-60 flex-2/5 items-center justify-center border">
-						<Typography>Map area</Typography>
+						<Typography>{t('filterBar.mapArea')}</Typography>
 					</div>
 				</div>
 			</div>

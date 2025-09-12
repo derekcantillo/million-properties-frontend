@@ -12,6 +12,7 @@ import {
 	TypographyVariant,
 	TypographyFontFamily
 } from '@/components/ui'
+import { useTranslations } from 'next-intl'
 
 interface ImageCollageProps {
 	images: PropertyImage[]
@@ -28,6 +29,7 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 	onViewAllClick,
 	className
 }) => {
+	const t = useTranslations()
 	const [imageErrors, setImageErrors] = useState<Set<string>>(new Set())
 
 	const enabledImages = images.filter(img => img.enabled)
@@ -79,7 +81,6 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 		)
 	}
 
-	// Handle different layouts based on number of images
 	const getLayout = () => {
 		if (displayImages.length === 0) {
 			return (
@@ -123,10 +124,8 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 			)
 		}
 
-		// 3 images layout (main layout)
 		return (
 			<div className="grid h-96 gap-2 md:h-[500px] lg:grid-cols-4 lg:grid-rows-2">
-				{/* Large image - takes 2x2 space */}
 				<button
 					type="button"
 					className="relative cursor-pointer overflow-hidden rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none lg:col-span-2 lg:row-span-2"
@@ -137,7 +136,6 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 						renderImage(displayImages[0], 0, 'h-full w-full rounded-lg')}
 				</button>
 
-				{/* Small image 1 - top right */}
 				{displayImages[1] && (
 					<button
 						type="button"
@@ -149,7 +147,6 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 					</button>
 				)}
 
-				{/* Small image 2 - bottom right */}
 				{displayImages[2] && (
 					<button
 						type="button"
@@ -168,7 +165,6 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 		<div className={clsx('relative space-y-4', className)}>
 			{getLayout()}
 
-			{/* View all images button */}
 			{enabledImages.length > 0 && (
 				<div className="absolute right-5 bottom-5 z-10 flex justify-end">
 					<Button
@@ -182,7 +178,7 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 							variant={TypographyVariant.SMALL}
 							weight={TypographyWeight.SEMI_BOLD}
 						>
-							Ver todas las imágenes ({enabledImages.length})
+							{t('imageCollage.viewAllImages')} ({enabledImages.length})
 						</Typography>
 					</Button>
 				</div>

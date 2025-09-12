@@ -32,9 +32,11 @@ import {
 } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { useParams, useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 export default function PropertyDetailPage() {
 	const router = useRouter()
+	const t = useTranslations()
 	const { slug } = useParams<{ slug: string }>()
 	const { property, isLoading, error } = usePropertyDetail({ slug })
 	const [isModalOpen, setIsModalOpen] = useState(false)
@@ -63,7 +65,7 @@ export default function PropertyDetailPage() {
 							className="gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
 						>
 							<ArrowLeftIcon className="h-4 w-4" />
-							Volver a propiedades
+							{t('common.backToProperties')}
 						</Button>
 					</div>
 					<PropertyDetailSkeleton />
@@ -78,9 +80,9 @@ export default function PropertyDetailPage() {
 				<DynamicHeaderFilter showVideo={false} showHeroText={false} />
 				<ErrorMessage
 					buttonAction={() => router.back()}
-					buttonText="Volver a propiedades"
-					title="Ups! Algo salió mal"
-					description="Por favor, intenta nuevamente."
+					buttonText={t('common.backToProperties')}
+					title={t('common.somethingWentWrong')}
+					description={t('common.pleaseTryAgain')}
 				/>
 			</div>
 		)
@@ -88,43 +90,43 @@ export default function PropertyDetailPage() {
 
 	const features = [
 		{
-			label: 'Tipo',
+			label: t('propertyDetail.type'),
 			icon: HomeIcon,
 			colorClass: 'text-blue-500',
 			value: property.propertyType
 		},
 		{
-			label: 'Estado',
+			label: t('propertyDetail.status'),
 			icon: TagIcon,
 			colorClass: 'text-green-500',
 			value: property.status
 		},
 		{
-			label: 'Año',
+			label: t('propertyDetail.year'),
 			icon: CalendarIcon,
 			colorClass: 'text-purple-500',
 			value: property.year
 		},
 		{
-			label: 'Área',
+			label: t('propertyDetail.area'),
 			icon: BuildingOfficeIcon,
 			colorClass: 'text-orange-500',
 			value: `${formatNumber(property.areaSqFt)} sq ft`
 		},
 		{
-			label: 'Habitaciones',
+			label: t('propertyDetail.bedrooms'),
 			icon: HomeIcon,
 			colorClass: 'text-red-500',
 			value: property.bedrooms
 		},
 		{
-			label: 'Baños',
+			label: t('propertyDetail.bathrooms'),
 			icon: HomeIcon,
 			colorClass: 'text-cyan-500',
 			value: property.bathrooms
 		},
 		{
-			label: 'Estacionamientos',
+			label: t('propertyDetail.parking'),
 			icon: HomeIcon,
 			colorClass: 'text-yellow-500',
 			value: property.parkingSpaces
@@ -143,7 +145,7 @@ export default function PropertyDetailPage() {
 						className="gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
 					>
 						<ArrowLeftIcon className="h-4 w-4" />
-						Volver a propiedades
+						{t('common.backToProperties')}
 					</Button>
 				</div>
 
@@ -205,7 +207,7 @@ export default function PropertyDetailPage() {
 								variant={TypographyVariant.H3}
 								weight={TypographyWeight.SEMI_BOLD}
 							>
-								Descripción
+								{t('propertyDetail.description')}
 							</Typography>
 							<Typography
 								fontFamily={TypographyFontFamily.CAIRO}
@@ -222,7 +224,7 @@ export default function PropertyDetailPage() {
 								variant={TypographyVariant.H3}
 								weight={TypographyWeight.SEMI_BOLD}
 							>
-								Características de la propiedad
+								{t('propertyDetail.propertyFeatures')}
 							</Typography>
 							<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 								{features.map(feature => {
@@ -264,7 +266,7 @@ export default function PropertyDetailPage() {
 									size={TypographySize.XL2}
 									className="mb-4"
 								>
-									Historial de transacciones
+									{t('propertyDetail.transactionHistory')}
 								</Typography>
 								<div className="space-y-3">
 									{property.traces.map(trace => (
@@ -307,7 +309,8 @@ export default function PropertyDetailPage() {
 														textColor={TypographyTextColor.DEFAULT}
 														size={TypographySize.SM}
 													>
-														Impuestos: {formatCurrency(trace.tax)}
+														{t('propertyDetail.taxes')}:{' '}
+														{formatCurrency(trace.tax)}
 													</Typography>
 												</div>
 											</div>
@@ -324,7 +327,7 @@ export default function PropertyDetailPage() {
 							variant={TypographyVariant.H3}
 							weight={TypographyWeight.SEMI_BOLD}
 						>
-							Información del propietario
+							{t('propertyDetail.ownerInformation')}
 						</Typography>
 						<div className={cn('space-y-4 rounded-lg p-6')}>
 							<div className="flex items-center gap-4">
@@ -351,7 +354,7 @@ export default function PropertyDetailPage() {
 										textColor={TypographyTextColor.DEFAULT}
 										size={TypographySize.SM}
 									>
-										Propietario
+										{t('propertyDetail.owner')}
 									</Typography>
 								</div>
 							</div>
@@ -386,7 +389,7 @@ export default function PropertyDetailPage() {
 										fontFamily={TypographyFontFamily.CAIRO}
 										textColor={TypographyTextColor.DEFAULT}
 									>
-										ID: {property.owner.idOwner}
+										{t('propertyDetail.id')}: {property.owner.idOwner}
 									</Typography>
 								</div>
 							</div>

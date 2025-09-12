@@ -7,6 +7,7 @@ import {
 	ChevronRightIcon
 } from '@heroicons/react/24/solid'
 import clsx from 'clsx'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
@@ -21,12 +22,12 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 	alt,
 	className
 }) => {
+	const t = useTranslations()
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [imageErrors, setImageErrors] = useState<Set<string>>(new Set())
 
 	const enabledImages = images.filter(img => img.enabled)
 
-	// Show empty state only if no images are available
 	if (enabledImages.length === 0) {
 		return (
 			<div
@@ -41,10 +42,10 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 					</div>
 				</div>
 				<span className="text-sm font-medium text-gray-500">
-					Sin imágenes disponibles
+					{t('error.noImagesAvailable')}
 				</span>
 				<span className="mt-1 text-xs text-gray-400">
-					No se encontraron imágenes para esta propiedad
+					{t('error.noImagesFound')}
 				</span>
 			</div>
 		)
@@ -90,7 +91,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 							<LinkSlashIcon className="h-8 w-8 text-gray-400" />
 						</div>
 						<span className="text-xs text-gray-500">
-							Error al cargar imagen
+							{t('error.errorLoadingImage')}
 						</span>
 					</div>
 				) : (

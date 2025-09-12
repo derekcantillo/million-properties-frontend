@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import React from 'react'
 import ReactSlider from 'react-slider'
 
@@ -10,11 +11,12 @@ export const LayoutViewDropdown = ({
 	columnsPerRow,
 	onChange
 }: ILayoutViewDropdownProps) => {
+	const t = useTranslations()
 	return (
 		<div className="absolute top-full right-0 z-50 mt-2 w-64 rounded-lg border border-gray-200 bg-white p-4 shadow-lg">
 			<div className="space-y-4">
 				<div className="text-sm font-medium text-gray-700">
-					Propiedades por fila: {columnsPerRow}
+					{t('properties.propertiesPerRow')}: {columnsPerRow}
 				</div>
 				<div className="px-2">
 					<ReactSlider

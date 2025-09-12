@@ -15,11 +15,8 @@ export function generateStaticParams() {
 export default async function LocaleLayout({ children, params }: Props) {
 	const { lang } = await params
 
-	// Validate that the incoming `lang` parameter is valid
 	if (!['en', 'es'].includes(lang)) notFound()
 
-	// Providing all messages to the client
-	// side is the easiest way to get started
 	const messages = await getMessages()
 
 	return (

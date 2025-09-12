@@ -6,8 +6,10 @@ import {
 	FilterType,
 	UseFilterBarProps
 } from '@/components/layout'
+import { useTranslations } from 'next-intl'
 
 export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
+	const t = useTranslations()
 	const [activeDropdown, setActiveDropdown] = useState<FilterType>(null)
 	const [dropdownPosition, setDropdownPosition] = useState({
 		top: 0,
@@ -73,8 +75,8 @@ export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
 			buttonRef: el => {
 				buttonRefs.current['property'] = el
 			},
-			label: 'Nombre de la propiedad',
-			placeholder: 'Nombre',
+			label: t('filterBar.propertyName'),
+			placeholder: t('filterBar.propertyNamePlaceholder'),
 			isActive: activeDropdown === 'property',
 			onClick: () => handleDropdownToggle('property', 'property')
 		},
@@ -82,8 +84,8 @@ export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
 			buttonRef: el => {
 				buttonRefs.current['address'] = el
 			},
-			label: 'Dirección de la propiedad',
-			placeholder: 'Dirección',
+			label: t('filterBar.address'),
+			placeholder: t('filterBar.addressPlaceholder'),
 			isActive: activeDropdown === 'address',
 			onClick: () => handleDropdownToggle('address', 'address')
 		},
@@ -91,8 +93,8 @@ export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
 			buttonRef: el => {
 				buttonRefs.current['price'] = el
 			},
-			label: 'Rango de precios',
-			placeholder: '$ - $',
+			label: t('filterBar.priceRange'),
+			placeholder: '0.0$ - 0.0$',
 			isActive: activeDropdown === 'price',
 			onClick: () => handleDropdownToggle('price', 'price')
 		}

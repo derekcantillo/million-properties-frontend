@@ -1,39 +1,124 @@
 {
-	"HomePage": {
-		"title": "Million Properties",
-		"description": "Find your dream property with our advanced real estate platform",
-		"currentLanguage": "Current language: {lang}",
-		"languageSwitcher": "Switch Language"
+	"common": {
+		"back": "Back",
+		"backToProperties": "Back to properties",
+		"cancel": "Cancel",
+		"search": "Look for",
+		"tryAgain": "Try again",
+		"refresh": "Update",
+		"close": "Close",
+		"loading": "Charging...",
+		"error": "Mistake",
+		"somethingWentWrong": "UPS! ",
+		"pleaseTryAgain": "Please try again",
+		"refreshPage": "Update page",
+		"settings": "Configuration",
+		"backButton": "Back",
+		"view": "View",
+		"all": "All",
+		"closeDropdown": "Close Dropdown",
+		"english": "English",
+		"spanish": "Spanish",
+		"light": "Clear",
+		"night": "Evening",
+		"system": "System",
+		"language": "Language",
+		"theme": "Issue"
 	},
-	"Navigation": {
-		"home": "Home",
+	"navigation": {
+		"home": "Start",
 		"properties": "Properties",
 		"about": "About",
 		"contact": "Contact"
 	},
-	"Property": {
-		"types": {
-			"apartment": "Apartment",
-			"house": "House",
-			"commercial": "Commercial Property"
-		},
-		"descriptions": {
-			"apartment": "Modern apartments in prime locations",
-			"house": "Beautiful houses for families",
-			"commercial": "Commercial spaces for businesses"
-		},
-		"details": {
-			"price": "Price",
-			"bedrooms": "Bedrooms",
-			"bathrooms": "Bathrooms",
-			"area": "Area"
-		}
+	"hero": {
+		"title": "#1 team in the United States",
+		"subtitle": "More than $ 2.1 billion"
 	},
-	"Common": {
-		"loading": "Loading...",
-		"error": "An error occurred",
-		"retry": "Try again",
-		"submit": "Submit",
-		"cancel": "Cancel"
+	"filterBar": {
+		"findProperty": "Find your property",
+		"propertyName": "Property name",
+		"propertyNamePlaceholder": "Ex: house on the beach",
+		"address": "Address",
+		"addressPlaceholder": "Ex: Madrid, Spain",
+		"price": "Price",
+		"priceRange": "Price range",
+		"searchByPriceRange": "Search for price range",
+		"suggestedProperties": "Suggested properties",
+		"suggestedAreas": "Suggested areas",
+		"mapArea": "MAP Area"
+	},
+	"mobileFilter": {
+		"title": "Search filters",
+		"propertyName": "Property name",
+		"propertyNamePlaceholder": "Ex: house on the beach",
+		"address": "Address",
+		"addressPlaceholder": "Ex: Madrid, Spain",
+		"priceRange": "Price range",
+		"searchProperties": "Find properties"
+	},
+	"properties": {
+		"title": "Properties",
+		"propertiesPerRow": "Properties per row",
+		"compact": "Compact",
+		"comfortable": "Comfortable",
+		"sortByPrice": "Order for price",
+		"sortByName": "Order by name",
+		"viewOptions": "View options"
+	},
+	"propertyDetail": {
+		"backToProperties": "Back to properties",
+		"somethingWentWrong": "UPS! ",
+		"pleaseTryAgain": "Please try again",
+		"code": "Code",
+		"description": "Description",
+		"propertyFeatures": "PROPERTY CHARACTERISTICS",
+		"transactionHistory": "Transaction history",
+		"ownerInformation": "Owner information",
+		"owner": "Owner",
+		"taxes": "Taxes",
+		"type": "Guy",
+		"status": "State",
+		"year": "Year",
+		"area": "Area",
+		"bedrooms": "Rooms",
+		"bathrooms": "Bathrooms",
+		"parking": "Parking",
+		"id": "Id"
+	},
+	"settings": {
+		"language": "Language",
+		"theme": "Issue",
+		"light": "Clear",
+		"night": "Evening",
+		"system": "System",
+		"english": "English",
+		"spanish": "Spanish"
+	},
+	"areas": {
+		"all": "All",
+		"fisherIsland": "Fisher Isand",
+		"balHarbour": "Bal Harbor",
+		"sunnyIsles": "Sunny Isles",
+		"miamiBeach": "Miami Beach",
+		"coralGables": "Gable coral",
+		"keyBiscayne": "Key Biscayne",
+		"aventura": "Adventure",
+		"southBeach": "South Beach",
+		"coconutGrove": "Coconut Grove",
+		"brickell": "Brickell",
+		"doral": "Doral",
+		"pinecrest": "Pinecrest",
+		"palmettoBay": "Palmetto Bay",
+		"homestead": "Homestead",
+		"cutlerBay": "Cutler Bay"
+	},
+	"error": {
+		"somethingWentWrong": "Something went wrong",
+		"unexpectedError": "We feel it, but something unexpected happened. ",
+		"refreshPage": "Update page",
+		"errorLoadingImage": "Error to load image",
+		"noImagesAvailable": "No available images",
+		"noImagesFound": "No images were found for this property"
 	}
 }

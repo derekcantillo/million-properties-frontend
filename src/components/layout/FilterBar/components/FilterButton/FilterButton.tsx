@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '@/components/ui/Typography'
 import {
+	Typography,
 	TypographyVariant,
 	TypographySize,
 	TypographyFontFamily
-} from '@/components/ui/Typography/types/typography.types'
+} from '@/components/ui'
 import { FilterButtonProps } from '@/components/layout'
 import clsx from 'clsx'
 import { useFormContext } from 'react-hook-form'

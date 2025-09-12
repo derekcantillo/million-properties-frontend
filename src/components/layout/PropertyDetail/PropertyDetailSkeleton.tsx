@@ -57,11 +57,9 @@ export const PropertyDetailSkeleton: React.FC<PropertyDetailSkeletonProps> = ({
 					</div>
 				</div>
 
-				{/* Owner Information */}
 				<div className="space-y-4">
 					<div className="h-6 w-32 rounded bg-gray-300" />
 					<div className="space-y-4 rounded-lg border p-4">
-						{/* Owner photo and name */}
 						<div className="flex items-center gap-3">
 							<div className="h-12 w-12 rounded-full bg-gray-300" />
 							<div className="flex-1 space-y-1">
@@ -70,7 +68,6 @@ export const PropertyDetailSkeleton: React.FC<PropertyDetailSkeletonProps> = ({
 							</div>
 						</div>
 
-						{/* Owner details */}
 						<div className="space-y-2">
 							<div className="h-4 w-full rounded bg-gray-300" />
 							<div className="h-4 w-2/3 rounded bg-gray-300" />

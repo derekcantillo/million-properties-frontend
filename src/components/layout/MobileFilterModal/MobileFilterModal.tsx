@@ -13,6 +13,7 @@ import {
 } from '@/components/ui'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils/cn'
+import { useTranslations } from 'next-intl'
 
 interface MobileFilterModalProps {
 	isOpen: boolean
@@ -30,6 +31,7 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
 	onClose,
 	onSubmit
 }) => {
+	const t = useTranslations()
 	const form = useForm<{
 		name?: string
 		address?: string
@@ -85,7 +87,7 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
 							fontFamily={TypographyFontFamily.CAIRO}
 							className="font-semibold"
 						>
-							Filtros de búsqueda
+							{t('mobileFilter.title')}
 						</Typography>
 						<Button
 							variant="ghost"
@@ -106,7 +108,7 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
 										fontFamily={TypographyFontFamily.CAIRO}
 										className="font-medium text-gray-700"
 									>
-										Nombre de la propiedad
+										{t('mobileFilter.propertyName')}
 									</Typography>
 								</label>
 								<Input
@@ -123,7 +125,7 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
 										fontFamily={TypographyFontFamily.CAIRO}
 										className="font-medium text-gray-700"
 									>
-										Dirección
+										{t('mobileFilter.address')}
 									</Typography>
 								</label>
 								<Input
@@ -140,7 +142,7 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
 										fontFamily={TypographyFontFamily.CAIRO}
 										className="font-medium text-gray-700"
 									>
-										Rango de precios
+										{t('mobileFilter.priceRange')}
 									</Typography>
 								</label>
 
@@ -188,13 +190,13 @@ export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
 								onClick={onClose}
 								className="font-cairo flex-1"
 							>
-								Cancelar
+								{t('common.cancel')}
 							</Button>
 							<Button
 								onClick={handleSubmit}
 								className="bg-foreground hover:bg-foreground/90 text-background font-cairo flex-1"
 							>
-								Buscar propiedades
+								{t('mobileFilter.searchProperties')}
 							</Button>
 						</div>
 					</div>

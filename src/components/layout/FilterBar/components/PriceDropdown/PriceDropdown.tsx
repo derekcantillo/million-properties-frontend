@@ -3,19 +3,21 @@
 import React, { useState, useEffect } from 'react'
 import ReactSlider from 'react-slider'
 import { formatPropertyPrice } from '@/lib/utils/format'
-import { Typography } from '@/components/ui/Typography'
 import {
+	Typography,
 	TypographyVariant,
 	TypographyFontFamily
-} from '@/components/ui/Typography/types/typography.types'
+} from '@/components/ui'
 import { BaseDropdownProps } from '../../types'
 import { useFormContext } from 'react-hook-form'
+import { useTranslations } from 'next-intl'
 
 export const PriceDropdown: React.FC<BaseDropdownProps> = ({
 	isOpen,
 	position
 	// onClose
 }) => {
+	const t = useTranslations()
 	const priceRange: [number, number] = [0, 5000000]
 	const form = useFormContext<{ minPrice?: number; maxPrice?: number }>()
 	const [value, setValue] = useState<number[]>([priceRange[0], priceRange[1]])
@@ -52,7 +54,7 @@ export const PriceDropdown: React.FC<BaseDropdownProps> = ({
 					className="font-medium"
 					fontFamily={TypographyFontFamily.CAIRO}
 				>
-					Buscar por rango de precios
+					{t('filterBar.searchByPriceRange')}
 				</Typography>
 				<div className="flex h-full w-full flex-col items-start justify-center gap-4">
 					<div className="w-full px-2">

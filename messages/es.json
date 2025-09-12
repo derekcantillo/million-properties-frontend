@@ -1,39 +1,124 @@
 {
-	"HomePage": {
-		"title": "Million Properties",
-		"description": "Encuentra la propiedad de tus sueños con nuestra plataforma inmobiliaria avanzada",
-		"currentLanguage": "Idioma actual: {lang}",
-		"languageSwitcher": "Cambiar Idioma"
+	"common": {
+		"back": "Volver",
+		"backToProperties": "Volver a propiedades",
+		"cancel": "Cancelar",
+		"search": "Buscar",
+		"tryAgain": "Intentar de nuevo",
+		"refresh": "Actualizar",
+		"close": "Cerrar",
+		"loading": "Cargando...",
+		"error": "Error",
+		"somethingWentWrong": "Ups! Algo salió mal",
+		"pleaseTryAgain": "Por favor, intenta nuevamente",
+		"refreshPage": "Actualizar página",
+		"settings": "Configuración",
+		"backButton": "Atrás",
+		"view": "Vista",
+		"all": "Todos",
+		"closeDropdown": "Cerrar dropdown",
+		"english": "English",
+		"spanish": "Español",
+		"light": "Claro",
+		"night": "Noche",
+		"system": "Sistema",
+		"language": "Idioma",
+		"theme": "Tema"
 	},
-	"Navigation": {
+	"navigation": {
 		"home": "Inicio",
 		"properties": "Propiedades",
 		"about": "Acerca de",
 		"contact": "Contacto"
 	},
-	"Property": {
-		"types": {
-			"apartment": "Apartamento",
-			"house": "Casa",
-			"commercial": "Propiedad Comercial"
-		},
-		"descriptions": {
-			"apartment": "Apartamentos modernos en ubicaciones privilegiadas",
-			"house": "Hermosas casas para familias",
-			"commercial": "Espacios comerciales para empresas"
-		},
-		"details": {
-			"price": "Precio",
-			"bedrooms": "Habitaciones",
-			"bathrooms": "Baños",
-			"area": "Área"
-		}
+	"hero": {
+		"title": "EQUIPO #1 EN ESTADOS UNIDOS",
+		"subtitle": "Más de $2.1 Mil Millones"
 	},
-	"Common": {
-		"loading": "Cargando...",
-		"error": "Ocurrió un error",
-		"retry": "Intentar de nuevo",
-		"submit": "Enviar",
-		"cancel": "Cancelar"
+	"filterBar": {
+		"findProperty": "Encuentra tu propiedad",
+		"propertyName": "Nombre de la propiedad",
+		"propertyNamePlaceholder": "Ej: Casa en la playa",
+		"address": "Dirección",
+		"addressPlaceholder": "Ej: Madrid, España",
+		"price": "Precio",
+		"priceRange": "Rango de precios",
+		"searchByPriceRange": "Buscar por rango de precios",
+		"suggestedProperties": "Propiedades sugeridas",
+		"suggestedAreas": "Áreas sugeridas",
+		"mapArea": "Map area"
+	},
+	"mobileFilter": {
+		"title": "Filtros de búsqueda",
+		"propertyName": "Nombre de la propiedad",
+		"propertyNamePlaceholder": "Ej: Casa en la playa",
+		"address": "Dirección",
+		"addressPlaceholder": "Ej: Madrid, España",
+		"priceRange": "Rango de precios",
+		"searchProperties": "Buscar propiedades"
+	},
+	"properties": {
+		"title": "Propiedades",
+		"propertiesPerRow": "Propiedades por fila",
+		"compact": "Compacta",
+		"comfortable": "Cómoda",
+		"sortByPrice": "Ordenar por precio",
+		"sortByName": "Ordenar por nombre",
+		"viewOptions": "Opciones de vista"
+	},
+	"propertyDetail": {
+		"backToProperties": "Volver a propiedades",
+		"somethingWentWrong": "Ups! Algo salió mal",
+		"pleaseTryAgain": "Por favor, intenta nuevamente",
+		"code": "Código",
+		"description": "Descripción",
+		"propertyFeatures": "Características de la propiedad",
+		"transactionHistory": "Historial de transacciones",
+		"ownerInformation": "Información del propietario",
+		"owner": "Propietario",
+		"taxes": "Impuestos",
+		"type": "Tipo",
+		"status": "Estado",
+		"year": "Año",
+		"area": "Área",
+		"bedrooms": "Habitaciones",
+		"bathrooms": "Baños",
+		"parking": "Estacionamientos",
+		"id": "ID"
+	},
+	"settings": {
+		"language": "Idioma",
+		"theme": "Tema",
+		"light": "Claro",
+		"night": "Noche",
+		"system": "Sistema",
+		"english": "English",
+		"spanish": "Español"
+	},
+	"areas": {
+		"all": "Todos",
+		"fisherIsland": "Fisher Island",
+		"balHarbour": "Bal Harbour",
+		"sunnyIsles": "Sunny Isles",
+		"miamiBeach": "Miami Beach",
+		"coralGables": "Coral Gables",
+		"keyBiscayne": "Key Biscayne",
+		"aventura": "Aventura",
+		"southBeach": "South Beach",
+		"coconutGrove": "Coconut Grove",
+		"brickell": "Brickell",
+		"doral": "Doral",
+		"pinecrest": "Pinecrest",
+		"palmettoBay": "Palmetto Bay",
+		"homestead": "Homestead",
+		"cutlerBay": "Cutler Bay"
+	},
+	"error": {
+		"somethingWentWrong": "Algo salió mal",
+		"unexpectedError": "Lo sentimos, pero algo inesperado ocurrió. Por favor intenta actualizar la página.",
+		"refreshPage": "Actualizar página",
+		"errorLoadingImage": "Error al cargar imagen",
+		"noImagesAvailable": "Sin imágenes disponibles",
+		"noImagesFound": "No se encontraron imágenes para esta propiedad"
 	}
 }

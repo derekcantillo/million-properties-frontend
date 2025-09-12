@@ -1,22 +1,24 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '@/components/ui/Typography'
 import {
+	Typography,
 	TypographyVariant,
 	TypographyFontFamily
-} from '@/components/ui/Typography/types/typography.types'
+} from '@/components/ui'
 import { BaseDropdownProps } from '../../types'
 import Image from 'next/image'
 import { usePropertiesStore } from '@/stores/usePropertiesStore'
 import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
+import { useTranslations } from 'next-intl'
 
 export const PropertyDropdown: React.FC<BaseDropdownProps> = ({
 	isOpen,
 	position
 	// onClose
 }) => {
+	const t = useTranslations()
 	const properties = usePropertiesStore(s => s.properties)
 	const router = useRouter()
 	const suggestedProperties = React.useMemo(
@@ -41,7 +43,7 @@ export const PropertyDropdown: React.FC<BaseDropdownProps> = ({
 						className="font-medium"
 						fontFamily={TypographyFontFamily.CAIRO}
 					>
-						Propiedades sugeridas
+						{t('filterBar.suggestedProperties')}
 					</Typography>
 					<div className="flex max-h-60 flex-col gap-2 overflow-y-auto text-gray-500">
 						{suggestedProperties.map(property => (

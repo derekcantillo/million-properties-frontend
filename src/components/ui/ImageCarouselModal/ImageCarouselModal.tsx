@@ -32,12 +32,10 @@ export const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
 
 	const enabledImages = images.filter(img => img.enabled)
 
-	// Update current index when initialIndex changes
 	useEffect(() => {
 		setCurrentIndex(initialIndex)
 	}, [initialIndex])
 
-	// Handle keyboard navigation
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent) => {
 			if (!isOpen) return
@@ -107,7 +105,6 @@ export const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
 
 	return (
 		<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90">
-			{/* Close button */}
 			<Button
 				variant="ghost"
 				size="icon"
@@ -117,7 +114,6 @@ export const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
 				<XMarkIcon className="h-6 w-6" />
 			</Button>
 
-			{/* Navigation buttons */}
 			{enabledImages.length > 1 && (
 				<>
 					<Button
@@ -139,7 +135,6 @@ export const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
 				</>
 			)}
 
-			{/* Main image container */}
 			<div className="relative flex h-full max-h-[90vh] w-full max-w-[90vw] items-center justify-center">
 				{hasError || !currentImage ? (
 					<div className="flex h-96 w-96 flex-col items-center justify-center rounded-lg bg-gray-800 text-white">
@@ -160,15 +155,12 @@ export const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
 				)}
 			</div>
 
-			{/* Image counter and thumbnails */}
 			<div className="absolute bottom-4 left-1/2 -translate-x-1/2">
 				<div className="flex flex-col items-center gap-4">
-					{/* Counter */}
 					<div className="rounded-full bg-black/50 px-3 py-1 text-sm text-white">
 						{currentIndex + 1} / {enabledImages.length}
 					</div>
 
-					{/* Thumbnails (show only if there are multiple images and not too many) */}
 					{enabledImages.length > 1 && enabledImages.length <= 10 && (
 						<div className="flex gap-2">
 							{enabledImages.map((image, index) => {
@@ -206,7 +198,6 @@ export const ImageCarouselModal: React.FC<ImageCarouselModalProps> = ({
 				</div>
 			</div>
 
-			{/* Click outside to close */}
 			<button
 				type="button"
 				className="absolute inset-0 -z-10 cursor-default"

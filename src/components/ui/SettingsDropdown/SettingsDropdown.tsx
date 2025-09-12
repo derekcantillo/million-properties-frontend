@@ -11,8 +11,10 @@ import {
 	useSettingsDropdown
 } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
+import { useTranslations } from 'next-intl'
 
 export const SettingsDropdown = () => {
+	const t = useTranslations()
 	const {
 		dropdownRef,
 		isOpen,
@@ -36,7 +38,7 @@ export const SettingsDropdown = () => {
 					'rounded-lg border border-white/20 bg-white/10',
 					'backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-white/20'
 				)}
-				aria-label="Configuración"
+				aria-label={t('common.settings')}
 			>
 				<Cog6ToothIcon className="h-5 w-5 text-white" />
 			</button>
@@ -75,7 +77,7 @@ export const SettingsDropdown = () => {
 									textColor={TypographyTextColor.SECONDARY}
 									fontFamily={TypographyFontFamily.CAIRO}
 								>
-									Atrás
+									{t('common.back')}
 								</Typography>
 							</button>
 

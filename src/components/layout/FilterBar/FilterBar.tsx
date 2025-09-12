@@ -19,6 +19,7 @@ import {
 import { FormProvider, useForm } from 'react-hook-form'
 import { usePropertiesStore } from '@/stores/usePropertiesStore'
 import { useIsMobile } from '@/hooks'
+import { useTranslations } from 'next-intl'
 
 export const FilterBar = ({
 	onCollapse,
@@ -26,6 +27,7 @@ export const FilterBar = ({
 	compactMode,
 	onMobileFilterOpen
 }: FilterBarProps) => {
+	const t = useTranslations()
 	const isMobile = useIsMobile()
 	const methods = useForm<{
 		name?: string
@@ -47,13 +49,12 @@ export const FilterBar = ({
 
 	const onSubmit = methods.handleSubmit(values => {
 		const next: Record<string, unknown> = {}
-		if (values.name !== undefined) next.name = values.name
-		if (values.address !== undefined) next.address = values.address
-		if (values.minPrice !== undefined) next.minPrice = values.minPrice
-		if (values.maxPrice !== undefined) next.maxPrice = values.maxPrice
+		if (values.name) next.name = values.name
+		if (values.address) next.address = values.address
+		if (values.minPrice) next.minPrice = values.minPrice
+		if (values.maxPrice) next.maxPrice = values.maxPrice
 		setFilters(next)
 		setSubmitted(true)
-		// close any open dropdown after submit
 		setActiveDropdown(null)
 		onCollapse?.()
 	})
@@ -136,7 +137,7 @@ export const FilterBar = ({
 			) : (
 				<Button className="font-cairo h-14 w-full" onClick={onMobileFilterOpen}>
 					<MagnifyingGlassIcon className="h-4 w-4" />
-					Encuentra tu propiedad
+					{t('filterBar.findProperty')}
 				</Button>
 			)}
 		</div>

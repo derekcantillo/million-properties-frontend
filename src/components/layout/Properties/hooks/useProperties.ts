@@ -65,7 +65,6 @@ export const useProperties = () => {
 		void refetchProperties()
 	}
 
-	// keep store properties in sync for global suggestions
 	useEffect(() => {
 		setStoreProperties(properties)
 	}, [properties, setStoreProperties])
