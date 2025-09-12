@@ -44,7 +44,7 @@ export const PropertyDetailSkeleton: React.FC<PropertyDetailSkeletonProps> = ({
 					<div className="space-y-3">
 						<div className="h-6 w-40 rounded bg-gray-300" />
 						<div className="grid grid-cols-2 gap-4">
-							{Array.from({ length: 6 }).map(item => (
+							{[1, 2, 3, 4, 5, 6].map(item => (
 								<div
 									key={`skeleton-feature-${item}`}
 									className="flex items-center gap-2"

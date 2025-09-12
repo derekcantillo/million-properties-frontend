@@ -120,5 +120,30 @@
 		"errorLoadingImage": "Error al cargar imagen",
 		"noImagesAvailable": "Sin imágenes disponibles",
 		"noImagesFound": "No se encontraron imágenes para esta propiedad"
+	},
+	"footer": {
+		"developedBy": "Desarrollado por",
+		"developer": "Derek",
+		"position": "Desarrollador Frontend Senior",
+		"location": "Colombia",
+		"technicalTest": "Prueba Técnica",
+		"projectName": "Million Properties Frontend",
+		"projectDescription": "Plataforma inmobiliaria moderna construida con Next.js 15, React 19 y TypeScript",
+		"contact": "Contacto",
+		"email": "cantilloderek@gmail.com",
+		"linkedin": "LinkedIn",
+		"github": "GitHub",
+		"copyright": "© 2024 Derek. Prueba técnica desarrollada con ❤️",
+		"viewSourceCode": "Ver código fuente",
+		"documentation": "Documentación",
+		"technologies": {
+			"nextjs": "Next.js 15",
+			"react": "React 19",
+			"typescript": "TypeScript",
+			"tailwind": "Tailwind CSS"
+		}
+	},
+	"imageCollage": {
+		"viewAllImages": "Ver todas las imágenes"
 	}
 }

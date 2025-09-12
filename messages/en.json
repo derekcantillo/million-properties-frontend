@@ -40,7 +40,7 @@
 		"propertyName": "Property name",
 		"propertyNamePlaceholder": "Ex: house on the beach",
 		"address": "Address",
-		"addressPlaceholder": "Ex: Madrid, Spain",
+		"addressPlaceholder": "Ex: Brickell, USA",
 		"price": "Price",
 		"priceRange": "Price range",
 		"searchByPriceRange": "Search for price range",
@@ -120,5 +120,30 @@
 		"errorLoadingImage": "Error to load image",
 		"noImagesAvailable": "No available images",
 		"noImagesFound": "No images were found for this property"
+	},
+	"footer": {
+		"developedBy": "Developed by",
+		"developer": "Derek",
+		"position": "Senior Frontend Developer",
+		"location": "Colombia",
+		"technicalTest": "Technical Test",
+		"projectName": "Million Properties Frontend",
+		"projectDescription": "Modern real estate platform built with Next.js 15, React 19 and TypeScript",
+		"contact": "Contact",
+		"email": "cantilloderek@gmail.com",
+		"linkedin": "LinkedIn",
+		"github": "GitHub",
+		"copyright": "© 2024 Derek. Technical test developed with ❤️",
+		"viewSourceCode": "View source code",
+		"documentation": "Documentation",
+		"technologies": {
+			"nextjs": "Next.js 15",
+			"react": "React 19",
+			"typescript": "TypeScript",
+			"tailwind": "Tailwind CSS"
+		}
+	},
+	"imageCollage": {
+		"viewAllImages": "View all images"
 	}
 }

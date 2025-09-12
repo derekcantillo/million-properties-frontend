@@ -1,6 +1,7 @@
 'use client'
 
 import { DynamicHeaderFilter, Properties } from '@/components/layout'
+import { Footer } from '@/components/layout/Footer/Footer'
 
 export default function HomePage() {
 	return (
@@ -12,6 +13,7 @@ export default function HomePage() {
 					<Properties />
 				</div>
 			</div>
+			<Footer />
 		</div>
 	)
 }
