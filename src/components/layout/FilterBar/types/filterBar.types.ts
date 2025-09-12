@@ -20,6 +20,7 @@ export interface FilterBarProps {
 	onCollapse?: () => void
 	onExpand?: () => void
 	compactMode?: boolean
+	onMobileFilterOpen?: () => void
 }
 
 export interface BaseDropdownProps {

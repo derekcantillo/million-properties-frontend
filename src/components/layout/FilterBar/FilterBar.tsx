@@ -23,7 +23,8 @@ import { useIsMobile } from '@/hooks'
 export const FilterBar = ({
 	onCollapse,
 	onExpand,
-	compactMode
+	compactMode,
+	onMobileFilterOpen
 }: FilterBarProps) => {
 	const isMobile = useIsMobile()
 	const methods = useForm<{
@@ -133,7 +134,7 @@ export const FilterBar = ({
 					)}
 				</FormProvider>
 			) : (
-				<Button className="font-cairo h-14 w-full">
+				<Button className="font-cairo h-14 w-full" onClick={onMobileFilterOpen}>
 					<MagnifyingGlassIcon className="h-4 w-4" />
 					Encuentra tu propiedad
 				</Button>

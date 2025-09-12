@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { FilterBar, Header } from '@/components/layout'
+import { FilterBar, Header, MobileFilterModal } from '@/components/layout'
 import {
 	Typography,
 	TypographyFontFamily,
@@ -11,6 +11,7 @@ import {
 	TypographyWeight
 } from '@/components/ui'
 import clsx from 'clsx'
+import { usePropertiesStore } from '@/stores/usePropertiesStore'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -25,6 +26,8 @@ export const DynamicHeaderFilter = ({
 }: DynamicHeaderFilterProps) => {
 	const [showBackdrop, setShowBackdrop] = useState(false)
 	const [isDark, setIsDark] = useState(!showVideo)
+	const [isMobileModalOpen, setIsMobileModalOpen] = useState(false)
+	const setFilters = usePropertiesStore(s => s.setFilters)
 
 	const containerRef = useRef<HTMLDivElement>(null)
 	const headerRef = useRef<HTMLDivElement>(null)
@@ -116,6 +119,25 @@ export const DynamicHeaderFilter = ({
 		}
 	}, [showVideo, isDark])
 
+	const handleMobileFilterOpen = () => {
+		setIsMobileModalOpen(true)
+	}
+
+	const handleMobileFilterSubmit = (values: {
+		name?: string
+		address?: string
+		minPrice?: number
+		maxPrice?: number
+	}) => {
+		const next: Record<string, unknown> = {}
+		if (values.name !== undefined) next.name = values.name
+		if (values.address !== undefined) next.address = values.address
+		if (values.minPrice !== undefined) next.minPrice = values.minPrice
+		if (values.maxPrice !== undefined) next.maxPrice = values.maxPrice
+		setFilters(next)
+		setIsMobileModalOpen(false)
+	}
+
 	return (
 		<>
 			<div ref={containerRef} className="relative">
@@ -183,6 +205,7 @@ export const DynamicHeaderFilter = ({
 					onCollapse={() => setShowBackdrop(false)}
 					onExpand={() => setShowBackdrop(true)}
 					compactMode={!showVideo || isDark}
+					onMobileFilterOpen={handleMobileFilterOpen}
 				/>
 			</div>
 			{showBackdrop && (
@@ -198,6 +221,13 @@ export const DynamicHeaderFilter = ({
 					aria-label="Cerrar dropdown"
 				/>
 			)}
+
+			{/* Mobile Filter Modal */}
+			<MobileFilterModal
+				isOpen={isMobileModalOpen}
+				onClose={() => setIsMobileModalOpen(false)}
+				onSubmit={handleMobileFilterSubmit}
+			/>
 		</>
 	)
 }
