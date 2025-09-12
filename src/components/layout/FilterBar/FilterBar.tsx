@@ -46,6 +46,9 @@ export const FilterBar = ({
 		if (values.maxPrice !== undefined) next.maxPrice = values.maxPrice
 		setFilters(next)
 		setSubmitted(true)
+		// close any open dropdown after submit
+		setActiveDropdown(null)
+		onCollapse?.()
 	})
 
 	return (
