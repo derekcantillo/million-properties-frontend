@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { gsap } from 'gsap'
-import { SortState, SortType, SortDirection } from '@/components/layout'
-import { usePropertiesInfinite } from '@/hooks/usePropertiesInfinite'
+import {
+	SortState,
+	SortType,
+	SortDirection,
+	usePropertiesInfinite
+} from '@/components/layout'
 import { usePropertiesStore } from '@/stores/usePropertiesStore'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
