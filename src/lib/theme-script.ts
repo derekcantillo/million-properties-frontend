@@ -6,7 +6,7 @@ export const themeScript = `
     if (document.documentElement.dataset.themeInitialized) return;
     
     const stored = localStorage.getItem('theme-storage');
-    const theme = stored ? JSON.parse(stored).state.theme : 'system';
+    const theme = stored ? JSON.parse(stored).state.theme : 'light';
     
     const getSystemTheme = () => {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

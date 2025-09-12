@@ -40,10 +40,10 @@ export const useSettingsDropdown = () => {
 		return current ? current.label : t('common.english')
 	}
 
-	const getCurrentThemeLabel = () => {
-		const current = themeOptions.find(t => t.value === theme)
-		return current ? current.label : t('common.system')
-	}
+	// const getCurrentThemeLabel = () => {
+	// 	const current = themeOptions.find(t => t.value === theme)
+	// 	return current ? current.label : t('common.system')
+	// }
 
 	const settingsOptions: SettingsOption[] = [
 		{
@@ -51,13 +51,13 @@ export const useSettingsDropdown = () => {
 			label: t('common.language'),
 			currentValue: getCurrentLanguageLabel(),
 			emoji: '🌐'
-		},
-		{
-			id: 'theme',
-			label: t('common.theme'),
-			currentValue: getCurrentThemeLabel(),
-			emoji: '🎨'
 		}
+		// {
+		// 	id: 'theme',
+		// 	label: t('common.theme'),
+		// 	currentValue: getCurrentThemeLabel(),
+		// 	emoji: '🎨'
+		// }
 	]
 
 	const handleLanguageChange = (newLocale: string) => {

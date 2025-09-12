@@ -53,7 +53,7 @@ const resolveTheme = (
 export const useThemeStore = create<ThemeState>()(
 	persist(
 		(set, get) => ({
-			theme: 'system',
+			theme: 'light',
 			resolvedTheme: 'light',
 			systemTheme: 'light',
 
