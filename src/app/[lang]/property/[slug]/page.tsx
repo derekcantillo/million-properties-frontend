@@ -20,6 +20,7 @@ import {
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import {
+	ErrorMessage,
 	Typography,
 	TypographyFontFamily,
 	TypographySize,
@@ -28,16 +29,11 @@ import {
 	TypographyWeight
 } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
+import { useParams, useRouter } from 'next/navigation'
 
-interface PropertyDetailPageProps {
-	params: Promise<{ slug: string; lang: string }>
-}
-
-export default function PropertyDetailPage({
-	params
-}: PropertyDetailPageProps) {
-	const resolvedParams = React.use(params)
-	const { slug } = resolvedParams
+export default function PropertyDetailPage() {
+	const router = useRouter()
+	const { slug } = useParams<{ slug: string }>()
 	const { property, isLoading, error } = usePropertyDetail({ slug })
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [modalInitialIndex, setModalInitialIndex] = useState(0)
@@ -57,7 +53,6 @@ export default function PropertyDetailPage({
 			<div className="bg-background relative min-h-screen">
 				<DynamicHeaderFilter showVideo={false} showHeroText={false} />
 				<div className="container mx-auto px-8 py-8">
-					{/* Back Button */}
 					<div className="mb-6">
 						<Button
 							variant="ghost"
@@ -79,48 +74,12 @@ export default function PropertyDetailPage({
 		return (
 			<div className="bg-background relative min-h-screen">
 				<DynamicHeaderFilter showVideo={false} showHeroText={false} />
-				<div className="container mx-auto px-8 py-8">
-					{/* Back Button */}
-					<div className="mb-6">
-						<Button
-							variant="ghost"
-							size="sm"
-							onClick={() => window.history.back()}
-							className="gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
-						>
-							<ArrowLeftIcon className="h-4 w-4" />
-							Volver a propiedades
-						</Button>
-					</div>
-					<div className="flex flex-col items-center justify-center py-16">
-						<div className="text-center">
-							<Typography
-								variant={TypographyVariant.H1}
-								fontFamily={TypographyFontFamily.CAIRO}
-								weight={TypographyWeight.BOLD}
-								className="text-2xl text-gray-900 dark:text-white"
-							>
-								Propiedad no encontrada
-							</Typography>
-							<Typography
-								variant={TypographyVariant.PARAGRAPH}
-								fontFamily={TypographyFontFamily.CAIRO}
-								textColor={TypographyTextColor.DEFAULT}
-								className="mt-2 text-gray-600 dark:text-gray-400"
-							>
-								{error ||
-									'La propiedad que buscas no existe o no está disponible.'}
-							</Typography>
-							<Button
-								onClick={() => window.history.back()}
-								className="mt-4"
-								variant="outline"
-							>
-								Volver
-							</Button>
-						</div>
-					</div>
-				</div>
+				<ErrorMessage
+					buttonAction={() => router.back()}
+					buttonText="Volver a propiedades"
+					title="Ups! Algo salió mal"
+					description="Por favor, intenta nuevamente."
+				/>
 			</div>
 		)
 	}
@@ -174,12 +133,11 @@ export default function PropertyDetailPage({
 		<div className="bg-background relative min-h-screen">
 			<DynamicHeaderFilter showVideo={false} showHeroText={false} />
 			<div className="container mx-auto px-8 py-16">
-				{/* Back Button */}
 				<div className="mb-6">
 					<Button
 						variant="ghost"
 						size="sm"
-						onClick={() => window.history.back()}
+						onClick={() => router.push('/')}
 						className="gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
 					>
 						<ArrowLeftIcon className="h-4 w-4" />
@@ -187,7 +145,6 @@ export default function PropertyDetailPage({
 					</Button>
 				</div>
 
-				{/* Header Section */}
 				<div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 					<div className="flex-1">
 						<Typography
@@ -229,7 +186,6 @@ export default function PropertyDetailPage({
 					</div>
 				</div>
 
-				{/* Images Section */}
 				<div className="mb-8">
 					<ImageCollage
 						images={property.images}
@@ -239,11 +195,8 @@ export default function PropertyDetailPage({
 					/>
 				</div>
 
-				{/* Content Section */}
 				<div className="grid gap-8 lg:grid-cols-3">
-					{/* Property Details */}
 					<div className="space-y-8 lg:col-span-2">
-						{/* Description */}
 						<div>
 							<Typography
 								fontFamily={TypographyFontFamily.CAIRO}
@@ -261,7 +214,6 @@ export default function PropertyDetailPage({
 							</Typography>
 						</div>
 
-						{/* Property Features */}
 						<div>
 							<Typography
 								fontFamily={TypographyFontFamily.CAIRO}
@@ -301,7 +253,6 @@ export default function PropertyDetailPage({
 							</div>
 						</div>
 
-						{/* Property Traces */}
 						{property.traces && property.traces.length > 0 && (
 							<div>
 								<Typography
@@ -365,7 +316,6 @@ export default function PropertyDetailPage({
 						)}
 					</div>
 
-					{/* Owner Information */}
 					<div>
 						<Typography
 							fontFamily={TypographyFontFamily.CAIRO}
@@ -375,7 +325,6 @@ export default function PropertyDetailPage({
 							Información del propietario
 						</Typography>
 						<div className={cn('space-y-4 rounded-lg p-6')}>
-							{/* Owner photo and name */}
 							<div className="flex items-center gap-4">
 								<div className="relative h-16 w-16 overflow-hidden rounded-full">
 									<Image
@@ -405,7 +354,6 @@ export default function PropertyDetailPage({
 								</div>
 							</div>
 
-							{/* Owner details */}
 							<div className="space-y-3">
 								<div className="flex items-center gap-3">
 									<MapPinIcon className="h-5 w-5 text-gray-400" />
@@ -445,7 +393,6 @@ export default function PropertyDetailPage({
 				</div>
 			</div>
 
-			{/* Image Carousel Modal */}
 			<ImageCarouselModal
 				images={property.images}
 				propertyName={property.name}

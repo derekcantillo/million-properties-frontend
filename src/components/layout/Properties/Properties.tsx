@@ -14,19 +14,14 @@ import {
 	ArrowDownIcon,
 	CurrencyDollarIcon,
 	LanguageIcon,
-	FunnelIcon,
-	ExclamationTriangleIcon
+	FunnelIcon
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import {
 	ToolBar,
 	ToolBarItem
 } from '@/components/layout/Properties/components/ToolBar'
-import {
-	Typography,
-	TypographyFontFamily,
-	TypographySize
-} from '@/components/ui'
+import { ErrorMessage } from '@/components/ui'
 
 export const Properties = () => {
 	const {
@@ -63,22 +58,12 @@ export const Properties = () => {
 	}
 	if (error) {
 		return (
-			<div className="flex h-[50vh] flex-col items-center justify-center py-12">
-				<ExclamationTriangleIcon className="h-12 w-12 text-gray-600" />
-				<Typography
-					fontFamily={TypographyFontFamily.CAIRO}
-					size={TypographySize.XL2}
-				>
-					Ups! Algo salió mal
-				</Typography>
-				<Typography></Typography>
-				<Button
-					onClick={() => refresh()}
-					className="bg-foreground hover:bg-foreground/90 rounded-lg px-4 py-2 text-white transition-colors"
-				>
-					Try Again
-				</Button>
-			</div>
+			<ErrorMessage
+				buttonAction={() => refresh()}
+				buttonText="Try Again"
+				title="Ups! Algo salió mal"
+				description="Por favor, intenta nuevamente."
+			/>
 		)
 	}
 
