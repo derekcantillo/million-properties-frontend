@@ -10,19 +10,7 @@ const handleI18nRouting = createMiddleware({
 })
 
 export default function middleware(request: NextRequest) {
-	console.log('🚀 Middleware - pathname:', request.nextUrl.pathname)
-	console.log(
-		'🚀 Middleware - locale cookie:',
-		request.cookies.get('NEXT_LOCALE')?.value
-	)
-
 	const response = handleI18nRouting(request)
-
-	console.log('🚀 Middleware - response status:', response?.status)
-	console.log(
-		'🚀 Middleware - response headers:',
-		Object.fromEntries(response?.headers.entries() || [])
-	)
 
 	return response
 }

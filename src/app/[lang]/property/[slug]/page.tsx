@@ -3,11 +3,11 @@
 import React, { useState } from 'react'
 import { usePropertyDetail } from '@/hooks/usePropertyDetail'
 import { formatCurrency, formatNumber } from '@/lib/utils/format'
-import { PropertyDetailSkeleton } from '@/components/ui/PropertyDetailSkeleton'
 import { ImageCollage } from '@/components/ui/ImageCollage'
 import { ImageCarouselModal } from '@/components/ui/ImageCarouselModal'
 import { Button } from '@/components/ui/Button'
 import { DynamicHeaderFilter } from '@/components/layout/DynamicHeaderFilter'
+import { PropertyDetailSkeleton } from '@/components/layout'
 import {
 	HomeIcon,
 	MapPinIcon,

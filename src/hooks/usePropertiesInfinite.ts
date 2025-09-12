@@ -3,7 +3,6 @@
 import { PaginatedProperties, Property } from '@/types/property.types'
 import { useCallback, useEffect, useState } from 'react'
 
-// Import the mock data
 import mockData from '@/lib/properties_pagination_mock.json'
 
 interface UsePropertiesInfiniteReturn {
@@ -15,7 +14,6 @@ interface UsePropertiesInfiniteReturn {
 	refresh: () => void
 }
 
-// Simulate API delay
 const simulateApiDelay = (ms: number = 1500) =>
 	new Promise(resolve => setTimeout(resolve, ms))
 
@@ -27,7 +25,6 @@ export const usePropertiesInfinite = (): UsePropertiesInfiniteReturn => {
 	const [error, setError] = useState<string | null>(null)
 	const [initialLoad, setInitialLoad] = useState(true)
 
-	// Type assertion for the mock data
 	const paginatedData = mockData as PaginatedProperties[]
 
 	const loadPage = useCallback(
@@ -41,7 +38,6 @@ export const usePropertiesInfinite = (): UsePropertiesInfiniteReturn => {
 			setError(null)
 
 			try {
-				// Simulate API call
 				await simulateApiDelay(initialLoad ? 2000 : 1000)
 
 				const pageData = paginatedData[page]
@@ -85,7 +81,6 @@ export const usePropertiesInfinite = (): UsePropertiesInfiniteReturn => {
 		setCurrentPage(0)
 	}, [loadPage])
 
-	// Load initial data
 	useEffect(() => {
 		if (properties.length === 0 && !loading) {
 			loadPage(0).then(newProperties => {

@@ -27,20 +27,17 @@ export const usePropertyDetail = ({
 				setIsLoading(true)
 				setError(null)
 
-				// Simulate API delay (1.5-2.5 seconds)
 				const delay = Math.random() * 1000 + 1500
 				await new Promise(resolve => setTimeout(resolve, delay))
 
-				// For now, we'll return the mock data regardless of slug
-				// In a real implementation, this would fetch by slug from an API
 				if (slug) {
 					setProperty(propertyDetailMock as PropertyDetail)
 				} else {
 					setError('Property not found')
 				}
 			} catch (err) {
-				console.error(err)
 				setError('Failed to load property details')
+				throw err
 			} finally {
 				setIsLoading(false)
 			}

@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
 import { FilterBar, Header } from '@/components/layout'
 import {
 	Typography,
@@ -13,7 +12,6 @@ import {
 } from '@/components/ui'
 import clsx from 'clsx'
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger)
 
 interface DynamicHeaderFilterProps {
@@ -28,7 +26,6 @@ export const DynamicHeaderFilter = ({
 	const [showBackdrop, setShowBackdrop] = useState(false)
 	const [isDark, setIsDark] = useState(!showVideo)
 
-	// References for GSAP animations
 	const containerRef = useRef<HTMLDivElement>(null)
 	const headerRef = useRef<HTMLDivElement>(null)
 	const videoRef = useRef<HTMLVideoElement>(null)
@@ -45,7 +42,6 @@ export const DynamicHeaderFilter = ({
 		const heroContent = heroContentRef.current
 
 		if (showVideo) {
-			// Main scroll animation for hero section
 			ScrollTrigger.create({
 				trigger: container,
 				start: 'top top',
@@ -54,7 +50,6 @@ export const DynamicHeaderFilter = ({
 				onUpdate: self => {
 					const progress = self.progress
 
-					// Change header background based on scroll progress
 					if (header) {
 						const opacity = Math.min(progress * 2, 1)
 						gsap.set(header, {
@@ -62,21 +57,18 @@ export const DynamicHeaderFilter = ({
 							backdropFilter: `blur(${opacity * 10}px)`
 						})
 
-						// Update isDark state for text color change
 						const shouldBeDark = progress > 0.5
 						if (shouldBeDark !== isDark) {
 							setIsDark(shouldBeDark)
 						}
 					}
 
-					// Video parallax effect
 					if (video) {
 						gsap.set(video, {
 							yPercent: progress * -30
 						})
 					}
 
-					// Hero content fade out
 					if (heroContent) {
 						gsap.set(heroContent, {
 							opacity: 1 - progress * 2,
@@ -86,7 +78,6 @@ export const DynamicHeaderFilter = ({
 				}
 			})
 
-			// Hide video when FilterBar becomes sticky
 			ScrollTrigger.create({
 				trigger: filterBar,
 				start: 'top top+=64',
@@ -101,11 +92,10 @@ export const DynamicHeaderFilter = ({
 				}
 			})
 
-			// Make FilterBar sticky after hero section
 			if (filterBar) {
 				ScrollTrigger.create({
 					trigger: filterBar,
-					start: 'top top+=56', // Header height offset
+					start: 'top top+=56',
 					end: '+=9999',
 					pin: true,
 					pinSpacing: false
@@ -128,7 +118,6 @@ export const DynamicHeaderFilter = ({
 
 	return (
 		<>
-			{/* Hero Section */}
 			<div ref={containerRef} className="relative">
 				<div
 					className={clsx('relative w-full overflow-hidden', {
@@ -136,7 +125,6 @@ export const DynamicHeaderFilter = ({
 						'h-auto': !showVideo
 					})}
 				>
-					{/* Header - Fixed position */}
 					<div
 						ref={headerRef}
 						className="fixed top-0 right-0 left-0 z-50 transition-all duration-300"
@@ -146,7 +134,6 @@ export const DynamicHeaderFilter = ({
 
 					{showVideo && (
 						<>
-							{/* Fixed video background */}
 							<div className="fixed inset-0 z-0 h-screen w-full">
 								<video
 									ref={videoRef}
@@ -158,7 +145,6 @@ export const DynamicHeaderFilter = ({
 								/>
 							</div>
 
-							{/* Overlay and content */}
 							<div className="absolute inset-0 h-full w-full">
 								<div className="absolute inset-0 z-20 bg-black/50" />
 								{showHeroText && (
@@ -192,8 +178,10 @@ export const DynamicHeaderFilter = ({
 				</div>
 			</div>
 
-			{/* FilterBar - Initially positioned below hero */}
-			<div ref={filterBarRef} className="bg-background z-40 w-full shadow-md">
+			<div
+				ref={filterBarRef}
+				className="bg-background z-40 w-full border shadow-md"
+			>
 				<FilterBar
 					onCollapse={() => setShowBackdrop(false)}
 					onExpand={() => setShowBackdrop(true)}

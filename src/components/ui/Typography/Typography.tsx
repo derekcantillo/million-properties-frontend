@@ -39,7 +39,8 @@ const typographyVariants = cva('text-foreground', {
 				'relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
 			[TypographyVariant.LIST]: 'my-6 ml-6 list-disc [&>li]:mt-2',
 			[TypographyVariant.INLINE_CODE]:
-				'relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold'
+				'relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold',
+			[TypographyVariant.SPAN]: 'inline'
 		},
 		size: {
 			[TypographySize.XS]: 'text-xs',
@@ -112,7 +113,7 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
 	(
 		{
 			className,
-			variant = TYPOGRAPHY_DEFAULTS.variant,
+			variant,
 			size,
 			weight,
 			fontFamily = TYPOGRAPHY_DEFAULTS.fontFamily,
@@ -128,7 +129,8 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
 		ref
 	) => {
 		// Determine the HTML element to render
-		const Element = as || VARIANT_ELEMENT_MAP[variant] || 'div'
+		const Element =
+			as || (variant ? VARIANT_ELEMENT_MAP[variant] : undefined) || 'p'
 
 		// Build additional classes for truncation
 		let truncateClasses = ''
