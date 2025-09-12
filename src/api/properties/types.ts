@@ -55,6 +55,8 @@ export interface GetPropertiesParams {
 	maxPrice?: number
 	page?: number
 	pageSize?: number
+	sortBy?: SortBy
+	sortDir?: SortOrder
 }
 
 export interface GetPropertyByIDResponse {
@@ -69,3 +71,7 @@ export interface GetPropertyByIDResponse {
 	images: Image[]
 	traces: Trace[]
 }
+
+export type SortBy = 'price' | 'name'
+
+export type SortOrder = 'asc' | 'desc'

@@ -29,7 +29,12 @@ export const usePropertiesInfinite = (params?: UsePropertiesInfiniteParams) => {
 		initialPageParam: 1,
 		getNextPageParam: lastPage => {
 			return lastPage.hasNextPage ? lastPage.page + 1 : undefined
-		}
+		},
+		// Force fresh data on param changes and mounts
+		staleTime: 0,
+		refetchOnMount: 'always',
+		refetchOnReconnect: true,
+		refetchOnWindowFocus: false
 	})
 
 	const properties = useMemo(() => {

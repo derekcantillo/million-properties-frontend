@@ -24,7 +24,6 @@ import {
 
 export const Properties = () => {
 	const {
-		sortedProperties,
 		loading,
 		error,
 		refresh,
@@ -99,7 +98,7 @@ export const Properties = () => {
 			<ToolBar containerRef={toolbarRef} items={toolbarItems} />
 
 			<div className={getGridClasses()}>
-				{sortedProperties.map(property => (
+				{properties.map(property => (
 					<PropertyItem key={property.id} property={property} />
 				))}
 

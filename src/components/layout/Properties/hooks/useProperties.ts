@@ -18,6 +18,24 @@ export const useProperties = () => {
 	const floatingButtonRef = useRef<HTMLDivElement>(null)
 	const floatingMenuRef = useRef<HTMLDivElement>(null)
 
+	const { sortBy, sortDir } = useMemo(() => {
+		if (sortState.price) {
+			return { sortBy: 'price' as const, sortDir: sortState.price }
+		}
+		if (sortState.name) {
+			return { sortBy: 'name' as const, sortDir: sortState.name }
+		}
+		return { sortBy: undefined, sortDir: undefined }
+	}, [sortState])
+
+	const infiniteParams = useMemo(() => {
+		const base: { pageSize: number } = { pageSize: 12 }
+		if (sortBy && sortDir) {
+			return { ...base, sortBy, sortDir }
+		}
+		return base
+	}, [sortBy, sortDir])
+
 	const {
 		properties,
 		loading,
@@ -25,33 +43,11 @@ export const useProperties = () => {
 		refetch: refetchProperties,
 		loadMoreRef,
 		isFetchingNextPage
-	} = usePropertiesInfinite({ pageSize: 12 })
+	} = usePropertiesInfinite(infiniteParams)
 
 	const refresh = () => {
 		void refetchProperties()
 	}
-
-	const sortedProperties = useMemo(() => {
-		const items = [...properties]
-		const { price, name } = sortState
-
-		if (price) {
-			items.sort((a, b) =>
-				price === 'asc'
-					? a.priceProperty - b.priceProperty
-					: b.priceProperty - a.priceProperty
-			)
-		}
-
-		if (name) {
-			items.sort((a, b) => {
-				const result = a.name.localeCompare(b.name)
-				return name === 'asc' ? result : -result
-			})
-		}
-
-		return items
-	}, [properties, sortState])
 
 	const handleSortClick = (sortType: SortType): void => {
 		setSortState(prev => {
@@ -66,10 +62,9 @@ export const useProperties = () => {
 				newDirection = null
 			}
 
-			return {
-				...prev,
-				[sortType]: newDirection
-			}
+			return sortType === 'price'
+				? { price: newDirection, name: null }
+				: { price: null, name: newDirection }
 		})
 	}
 
@@ -171,9 +166,7 @@ export const useProperties = () => {
 	}
 
 	return {
-		// data
 		properties,
-		sortedProperties,
 		loading: loading || isFetchingNextPage,
 		error,
 		refresh,
