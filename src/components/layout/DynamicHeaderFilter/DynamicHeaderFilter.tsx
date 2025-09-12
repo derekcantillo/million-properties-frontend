@@ -178,10 +178,7 @@ export const DynamicHeaderFilter = ({
 				</div>
 			</div>
 
-			<div
-				ref={filterBarRef}
-				className="bg-background z-40 w-full border shadow-md"
-			>
+			<div ref={filterBarRef} className="bg-background z-40 w-full shadow-md">
 				<FilterBar
 					onCollapse={() => setShowBackdrop(false)}
 					onExpand={() => setShowBackdrop(true)}

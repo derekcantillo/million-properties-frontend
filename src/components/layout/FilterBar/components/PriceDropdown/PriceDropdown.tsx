@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactSlider from 'react-slider'
 import { formatPropertyPrice } from '@/lib/utils/format'
 import { Typography } from '@/components/ui/Typography'
@@ -9,18 +9,30 @@ import {
 	TypographyFontFamily
 } from '@/components/ui/Typography/types/typography.types'
 import { BaseDropdownProps } from '../../types'
+import { useFormContext } from 'react-hook-form'
 
 export const PriceDropdown: React.FC<BaseDropdownProps> = ({
 	isOpen,
 	position
 	// onClose
 }) => {
-	const priceRange: [number, number] = [1000000, 300000000]
-	const [value, setValue] = useState<number[]>([1000000, 300000000])
+	const priceRange: [number, number] = [0, 5000000]
+	const form = useFormContext<{ minPrice?: number; maxPrice?: number }>()
+	const [value, setValue] = useState<number[]>([priceRange[0], priceRange[1]])
 
 	const handleChange = (value: number[]) => {
 		setValue(value)
+		form.setValue('minPrice', value[0])
+		form.setValue('maxPrice', value[1])
 	}
+
+	useEffect(() => {
+		const min = form.getValues('minPrice')
+		const max = form.getValues('maxPrice')
+		if (typeof min === 'number' && typeof max === 'number') {
+			setValue([min, max])
+		}
+	}, [])
 
 	if (!isOpen) return null
 
@@ -50,11 +62,11 @@ export const PriceDropdown: React.FC<BaseDropdownProps> = ({
 							trackClassName="slider-track"
 							min={priceRange[0]}
 							max={priceRange[1]}
-							step={100000}
+							step={100}
 							value={value}
 							onChange={handleChange}
 							pearling
-							minDistance={5000000}
+							minDistance={100}
 						/>
 					</div>
 					<div className="flex w-full justify-between text-gray-600">

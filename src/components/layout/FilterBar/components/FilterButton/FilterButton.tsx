@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/Typography/types/typography.types'
 import { FilterButtonProps } from '@/components/layout'
 import clsx from 'clsx'
+import { useFormContext } from 'react-hook-form'
 
 export const FilterButton: React.FC<FilterButtonProps> = ({
 	label,
@@ -19,6 +20,20 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 	someTabSelected,
 	compactMode
 }) => {
+	const form = useFormContext<{
+		name?: string
+		address?: string
+		minPrice?: number
+		maxPrice?: number
+	}>()
+
+	const fieldName = React.useMemo(() => {
+		if (label.toLowerCase().includes('nombre')) return 'name'
+		if (label.toLowerCase().includes('dirección')) return 'address'
+		if (label.toLowerCase().includes('precio')) return 'minPrice' // text shows range; slider controls actual range
+		return undefined
+	}, [label])
+
 	return (
 		<button
 			ref={buttonRef}
@@ -51,12 +66,9 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 				<input
 					type="text"
 					placeholder={placeholder}
-					className="font-cairo pointer-events-none transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
-					readOnly
-					onClick={e => {
-						e.preventDefault()
-						e.stopPropagation()
-					}}
+					className="font-cairo transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
+					{...(fieldName ? form.register(fieldName as 'name' | 'address') : {})}
+					autoComplete="off"
 				/>
 			)}
 		</button>

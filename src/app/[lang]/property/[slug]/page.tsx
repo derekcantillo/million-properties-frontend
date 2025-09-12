@@ -27,6 +27,7 @@ import {
 	TypographyVariant,
 	TypographyWeight
 } from '@/components/ui'
+import { cn } from '@/lib/utils/cn'
 
 interface PropertyDetailPageProps {
 	params: Promise<{ slug: string; lang: string }>
@@ -373,7 +374,7 @@ export default function PropertyDetailPage({
 						>
 							Información del propietario
 						</Typography>
-						<div className="space-y-4 rounded-lg border p-6">
+						<div className={cn('space-y-4 rounded-lg p-6')}>
 							{/* Owner photo and name */}
 							<div className="flex items-center gap-4">
 								<div className="relative h-16 w-16 overflow-hidden rounded-full">

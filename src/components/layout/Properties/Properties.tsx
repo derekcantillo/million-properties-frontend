@@ -94,7 +94,7 @@ export const Properties = () => {
 	]
 
 	return (
-		<section className="w-full border">
+		<section className="w-full">
 			<ToolBar containerRef={toolbarRef} items={toolbarItems} />
 
 			<div className={getGridClasses()}>
@@ -113,7 +113,6 @@ export const Properties = () => {
 				)}
 			</div>
 
-			{/* Infinite scroll sentinel */}
 			<div ref={loadMoreRef} className="h-8" />
 
 			{showFloatingButton && (

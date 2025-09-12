@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/Typography'
 import { ImageCarousel } from '@/components/ui/ImageCarousel'
 import { PropertyItemProps } from '@/types/property.types'
-import { formatCurrency } from '@/lib/utils/format'
+import { formatCurrency, slugify } from '@/lib/utils/format'
 import clsx from 'clsx'
 import React from 'react'
 import Link from 'next/link'
@@ -17,12 +17,9 @@ export const PropertyItem: React.FC<PropertyItemProps> = ({
 	property,
 	className
 }) => {
-	const convertNameToSlug = (name: string) => {
-		return name.toLowerCase().replace(/ /g, '-')
-	}
 	return (
 		<Link
-			href={`/property/${convertNameToSlug(property.name)}`}
+			href={`/property/${slugify(property.name)}`}
 			className={clsx(
 				'rounded-md border border-gray-200',
 				'cursor-pointer overflow-hidden',

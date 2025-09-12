@@ -9,12 +9,14 @@ import {
 } from '@/components/ui/Typography/types/typography.types'
 import { BaseDropdownProps } from '../../types'
 import clsx from 'clsx'
+import { useFormContext } from 'react-hook-form'
 
 export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 	isOpen,
 	position
 	// onClose
 }) => {
+	const form = useFormContext<{ address?: string }>()
 	if (!isOpen) return null
 	const suggestedAreas = [
 		'All',
@@ -66,6 +68,9 @@ export const AddressDropdown: React.FC<BaseDropdownProps> = ({
 										'bg-black': area === 'All'
 									}
 								)}
+								onClick={() => {
+									if (area !== 'All') form.setValue('address', area)
+								}}
 							>
 								<Typography
 									variant={TypographyVariant.SMALL}

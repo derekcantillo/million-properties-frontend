@@ -8,6 +8,8 @@ import {
 } from '@/components/ui/Typography/types/typography.types'
 import { BaseDropdownProps } from '../../types'
 import Image from 'next/image'
+import { usePropertiesStore } from '@/stores/usePropertiesStore'
+import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
 
 export const PropertyDropdown: React.FC<BaseDropdownProps> = ({
@@ -15,37 +17,13 @@ export const PropertyDropdown: React.FC<BaseDropdownProps> = ({
 	position
 	// onClose
 }) => {
+	const properties = usePropertiesStore(s => s.properties)
+	const router = useRouter()
+	const suggestedProperties = React.useMemo(
+		() => properties.slice(0, 5),
+		[properties]
+	)
 	if (!isOpen) return null
-	const suggestedProperties = [
-		{
-			id: 1,
-			name: 'Propiedad 1',
-			price: 100000,
-			image:
-				'https://cdn.millionluxury.com/image-resizing?image=https://azfd-prod.millionluxury.com/mls/419277547_1.jpg&width=1170'
-		},
-		{
-			id: 2,
-			name: 'Propiedad 2',
-			price: 200000,
-			image:
-				'https://cdn.millionluxury.com/image-resizing?image=https://azfd-prod.millionluxury.com/mls/407228689_1.jpg&width=1170'
-		},
-		{
-			id: 3,
-			name: 'Propiedad 3',
-			price: 300000,
-			image:
-				'https://cdn.millionluxury.com/image-resizing?image=https://azfd-prod.millionluxury.com/mls/406021357_1.jpg&width=1170'
-		},
-		{
-			id: 4,
-			name: 'Propiedad 4',
-			price: 400000,
-			image:
-				'https://cdn.millionluxury.com/image-resizing?image=https://azfd-prod.millionluxury.com/mls/389726469_1.jpg&width=1170'
-		}
-	]
 	return (
 		<div
 			className="absolute z-50 mt-2 rounded-lg border border-gray-200 bg-white shadow-lg"
@@ -74,9 +52,13 @@ export const PropertyDropdown: React.FC<BaseDropdownProps> = ({
 									'flex cursor-pointer items-center gap-2',
 									'p-2 hover:bg-gray-100'
 								)}
+								onClick={() => {
+									const slug = property.name.toLowerCase().replace(/ /g, '-')
+									router.push(`/property/${slug}`)
+								}}
 							>
 								<Image
-									src={property.image}
+									src={property.images?.[0]?.file ?? '/file.svg'}
 									alt={property.name}
 									width={100}
 									height={100}

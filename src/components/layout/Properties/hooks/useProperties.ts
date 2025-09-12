@@ -2,13 +2,14 @@ import { useState, useRef, useEffect, useMemo } from 'react'
 import { gsap } from 'gsap'
 import { SortState, SortType, SortDirection } from '@/components/layout'
 import { usePropertiesInfinite } from '@/hooks/usePropertiesInfinite'
+import { usePropertiesStore } from '@/stores/usePropertiesStore'
 
 export const useProperties = () => {
 	const [sortState, setSortState] = useState<SortState>({
 		price: null,
 		name: null
 	})
-	const [columnsPerRow, setColumnsPerRow] = useState(2)
+	const [columnsPerRow, setColumnsPerRow] = useState(3)
 	const [showViewDropdown, setShowViewDropdown] = useState(false)
 	const [showFloatingButton, setShowFloatingButton] = useState(false)
 	const [showFloatingMenu, setShowFloatingMenu] = useState(false)
@@ -28,13 +29,18 @@ export const useProperties = () => {
 		return { sortBy: undefined, sortDir: undefined }
 	}, [sortState])
 
+	const storeFilters = usePropertiesStore(s => s.filters)
+	const setStoreProperties = usePropertiesStore(s => s.setProperties)
+
 	const infiniteParams = useMemo(() => {
 		const base: { pageSize: number } = { pageSize: 12 }
+		const params: Record<string, unknown> = { ...base, ...storeFilters }
 		if (sortBy && sortDir) {
-			return { ...base, sortBy, sortDir }
+			params.sortBy = sortBy
+			params.sortDir = sortDir
 		}
-		return base
-	}, [sortBy, sortDir])
+		return params
+	}, [storeFilters, sortBy, sortDir])
 
 	const {
 		properties,
@@ -48,6 +54,11 @@ export const useProperties = () => {
 	const refresh = () => {
 		void refetchProperties()
 	}
+
+	// keep store properties in sync for global suggestions
+	useEffect(() => {
+		setStoreProperties(properties)
+	}, [properties, setStoreProperties])
 
 	const handleSortClick = (sortType: SortType): void => {
 		setSortState(prev => {
