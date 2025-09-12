@@ -5,13 +5,13 @@ import { PhotoIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { Button } from './Button'
 import {
+	Button,
 	Typography,
 	TypographyWeight,
 	TypographyVariant,
 	TypographyFontFamily
-} from './Typography'
+} from '@/components/ui'
 
 interface ImageCollageProps {
 	images: PropertyImage[]

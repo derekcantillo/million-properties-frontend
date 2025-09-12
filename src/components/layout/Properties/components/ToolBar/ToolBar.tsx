@@ -1,5 +1,5 @@
 import React, { ReactNode, RefObject } from 'react'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui'
 import {
 	LayoutViewDropdown,
 	SortDirection,

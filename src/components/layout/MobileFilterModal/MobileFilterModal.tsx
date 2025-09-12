@@ -4,13 +4,13 @@ import React, { useState, useEffect } from 'react'
 import ReactSlider from 'react-slider'
 import { useForm, FormProvider } from 'react-hook-form'
 import { formatPropertyPrice } from '@/lib/utils/format'
-import { Typography } from '@/components/ui/Typography'
 import {
+	Button,
+	Input,
 	TypographyVariant,
-	TypographyFontFamily
-} from '@/components/ui/Typography/types/typography.types'
-import { Input } from '@/components/ui/Input'
-import { Button } from '@/components/ui/Button'
+	TypographyFontFamily,
+	Typography
+} from '@/components/ui'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils/cn'
 

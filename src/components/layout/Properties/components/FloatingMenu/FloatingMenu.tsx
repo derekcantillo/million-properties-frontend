@@ -1,6 +1,5 @@
 import React from 'react'
-import { IFloatingMenuProps } from '@/components/layout'
-import { ToolBar } from '../ToolBar'
+import { IFloatingMenuProps, ToolBar } from '@/components/layout'
 
 export const FloatingMenu = ({
 	ref,

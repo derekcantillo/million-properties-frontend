@@ -1,13 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
-import { usePropertyDetail } from '@/hooks/usePropertyDetail'
 import { formatCurrency, formatNumber } from '@/lib/utils/format'
-import { ImageCollage } from '@/components/ui/ImageCollage'
-import { ImageCarouselModal } from '@/components/ui/ImageCarouselModal'
-import { Button } from '@/components/ui/Button'
-import { DynamicHeaderFilter } from '@/components/layout/DynamicHeaderFilter'
-import { PropertyDetailSkeleton } from '@/components/layout'
+import {
+	PropertyDetailSkeleton,
+	DynamicHeaderFilter,
+	usePropertyDetail
+} from '@/components/layout'
 import {
 	HomeIcon,
 	MapPinIcon,
@@ -26,7 +25,10 @@ import {
 	TypographySize,
 	TypographyTextColor,
 	TypographyVariant,
-	TypographyWeight
+	TypographyWeight,
+	ImageCarouselModal,
+	Button,
+	ImageCollage
 } from '@/components/ui'
 import { cn } from '@/lib/utils/cn'
 import { useParams, useRouter } from 'next/navigation'

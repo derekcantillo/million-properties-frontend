@@ -1,12 +1,12 @@
 import {
+	ImageCarousel,
 	Typography,
 	TypographyFontFamily,
 	TypographyLineClamp,
 	TypographySize,
 	TypographyVariant,
 	TypographyWeight
-} from '@/components/ui/Typography'
-import { ImageCarousel } from '@/components/ui/ImageCarousel'
+} from '@/components/ui'
 import { PropertyItemProps } from '@/types/property.types'
 import { formatCurrency, slugify } from '@/lib/utils/format'
 import clsx from 'clsx'

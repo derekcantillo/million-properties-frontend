@@ -6,9 +6,11 @@ import {
 	PropertyItem,
 	PropertySkeleton,
 	SortDirection,
-	useProperties
+	useProperties,
+	ToolBar,
+	ToolBarItem
 } from '@/components/layout'
-import { Button } from '@/components/ui/Button'
+import { Button, ErrorMessage } from '@/components/ui'
 import {
 	ArrowUpIcon,
 	ArrowDownIcon,
@@ -17,11 +19,6 @@ import {
 	FunnelIcon
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
-import {
-	ToolBar,
-	ToolBarItem
-} from '@/components/layout/Properties/components/ToolBar'
-import { ErrorMessage } from '@/components/ui'
 
 export const Properties = () => {
 	const {

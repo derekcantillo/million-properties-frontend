@@ -10,7 +10,7 @@ import {
 import clsx from 'clsx'
 import Image from 'next/image'
 import React, { useState, useEffect, useCallback } from 'react'
-import { Button } from './Button'
+import { Button } from '@/components/ui'
 
 interface ImageCarouselModalProps {
 	images: PropertyImage[]

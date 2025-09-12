@@ -5,9 +5,9 @@ import {
 	TypographyFontFamily,
 	TypographySize,
 	TypographyTextColor,
-	TypographyVariant
+	TypographyVariant,
+	Button
 } from '@/components/ui'
-import { Button } from '../Button'
 
 interface ErrorMessageProps {
 	buttonAction: () => void

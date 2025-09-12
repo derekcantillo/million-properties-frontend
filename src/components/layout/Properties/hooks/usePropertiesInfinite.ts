@@ -30,7 +30,6 @@ export const usePropertiesInfinite = (params?: UsePropertiesInfiniteParams) => {
 		getNextPageParam: lastPage => {
 			return lastPage.hasNextPage ? lastPage.page + 1 : undefined
 		},
-		// Force fresh data on param changes and mounts
 		staleTime: 0,
 		refetchOnMount: 'always',
 		refetchOnReconnect: true,
