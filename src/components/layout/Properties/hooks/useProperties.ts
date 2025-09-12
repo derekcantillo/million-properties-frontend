@@ -1,12 +1,9 @@
-import { useState, useRef, useEffect } from 'react'
-import { usePropertiesInfinite } from '@/hooks/usePropertiesInfinite'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { gsap } from 'gsap'
-import { Property } from '@/types/property.types'
 import { SortState, SortType, SortDirection } from '@/components/layout'
+import { usePropertiesInfinite } from '@/hooks/usePropertiesInfinite'
 
 export const useProperties = () => {
-	const { properties, loading, error, refresh } = usePropertiesInfinite()
-
 	const [sortState, setSortState] = useState<SortState>({
 		price: null,
 		name: null
@@ -20,6 +17,41 @@ export const useProperties = () => {
 	const toolbarRef = useRef<HTMLDivElement>(null)
 	const floatingButtonRef = useRef<HTMLDivElement>(null)
 	const floatingMenuRef = useRef<HTMLDivElement>(null)
+
+	const {
+		properties,
+		loading,
+		error,
+		refetch: refetchProperties,
+		loadMoreRef,
+		isFetchingNextPage
+	} = usePropertiesInfinite({ pageSize: 12 })
+
+	const refresh = () => {
+		void refetchProperties()
+	}
+
+	const sortedProperties = useMemo(() => {
+		const items = [...properties]
+		const { price, name } = sortState
+
+		if (price) {
+			items.sort((a, b) =>
+				price === 'asc'
+					? a.priceProperty - b.priceProperty
+					: b.priceProperty - a.priceProperty
+			)
+		}
+
+		if (name) {
+			items.sort((a, b) => {
+				const result = a.name.localeCompare(b.name)
+				return name === 'asc' ? result : -result
+			})
+		}
+
+		return items
+	}, [properties, sortState])
 
 	const handleSortClick = (sortType: SortType): void => {
 		setSortState(prev => {
@@ -40,26 +72,6 @@ export const useProperties = () => {
 			}
 		})
 	}
-
-	const sortedProperties = [...properties].sort((a: Property, b: Property) => {
-		if (sortState.price) {
-			const priceComparison =
-				sortState.price === 'asc'
-					? a.priceProperty - b.priceProperty
-					: b.priceProperty - a.priceProperty
-			if (priceComparison !== 0) return priceComparison
-		}
-
-		if (sortState.name) {
-			const nameComparison =
-				sortState.name === 'asc'
-					? a.name.localeCompare(b.name)
-					: b.name.localeCompare(a.name)
-			if (nameComparison !== 0) return nameComparison
-		}
-
-		return 0
-	})
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -159,8 +171,10 @@ export const useProperties = () => {
 	}
 
 	return {
+		// data
+		properties,
 		sortedProperties,
-		loading,
+		loading: loading || isFetchingNextPage,
 		error,
 		refresh,
 		columnsPerRow,
@@ -174,9 +188,9 @@ export const useProperties = () => {
 		floatingButtonRef,
 		floatingMenuRef,
 		sortState,
-		properties,
 		showFloatingButton,
 		showFloatingMenu,
-		handleShowViewDropdown
+		handleShowViewDropdown,
+		loadMoreRef
 	}
 }

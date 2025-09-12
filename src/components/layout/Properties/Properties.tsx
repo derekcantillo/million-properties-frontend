@@ -42,7 +42,8 @@ export const Properties = () => {
 		properties,
 		showFloatingMenu,
 		handleShowViewDropdown,
-		floatingMenuRef
+		floatingMenuRef,
+		loadMoreRef
 	} = useProperties()
 	const renderSortArrow = (direction: SortDirection) => {
 		if (direction === 'asc') {
@@ -57,7 +58,7 @@ export const Properties = () => {
 			<div className="flex h-full flex-col items-center justify-center py-12">
 				<p className="mb-4 text-red-600">{error}</p>
 				<button
-					onClick={refresh}
+					onClick={() => refresh()}
 					className="rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
 				>
 					Try Again
@@ -112,6 +113,9 @@ export const Properties = () => {
 					</>
 				)}
 			</div>
+
+			{/* Infinite scroll sentinel */}
+			<div ref={loadMoreRef} className="h-8" />
 
 			{showFloatingButton && (
 				<div className="fixed right-6 bottom-6 z-50">

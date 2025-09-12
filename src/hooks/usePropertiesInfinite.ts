@@ -1,101 +1,65 @@
 'use client'
 
-import { PaginatedProperties, Property } from '@/types/property.types'
-import { useCallback, useEffect, useState } from 'react'
+import { useMemo } from 'react'
+import { useInfiniteQuery } from '@tanstack/react-query'
+import { getProperties } from '@/api/properties/services'
+import {
+	QUERY_KEYS,
+	type GetPropertiesParams,
+	type GetPropertiesResponse
+} from '@/api'
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 
-import mockData from '@/lib/properties_pagination_mock.json'
-
-interface UsePropertiesInfiniteReturn {
-	properties: Property[]
-	loading: boolean
-	hasNextPage: boolean
-	error: string | null
-	loadMore: () => void
-	refresh: () => void
+type UsePropertiesInfiniteParams = Omit<
+	GetPropertiesParams,
+	'page' | 'pageSize'
+> & {
+	pageSize?: number
 }
 
-const simulateApiDelay = (ms: number = 1500) =>
-	new Promise(resolve => setTimeout(resolve, ms))
+export const usePropertiesInfinite = (params?: UsePropertiesInfiniteParams) => {
+	const { pageSize = 12, ...filters } = params ?? {}
 
-export const usePropertiesInfinite = (): UsePropertiesInfiniteReturn => {
-	const [properties, setProperties] = useState<Property[]>([])
-	const [loading, setLoading] = useState(false)
-	const [currentPage, setCurrentPage] = useState(0)
-	const [hasNextPage, setHasNextPage] = useState(true)
-	const [error, setError] = useState<string | null>(null)
-	const [initialLoad, setInitialLoad] = useState(true)
-
-	const paginatedData = mockData as PaginatedProperties[]
-
-	const loadPage = useCallback(
-		async (page: number) => {
-			if (page >= paginatedData.length) {
-				setHasNextPage(false)
-				return []
-			}
-
-			setLoading(true)
-			setError(null)
-
-			try {
-				await simulateApiDelay(initialLoad ? 2000 : 1000)
-
-				const pageData = paginatedData[page]
-				if (!pageData) {
-					setHasNextPage(false)
-					return []
-				}
-				setHasNextPage(pageData.hasNextPage)
-
-				return pageData.data
-			} catch {
-				setError('Failed to load properties')
-				return []
-			} finally {
-				setLoading(false)
-				setInitialLoad(false)
-			}
+	const query = useInfiniteQuery<GetPropertiesResponse, Error>({
+		queryKey: QUERY_KEYS.properties.list({ ...filters, pageSize }),
+		queryFn: async ({ pageParam }) => {
+			const page = (pageParam as number | undefined) ?? 1
+			return await getProperties({ ...filters, page, pageSize })
 		},
-		[paginatedData, initialLoad]
-	)
-
-	const loadMore = useCallback(async () => {
-		if (loading || !hasNextPage) return
-
-		const newProperties = await loadPage(currentPage + 1)
-		if (newProperties.length > 0) {
-			setProperties(prev => [...prev, ...newProperties])
-			setCurrentPage(prev => prev + 1)
+		initialPageParam: 1,
+		getNextPageParam: lastPage => {
+			return lastPage.hasNextPage ? lastPage.page + 1 : undefined
 		}
-	}, [currentPage, hasNextPage, loading, loadPage])
+	})
 
-	const refresh = useCallback(async () => {
-		setProperties([])
-		setCurrentPage(0)
-		setHasNextPage(true)
-		setError(null)
-		setInitialLoad(true)
+	const properties = useMemo(() => {
+		return (query.data?.pages ?? []).flatMap(page => page.data)
+	}, [query.data])
 
-		const newProperties = await loadPage(0)
-		setProperties(newProperties)
-		setCurrentPage(0)
-	}, [loadPage])
+	const hasNextPage = Boolean(query.hasNextPage)
+	const loading = query.isLoading || query.isFetchingNextPage
 
-	useEffect(() => {
-		if (properties.length === 0 && !loading) {
-			loadPage(0).then(newProperties => {
-				setProperties(newProperties)
-				setCurrentPage(0)
-			})
+	const { loadMoreRef } = useInfiniteScroll({
+		hasNextPage,
+		loading,
+		onLoadMore: () => {
+			if (!query.isFetching && query.hasNextPage) {
+				void query.fetchNextPage()
+			}
 		}
-	}, [properties.length, loading, loadPage])
+	})
 
 	return {
 		properties,
+		pages: query.data?.pages ?? [],
+		total: query.data?.pages?.[0]?.total ?? 0,
 		loading,
+		isFetchingNextPage: query.isFetchingNextPage,
 		hasNextPage,
-		error,
-		loadMore,
-		refresh
+		isError: query.isError,
+		error: query.error?.message ?? null,
+		fetchNextPage: query.fetchNextPage,
+		refetch: query.refetch,
+		loadMoreRef
 	}
 }
