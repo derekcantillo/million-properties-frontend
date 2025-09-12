@@ -66,4 +66,8 @@ export interface PaginatedProperties {
 export interface PropertyItemProps {
 	property: Property
 	className?: string
+	// layout hints
+	columnsPerRow?: number
+	isDesktop?: boolean
+	listDensity?: 'compact' | 'comfortable'
 }

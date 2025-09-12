@@ -9,8 +9,8 @@ export default function HomePage() {
 			<DynamicHeaderFilter />
 
 			{/* Main content */}
-			<div className="bg-background relative z-10">
-				<div className="container mx-auto px-8 py-8">
+			<div className="relative z-10 bg-white">
+				<div className="container mx-auto bg-white px-8 py-8">
 					<Properties />
 				</div>
 			</div>

@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { SortState, SortType, SortDirection } from '@/components/layout'
 import { usePropertiesInfinite } from '@/hooks/usePropertiesInfinite'
 import { usePropertiesStore } from '@/stores/usePropertiesStore'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 export const useProperties = () => {
 	const [sortState, setSortState] = useState<SortState>({
@@ -13,6 +14,11 @@ export const useProperties = () => {
 	const [showViewDropdown, setShowViewDropdown] = useState(false)
 	const [showFloatingButton, setShowFloatingButton] = useState(false)
 	const [showFloatingMenu, setShowFloatingMenu] = useState(false)
+
+	type ListDensity = 'compact' | 'comfortable'
+	const [listDensity, setListDensity] = useState<ListDensity>('comfortable')
+
+	const isMobile = useIsMobile()
 
 	const viewDropdownRef = useRef<HTMLDivElement>(null)
 	const toolbarRef = useRef<HTMLDivElement>(null)
@@ -176,6 +182,10 @@ export const useProperties = () => {
 		setShowViewDropdown(showViewDropdown => !showViewDropdown)
 	}
 
+	const handleListDensityChange = (density: ListDensity): void => {
+		setListDensity(density)
+	}
+
 	return {
 		properties,
 		loading: loading || isFetchingNextPage,
@@ -195,6 +205,9 @@ export const useProperties = () => {
 		showFloatingButton,
 		showFloatingMenu,
 		handleShowViewDropdown,
-		loadMoreRef
+		loadMoreRef,
+		isMobile,
+		listDensity,
+		handleListDensityChange
 	}
 }

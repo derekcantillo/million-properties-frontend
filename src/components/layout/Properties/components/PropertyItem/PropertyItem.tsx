@@ -15,8 +15,22 @@ import Link from 'next/link'
 
 export const PropertyItem: React.FC<PropertyItemProps> = ({
 	property,
-	className
+	className,
+	columnsPerRow = 3,
+	isDesktop = false,
+	listDensity = 'comfortable'
 }) => {
+	const shouldStackHeader = !isDesktop || columnsPerRow >= 4
+	const paddingClass = listDensity === 'compact' ? 'p-4' : 'p-6'
+	const titleSize =
+		!isDesktop && listDensity === 'compact'
+			? TypographySize.LG
+			: TypographySize.XL
+	const priceSize =
+		!isDesktop && listDensity === 'compact'
+			? TypographySize.XL
+			: TypographySize.XL2
+
 	return (
 		<Link
 			href={`/property/${slugify(property.name)}`}
@@ -31,20 +45,25 @@ export const PropertyItem: React.FC<PropertyItemProps> = ({
 			<div className="relative">
 				<ImageCarousel images={property.images} alt={property.name} />
 			</div>
-			<div className="space-y-3 p-6">
-				<div className="flex items-center justify-between">
+			<div className={clsx('space-y-3', paddingClass)}>
+				<div
+					className={clsx(
+						'flex items-center justify-between',
+						shouldStackHeader && 'flex-col items-start gap-1'
+					)}
+				>
 					<Typography
 						variant={TypographyVariant.H3}
 						fontFamily={TypographyFontFamily.CINZEL}
 						lineClamp={TypographyLineClamp.TWO}
-						size={TypographySize.XL}
+						size={titleSize}
 					>
 						{property.name}
 					</Typography>
 					<Typography
 						variant={TypographyVariant.SMALL}
 						fontFamily={TypographyFontFamily.CAIRO}
-						size={TypographySize.XL2}
+						size={priceSize}
 						weight={TypographyWeight.SEMI_BOLD}
 					>
 						{formatCurrency(property.priceProperty)}

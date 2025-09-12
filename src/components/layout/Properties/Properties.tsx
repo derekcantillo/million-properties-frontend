@@ -14,13 +14,19 @@ import {
 	ArrowDownIcon,
 	CurrencyDollarIcon,
 	LanguageIcon,
-	FunnelIcon
+	FunnelIcon,
+	ExclamationTriangleIcon
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import {
 	ToolBar,
 	ToolBarItem
 } from '@/components/layout/Properties/components/ToolBar'
+import {
+	Typography,
+	TypographyFontFamily,
+	TypographySize
+} from '@/components/ui'
 
 export const Properties = () => {
 	const {
@@ -42,7 +48,10 @@ export const Properties = () => {
 		showFloatingMenu,
 		handleShowViewDropdown,
 		floatingMenuRef,
-		loadMoreRef
+		loadMoreRef,
+		isMobile,
+		listDensity,
+		handleListDensityChange
 	} = useProperties()
 	const renderSortArrow = (direction: SortDirection) => {
 		if (direction === 'asc') {
@@ -54,14 +63,21 @@ export const Properties = () => {
 	}
 	if (error) {
 		return (
-			<div className="flex h-full flex-col items-center justify-center py-12">
-				<p className="mb-4 text-red-600">{error}</p>
-				<button
+			<div className="flex h-[50vh] flex-col items-center justify-center py-12">
+				<ExclamationTriangleIcon className="h-12 w-12 text-gray-600" />
+				<Typography
+					fontFamily={TypographyFontFamily.CAIRO}
+					size={TypographySize.XL2}
+				>
+					Ups! Algo salió mal
+				</Typography>
+				<Typography></Typography>
+				<Button
 					onClick={() => refresh()}
-					className="rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+					className="bg-foreground hover:bg-foreground/90 rounded-lg px-4 py-2 text-white transition-colors"
 				>
 					Try Again
-				</button>
+				</Button>
 			</div>
 		)
 	}
@@ -95,11 +111,22 @@ export const Properties = () => {
 
 	return (
 		<section className="w-full">
-			<ToolBar containerRef={toolbarRef} items={toolbarItems} />
+			<ToolBar
+				containerRef={toolbarRef}
+				items={toolbarItems}
+				listDensity={listDensity}
+				onChangeListDensity={handleListDensityChange}
+			/>
 
 			<div className={getGridClasses()}>
 				{properties.map(property => (
-					<PropertyItem key={property.id} property={property} />
+					<PropertyItem
+						key={property.id}
+						property={property}
+						columnsPerRow={columnsPerRow}
+						isDesktop={!isMobile}
+						listDensity={listDensity}
+					/>
 				))}
 
 				{loading && (
@@ -142,6 +169,8 @@ export const Properties = () => {
 								handleSortClick={handleSortClick}
 								toolbarRef={toolbarRef}
 								toolbarItems={toolbarItems}
+								listDensity={listDensity}
+								onChangeListDensity={handleListDensityChange}
 							/>
 						)}
 					</div>
