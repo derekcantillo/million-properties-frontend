@@ -1,9 +1,6 @@
 import clsx from 'clsx'
 import React from 'react'
-
-interface PropertySkeletonProps {
-	className?: string
-}
+import { PropertySkeletonProps } from '@/components/layout'
 
 export const PropertySkeleton: React.FC<PropertySkeletonProps> = ({
 	className

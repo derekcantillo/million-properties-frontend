@@ -1,11 +1,7 @@
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import ReactSlider from 'react-slider'
-
-interface ILayoutViewDropdownProps {
-	columnsPerRow: number
-	onChange: (value: number) => void
-}
+import { ILayoutViewDropdownProps } from '@/components/layout'
 
 export const LayoutViewDropdown = ({
 	columnsPerRow,
@@ -27,7 +23,7 @@ export const LayoutViewDropdown = ({
 						max={5}
 						step={1}
 						value={columnsPerRow}
-						onChange={value => onChange(value)}
+						onChange={(value: number) => onChange(value)}
 						marks={[1, 2, 3, 4, 5]}
 						markClassName="slider-mark"
 					/>

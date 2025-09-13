@@ -7,11 +7,11 @@ import {
 	TypographyVariant,
 	TypographyWeight
 } from '@/components/ui'
-import { PropertyItemProps } from '@/types/property.types'
 import { formatCurrency, slugify } from '@/lib/utils/format'
 import clsx from 'clsx'
 import React from 'react'
 import Link from 'next/link'
+import { PropertyItemProps } from '@/components/layout'
 
 export const PropertyItem: React.FC<PropertyItemProps> = ({
 	property,

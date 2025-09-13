@@ -14,17 +14,7 @@ import {
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils/cn'
 import { useTranslations } from 'next-intl'
-
-interface MobileFilterModalProps {
-	isOpen: boolean
-	onClose: () => void
-	onSubmit: (values: {
-		name?: string
-		address?: string
-		minPrice?: number
-		maxPrice?: number
-	}) => void
-}
+import { MobileFilterModalProps } from '@/components/layout'
 
 export const MobileFilterModal: React.FC<MobileFilterModalProps> = ({
 	isOpen,

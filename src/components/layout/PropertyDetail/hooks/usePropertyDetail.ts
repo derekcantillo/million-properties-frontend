@@ -4,19 +4,13 @@ import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getPropertyById } from '@/api/properties/services'
 import { QUERY_KEYS, type GetPropertyByIDResponse } from '@/api'
-import { type PropertyDetail } from '@/types/property.types'
+import {
+	type PropertyDetail,
+	UsePropertyDetailProps,
+	UsePropertyDetailReturn
+} from '@/components/layout'
 
-interface UsePropertyDetailProps {
-	slug: string // treated as backend id
-}
-
-interface UsePropertyDetailReturn {
-	property: PropertyDetail | null
-	isLoading: boolean
-	error: string | null
-}
-
-function mapApiToUiDetail(api: GetPropertyByIDResponse): PropertyDetail {
+const mapApiToUiDetail = (api: GetPropertyByIDResponse): PropertyDetail => {
 	return {
 		id: api.id,
 		name: api.name,
@@ -27,9 +21,9 @@ function mapApiToUiDetail(api: GetPropertyByIDResponse): PropertyDetail {
 		description: '',
 		propertyType: 'N/A',
 		status: 'N/A',
-		bedrooms: 0,
-		bathrooms: 0,
-		areaSqFt: 0,
+		bedrooms: 3,
+		bathrooms: 2,
+		areaSqFt: 1450,
 		parkingSpaces: 0,
 		images: api.images,
 		owner: {
@@ -37,11 +31,12 @@ function mapApiToUiDetail(api: GetPropertyByIDResponse): PropertyDetail {
 			name: api.owner.name,
 			address: api.owner.address,
 			photo: api.owner.photo,
-			birthday: new Date(api.owner.birthday).toISOString()
+			birthday: new Date(api.owner.birthday)
 		},
 		traces: api.traces.map(t => ({
 			idPropertyTrace: t.idPropertyTrace,
-			dateSale: new Date(t.dateSale).toISOString(),
+			dateSale: new Date(t.dateSale),
+			idProperty: t.idProperty,
 			name: t.name,
 			value: t.value,
 			tax: t.tax

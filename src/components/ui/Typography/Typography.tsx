@@ -106,7 +106,6 @@ const typographyVariants = cva('text-foreground', {
 	}
 })
 
-// Re-export the TypographyProps interface for backward compatibility
 export interface TypographyProps extends ITypographyProps {}
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
@@ -128,11 +127,9 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
 		},
 		ref
 	) => {
-		// Determine the HTML element to render
 		const Element =
 			as || (variant ? VARIANT_ELEMENT_MAP[variant] : undefined) || 'p'
 
-		// Build additional classes for truncation
 		let truncateClasses = ''
 		if (truncate) {
 			truncateClasses = lineClamp ? `line-clamp-${lineClamp}` : 'truncate'

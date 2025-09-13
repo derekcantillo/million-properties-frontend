@@ -1,53 +1,9 @@
-import React, { ReactNode, RefObject } from 'react'
+import React from 'react'
 import { Button } from '@/components/ui'
-import {
-	LayoutViewDropdown,
-	SortDirection,
-	SortType
-} from '@/components/layout'
+import { LayoutViewDropdown, ToolBarProps } from '@/components/layout'
 import { cn } from '@/lib/utils/cn'
 import clsx from 'clsx'
 import { Squares2X2Icon, ChevronDownIcon } from '@heroicons/react/24/outline'
-
-interface SortToolBarItem {
-	kind: 'sort'
-	sortKey: SortType
-	active: SortDirection
-	onClick: (key: SortType) => void
-	icon: ReactNode
-	renderSortArrow: (direction: SortDirection) => ReactNode
-}
-
-interface ViewToolBarItem {
-	kind: 'view'
-	show: boolean
-	onToggle: () => void
-	columnsPerRow: number
-	onChange: (columns: number) => void
-	viewDropdownRef: RefObject<HTMLDivElement | null>
-}
-
-export type ToolBarItem = SortToolBarItem | ViewToolBarItem
-
-type ListDensity = 'compact' | 'comfortable'
-
-interface ToolBarPropsBase {
-	containerRef: RefObject<HTMLDivElement | null>
-	items: ToolBarItem[]
-}
-
-interface ToolBarPropsWithDensity extends ToolBarPropsBase {
-	listDensity: ListDensity
-	onChangeListDensity: (density: ListDensity) => void
-}
-
-export type ToolBarProps = ToolBarPropsBase | ToolBarPropsWithDensity
-
-function hasDensityProps(
-	props: ToolBarProps
-): props is ToolBarPropsWithDensity {
-	return (props as ToolBarPropsWithDensity).onChangeListDensity !== undefined
-}
 
 export const ToolBar = (props: ToolBarProps) => {
 	const { containerRef, items } = props
@@ -76,7 +32,6 @@ export const ToolBar = (props: ToolBarProps) => {
 						)
 					}
 
-					// kind === 'view'
 					return (
 						<div
 							className="relative hidden lg:block"
@@ -110,29 +65,6 @@ export const ToolBar = (props: ToolBarProps) => {
 					)
 				})}
 			</div>
-
-			{/* Mobile density selector */}
-			{hasDensityProps(props) && (
-				<div className="block lg:hidden">
-					<label
-						htmlFor="density-select"
-						className="mr-2 text-sm text-gray-600"
-					>
-						Vista
-					</label>
-					<select
-						id="density-select"
-						className="rounded-md border border-gray-200 bg-white p-2 text-sm"
-						value={props.listDensity}
-						onChange={e =>
-							props.onChangeListDensity(e.target.value as ListDensity)
-						}
-					>
-						<option value="compact">Compacta</option>
-						<option value="comfortable">Cómoda</option>
-					</select>
-				</div>
-			)}
 		</div>
 	)
 }

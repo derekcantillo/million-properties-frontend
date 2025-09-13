@@ -2,7 +2,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { FilterBar, Header, MobileFilterModal } from '@/components/layout'
+import {
+	FilterBar,
+	Header,
+	MobileFilterModal,
+	DynamicHeaderFilterProps
+} from '@/components/layout'
 import {
 	Typography,
 	TypographyFontFamily,
@@ -15,11 +20,6 @@ import { usePropertiesStore } from '@/stores/usePropertiesStore'
 import { useTranslations } from 'next-intl'
 
 gsap.registerPlugin(ScrollTrigger)
-
-interface DynamicHeaderFilterProps {
-	showVideo?: boolean
-	showHeroText?: boolean
-}
 
 export const DynamicHeaderFilter = ({
 	showVideo = true,

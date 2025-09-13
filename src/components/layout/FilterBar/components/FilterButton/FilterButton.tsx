@@ -30,7 +30,7 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 	const fieldName = React.useMemo(() => {
 		if (label.toLowerCase().includes('nombre')) return 'name'
 		if (label.toLowerCase().includes('dirección')) return 'address'
-		if (label.toLowerCase().includes('precio')) return 'minPrice' // text shows range; slider controls actual range
+		if (label.toLowerCase().includes('precio')) return 'minPrice'
 		return undefined
 	}, [label])
 

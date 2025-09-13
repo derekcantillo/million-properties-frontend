@@ -19,19 +19,19 @@ export interface PropertyByAllResponse {
 	priceProperty: number
 	codeInternal: string
 	year: number
-	owner: Owner
-	images: Image[]
-	traces: Trace[]
+	owner: PropertyOwner
+	images: PropertyImage[]
+	traces: PropertyTrace[]
 }
 
-export interface Image {
+export interface PropertyImage {
 	idPropertyImage: string
 	idProperty: string
 	file: string
 	enabled: boolean
 }
 
-export interface Owner {
+export interface PropertyOwner {
 	idOwner: string
 	name: string
 	address: string
@@ -39,7 +39,7 @@ export interface Owner {
 	birthday: Date
 }
 
-export interface Trace {
+export interface PropertyTrace {
 	idPropertyTrace: string
 	idProperty: string
 	dateSale: Date
@@ -67,9 +67,9 @@ export interface GetPropertyByIDResponse {
 	priceProperty: number
 	codeInternal: string
 	year: number
-	owner: Owner
-	images: Image[]
-	traces: Trace[]
+	owner: PropertyOwner
+	images: PropertyImage[]
+	traces: PropertyTrace[]
 }
 
 export type SortBy = 'price' | 'name'

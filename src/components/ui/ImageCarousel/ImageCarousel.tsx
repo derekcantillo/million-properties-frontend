@@ -85,7 +85,6 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 		<div className={clsx('group relative', className)}>
 			<div className="relative h-96 w-full overflow-hidden rounded-t-lg">
 				{currentImageHasError ? (
-					// Show error state for this specific image
 					<div className="flex h-full w-full flex-col items-center justify-center bg-gray-100">
 						<div className="mb-2 rounded-full bg-gray-200 p-4">
 							<LinkSlashIcon className="h-8 w-8 text-gray-400" />

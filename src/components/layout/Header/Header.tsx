@@ -1,19 +1,17 @@
 'use client'
 
 import React from 'react'
-import { Typography } from '@/components/ui/Typography'
 import {
+	Typography,
 	TypographyFontFamily,
 	TypographyWeight,
 	TypographyVariant,
-	TypographyTextColor
-} from '@/components/ui/Typography/types/typography.types'
-import { SettingsDropdown } from '@/components/ui/SettingsDropdown'
+	TypographyTextColor,
+	SettingsDropdown
+} from '@/components/ui'
+import { HeaderProps } from '@/components/layout'
 import clsx from 'clsx'
 import Link from 'next/link'
-interface HeaderProps {
-	isDark?: boolean
-}
 
 export const Header = ({ isDark = false }: HeaderProps) => {
 	const textColor = isDark

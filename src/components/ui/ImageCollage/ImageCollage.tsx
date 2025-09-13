@@ -1,6 +1,6 @@
 'use client'
 
-import { PropertyImage } from '@/types/property.types'
+import { PropertyImage } from '@/api'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Image from 'next/image'
@@ -13,14 +13,7 @@ import {
 	TypographyFontFamily
 } from '@/components/ui'
 import { useTranslations } from 'next-intl'
-
-interface ImageCollageProps {
-	images: PropertyImage[]
-	propertyName: string
-	onImageClick?: (index: number) => void
-	onViewAllClick?: () => void
-	className?: string
-}
+import { ImageCollageProps } from './types'
 
 export const ImageCollage: React.FC<ImageCollageProps> = ({
 	images,
@@ -33,7 +26,7 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({
 	const [imageErrors, setImageErrors] = useState<Set<string>>(new Set())
 
 	const enabledImages = images.filter(img => img.enabled)
-	const displayImages = enabledImages.slice(0, 3) // Maximum 3 images
+	const displayImages = enabledImages.slice(0, 3)
 
 	const handleImageError = (imageId: string) => {
 		setImageErrors(prev => new Set(prev).add(imageId))
