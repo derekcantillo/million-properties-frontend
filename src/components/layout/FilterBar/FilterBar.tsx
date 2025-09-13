@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useMemo, useCallback, useEffect, useState } from 'react'
 import {
 	AddressDropdown,
 	FilterButton,
@@ -20,6 +20,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { usePropertiesStore } from '@/stores/usePropertiesStore'
 import { useIsMobile } from '@/hooks'
 import { useTranslations } from 'next-intl'
+import { useRouter, usePathname } from 'next/navigation'
 
 export const FilterBar = ({
 	onCollapse,
@@ -28,6 +29,8 @@ export const FilterBar = ({
 	onMobileFilterOpen
 }: FilterBarProps) => {
 	const t = useTranslations()
+	const router = useRouter()
+	const pathname = usePathname()
 	const isMobile = useIsMobile()
 	const methods = useForm<{
 		name?: string
@@ -38,9 +41,9 @@ export const FilterBar = ({
 	const setFilters = usePropertiesStore(s => s.setFilters)
 	const resetFilters = usePropertiesStore(s => s.resetFilters)
 	const currentFilters = usePropertiesStore(s => s.filters)
-	const [resetKey, setResetKey] = React.useState(0)
+	const [resetKey, setResetKey] = useState(0)
 
-	const hasActiveFilters = React.useMemo(() => {
+	const hasActiveFilters = useMemo(() => {
 		return (
 			Object.keys(currentFilters).length > 0 &&
 			Object.values(currentFilters).some(
@@ -50,7 +53,7 @@ export const FilterBar = ({
 	}, [currentFilters])
 
 	const watchedValues = methods.watch()
-	const hasFormChanges = React.useMemo(() => {
+	const hasFormChanges = useMemo(() => {
 		const formHasValues = Object.values(watchedValues).some(
 			value => value !== undefined && value !== null && value !== ''
 		)
@@ -79,7 +82,7 @@ export const FilterBar = ({
 		containerRef
 	} = useFilterBar({ onCollapse, onExpand })
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (Object.keys(currentFilters).length > 0) {
 			methods.reset(currentFilters)
 		}
@@ -94,9 +97,13 @@ export const FilterBar = ({
 		setFilters(next)
 		setActiveDropdown(null)
 		onCollapse?.()
+
+		if (pathname !== '/') {
+			router.push('/')
+		}
 	})
 
-	const handleClearFilters = React.useCallback(() => {
+	const handleClearFilters = useCallback(() => {
 		methods.setValue('name', '')
 		methods.setValue('address', '')
 		methods.setValue('minPrice', undefined)

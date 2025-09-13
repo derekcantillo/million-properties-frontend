@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
 	Typography,
 	TypographyVariant,
@@ -28,6 +28,8 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 		maxPrice?: number
 	}>()
 
+	const inputRef = useRef<HTMLInputElement>(null)
+
 	const fieldName = useMemo(() => {
 		if (label.toLowerCase().includes('nombre')) return 'name'
 		if (label.toLowerCase().includes('dirección')) return 'address'
@@ -48,7 +50,7 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 		return ''
 	}
 
-	const formatPriceRange = React.useCallback(() => {
+	const formatPriceRange = useCallback(() => {
 		if (typeof minPrice === 'number' && typeof maxPrice === 'number') {
 			return `${formatPropertyPrice(minPrice)} - ${formatPropertyPrice(maxPrice)}`
 		}
@@ -56,7 +58,7 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 		return ''
 	}, [minPrice, maxPrice])
 
-	const [priceInputValue, setPriceInputValue] = React.useState(() => {
+	const [priceInputValue, setPriceInputValue] = useState(() => {
 		if (typeof minPrice === 'number' && typeof maxPrice === 'number') {
 			return `${formatPropertyPrice(minPrice)} - ${formatPropertyPrice(maxPrice)}`
 		}
@@ -69,6 +71,14 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 			setPriceInputValue(formattedValue)
 		}
 	}, [isPriceField, formatPriceRange, minPrice, maxPrice])
+
+	useEffect(() => {
+		if (isActive && !compactMode && inputRef.current) {
+			setTimeout(() => {
+				inputRef.current?.focus()
+			}, 50)
+		}
+	}, [isActive, compactMode])
 
 	const handleInputChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,14 +111,14 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 		[form]
 	)
 
-	const handlePriceInputChange = React.useCallback(
+	const handlePriceInputChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			setPriceInputValue(e.target.value)
 		},
 		[]
 	)
 
-	const handlePriceInputBlur = React.useCallback(
+	const handlePriceInputBlur = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			const success = parseAndSetPriceRange(e.target.value)
 			if (!success) {
@@ -118,7 +128,7 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 		[parseAndSetPriceRange, formatPriceRange]
 	)
 
-	const handlePriceInputKeyDown = React.useCallback(
+	const handlePriceInputKeyDown = useCallback(
 		(e: React.KeyboardEvent<HTMLInputElement>) => {
 			if (e.key === 'Enter') {
 				const target = e.target as HTMLInputElement
@@ -144,9 +154,20 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 				}
 			)}
 			onClick={e => {
-				e.preventDefault()
-				e.stopPropagation()
-				onClick()
+				if (compactMode) {
+					e.preventDefault()
+					e.stopPropagation()
+					onClick()
+				} else {
+					const target = e.target as HTMLElement
+					const isInputClick = target.tagName === 'INPUT'
+
+					if (!isInputClick) {
+						e.preventDefault()
+						e.stopPropagation()
+						onClick()
+					}
+				}
 			}}
 		>
 			<Typography
@@ -163,6 +184,7 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 				<>
 					{isPriceField ? (
 						<input
+							ref={inputRef}
 							type="text"
 							value={priceInputValue}
 							onChange={handlePriceInputChange}
@@ -171,15 +193,22 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 							placeholder={placeholder}
 							className="font-cairo text-start transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
 							autoComplete="off"
+							onClick={e => {
+								e.stopPropagation()
+							}}
 						/>
 					) : (
 						<input
+							ref={inputRef}
 							type="text"
 							value={getCurrentValue()}
 							onChange={handleInputChange}
 							placeholder={placeholder}
 							className="font-cairo transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
 							autoComplete="off"
+							onClick={e => {
+								e.stopPropagation()
+							}}
 						/>
 					)}
 				</>

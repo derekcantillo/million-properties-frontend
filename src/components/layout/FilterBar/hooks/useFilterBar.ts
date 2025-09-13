@@ -25,11 +25,10 @@ export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
 			onCollapse?.()
 			return
 		}
-		setTimeout(() => {
-			setActiveDropdown(filterType)
-			calculateDropdownPosition(buttonKey)
-			onExpand?.()
-		}, 500)
+
+		setActiveDropdown(filterType)
+		calculateDropdownPosition(buttonKey)
+		onExpand?.()
 	}
 
 	const calculateDropdownPosition = (buttonKey: string) => {
@@ -52,6 +51,15 @@ export const useFilterBar = ({ onCollapse, onExpand }: UseFilterBarProps) => {
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as HTMLElement
+
+			if (
+				target.tagName === 'INPUT' &&
+				containerRef.current?.contains(target)
+			) {
+				return
+			}
+
 			if (
 				containerRef.current &&
 				!containerRef.current.contains(event.target as Node)

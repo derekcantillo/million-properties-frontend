@@ -77,6 +77,24 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 		setCurrentIndex(index)
 	}
 
+	const handlePrevClick = (e: React.MouseEvent) => {
+		e.preventDefault()
+		e.stopPropagation()
+		prevImage()
+	}
+
+	const handleNextClick = (e: React.MouseEvent) => {
+		e.preventDefault()
+		e.stopPropagation()
+		nextImage()
+	}
+
+	const handleDotClick = (e: React.MouseEvent, index: number) => {
+		e.preventDefault()
+		e.stopPropagation()
+		goToImage(index)
+	}
+
 	const currentImage = enabledImages[currentIndex]
 	const currentImageHasError =
 		currentImage && imageErrors.has(currentImage.idPropertyImage)
@@ -111,14 +129,14 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 				{enabledImages.length > 1 && (
 					<>
 						<button
-							onClick={prevImage}
+							onClick={handlePrevClick}
 							className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/70"
 							aria-label="Previous image"
 						>
 							<ChevronLeftIcon className="h-4 w-4" />
 						</button>
 						<button
-							onClick={nextImage}
+							onClick={handleNextClick}
 							className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full bg-black/50 p-1 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:bg-black/70"
 							aria-label="Next image"
 						>
@@ -132,19 +150,23 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 				<div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1">
 					{enabledImages.map((image, index) => {
 						const hasError = imageErrors.has(image.idPropertyImage)
+
+						let activeClass: string
+						if (index === currentIndex) {
+							activeClass = hasError ? 'bg-red-400' : 'bg-white'
+						} else {
+							activeClass = hasError
+								? 'bg-red-400/50 hover:bg-red-400/75'
+								: 'bg-white/50 hover:bg-white/75'
+						}
+
 						return (
 							<button
 								key={image.idPropertyImage}
-								onClick={() => goToImage(index)}
+								onClick={e => handleDotClick(e, index)}
 								className={clsx(
 									'h-2 w-2 rounded-full transition-all duration-200',
-									index === currentIndex
-										? hasError
-											? 'bg-red-400'
-											: 'bg-white'
-										: hasError
-											? 'bg-red-400/50 hover:bg-red-400/75'
-											: 'bg-white/50 hover:bg-white/75'
+									activeClass
 								)}
 								aria-label={`Go to image ${index + 1}${hasError ? ' (error)' : ''}`}
 							/>
