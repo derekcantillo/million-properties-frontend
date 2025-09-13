@@ -1,171 +1,224 @@
 # Million Properties Frontend
 
-A modern, scalable real estate platform built with Next.js 15, React 19, and TypeScript. This project follows senior-level frontend development practices with a robust architecture, comprehensive testing, and production-ready configurations.
+Un proyecto de prueba técnica desarrollado con Next.js 15, React 19, y TypeScript. Esta aplicación de bienes raíces demuestra mejores prácticas de desarrollo frontend con una arquitectura robusta, testing integral, y configuraciones listas para producción.
 
 ## 🏗️ Architecture
 
 ### Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript with strict configuration
-- **Styling**: Tailwind CSS 4
-- **State Management**: Zustand
-- **Data Fetching**: TanStack Query (React Query)
-- **Forms**: React Hook Form + Zod validation
+- **Framework**: Next.js 15 con App Router y Turbopack
+- **Lenguaje**: TypeScript con configuración estricta
+- **Estilos**: Tailwind CSS 4
+- **Gestión de Estado**: Zustand
+- **Fetching de Datos**: TanStack Query (React Query)
+- **Formularios**: React Hook Form + Zod para validación
 - **Testing**: Vitest + Testing Library + Playwright
-- **Code Quality**: ESLint + Prettier + Husky
-- **Analytics**: Vercel Analytics + Speed Insights
+- **Calidad de Código**: ESLint + Prettier + Husky
+- **Internacionalización**: next-intl
+- **Animaciones**: GSAP
+- **Utilidades**: date-fns, lodash-es, axios
 
-### Project Structure
+### Estructura del Proyecto
 
 ```
-src/
-├── app/                    # Next.js App Router
-├── components/            # Reusable components
-│   ├── ui/               # Design System components
-│   ├── forms/            # Form components
-│   └── layout/           # Layout components
-├── lib/                  # Utilities and configurations
-│   ├── api/              # API client and queries
-│   ├── hooks/            # Custom React hooks
-│   ├── utils/            # Utility functions
-│   ├── validations/      # Zod schemas
-│   └── constants/        # App constants
-├── providers/            # React context providers
-├── stores/               # Zustand stores
-├── types/                # TypeScript type definitions
-└── styles/               # Global styles
+/
+├── commitlint.config.js    # Configuración de commits convencionales
+├── eslint.config.js        # Configuración de ESLint
+├── next.config.ts          # Configuración de Next.js
+├── package.json           # Dependencias y scripts
+├── playwright.config.ts   # Configuración de Playwright
+├── tsconfig.json          # Configuración de TypeScript
+├── vitest.config.ts       # Configuración de Vitest
+├── messages/              # Archivos de traducción
+│   ├── en.json           # Traducciones en inglés
+│   └── es.json           # Traducciones en español
+├── public/               # Archivos estáticos
+│   ├── assets/          # Assets multimedia
+│   │   └── videos/      # Videos (hero.mp4)
+│   └── fonts/           # Fuentes personalizadas (Cairo, Cinzel)
+└── src/
+    ├── middleware.ts         # Middleware de Next.js
+    ├── api/                 # Cliente API y queries
+    │   ├── client.ts        # Cliente HTTP (axios)
+    │   ├── endpoints.ts     # URLs de endpoints
+    │   ├── queryClient.ts   # Configuración de React Query
+    │   ├── queryKeys.ts     # Claves de queries
+    │   └── properties/      # API específica de propiedades
+    ├── app/                 # App Router de Next.js
+    │   ├── globals.css      # Estilos globales
+    │   ├── layout.tsx       # Layout raíz
+    │   └── [lang]/          # Rutas internacionalizadas
+    │       ├── layout.tsx   # Layout con idioma
+    │       ├── page.tsx     # Página principal
+    │       └── property/    # Páginas de propiedades
+    │           └── [slug]/  # Detalle de propiedad
+    ├── components/          # Componentes reutilizables
+    │   ├── ErrorBoundary.tsx
+    │   ├── ThemeInitializer.tsx
+    │   ├── layout/          # Componentes de layout
+    │   │   ├── DynamicHeaderFilter/
+    │   │   ├── FilterBar/
+    │   │   ├── Footer/
+    │   │   ├── Header/
+    │   │   ├── MobileFilterModal/
+    │   │   ├── Properties/
+    │   │   └── PropertyDetail/
+    │   ├── ui/              # Sistema de diseño
+    │   │   ├── Button/
+    │   │   ├── ErrorMessage/
+    │   │   ├── ImageCarousel/
+    │   │   ├── ImageCarouselModal/
+    │   │   ├── ImageCollage/
+    │   │   ├── Input/
+    │   │   ├── SettingsDropdown/
+    │   │   └── Typography/
+    │   └── tests/           # Tests de componentes
+    ├── hooks/               # Custom hooks
+    │   ├── useInfiniteScroll/
+    │   └── useIsMobile/
+    ├── i18n/                # Configuración de internacionalización
+    ├── lib/                 # Utilidades y configuraciones
+    │   ├── i18n.ts          # Setup de i18n
+    │   ├── theme-script.ts  # Script de tema
+    │   ├── utils/           # Funciones utilitarias
+    │   └── *.json           # Datos mock
+    ├── providers/           # Context providers
+    │   ├── QueryProvider.tsx
+    │   └── ThemeProvider.tsx
+    ├── stores/              # Stores de Zustand
+    │   ├── usePropertiesStore.ts
+    │   └── useThemeStore.ts
+    ├── styles/              # Estilos adicionales
+    │   ├── fonts.css
+    │   └── components/
+    └── test/                # Configuración de testing
 ```
 
-## 🚀 Getting Started
+## 🚀 Comenzar
 
-### Prerequisites
+### Prerequisitos
 
 - Node.js 18+
-- pnpm (recommended) or npm
+- pnpm (recomendado) o npm
 
-### Installation
+### Instalación
 
-1. Clone the repository
+1. Clonar el repositorio
 
 ```bash
 git clone <repository-url>
 cd million-properties-frontend
 ```
 
-2. Install dependencies
+2. Instalar dependencias
 
 ```bash
 pnpm install
 ```
 
-3. Set up environment variables
-
-```bash
-cp env.example .env.local
-# Edit .env.local with your configuration
-```
-
-4. Run the development server
+3. Ejecutar el servidor de desarrollo
 
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+Abre [http://localhost:3000](http://localhost:3000) para ver la aplicación.
 
 ## 🧪 Testing
 
-### Unit Tests
+### Tests Unitarios
 
 ```bash
-# Run all tests
+# Ejecutar todos los tests
 pnpm test
 
-# Run tests in watch mode
+# Ejecutar tests en modo watch
 pnpm test:ui
 
-# Run tests with coverage
+# Ejecutar tests con coverage
 pnpm test:coverage
 ```
 
-### E2E Tests
+### Tests E2E
 
 ```bash
-# Run Playwright tests
+# Ejecutar tests de Playwright
 pnpm test:e2e
 
-# Run E2E tests with UI
+# Ejecutar tests E2E con UI
 pnpm test:e2e:ui
 ```
 
-## 🔧 Development
+## 🔧 Desarrollo
 
-### Code Quality
+### Calidad de Código
 
 ```bash
-# Lint code
+# Lintear código
 pnpm lint
 
-# Format code
+# Formatear código
 pnpm format
 
-# Type check
+# Verificar tipos
 pnpm type-check
 ```
 
 ### Git Hooks
 
-This project uses Husky for git hooks:
+Este proyecto usa Husky para git hooks:
 
-- **pre-commit**: Runs linting and formatting
-- **commit-msg**: Validates commit messages
+- **pre-commit**: Ejecuta linting y formatting
+- **commit-msg**: Valida mensajes de commit (conventional commits)
 
 ## 📦 Build & Deploy
 
-### Production Build
+### Build de Producción
 
 ```bash
 pnpm build
 pnpm start
 ```
 
-### Environment Variables
+## 🎨 Características del Proyecto
 
-See `env.example` for required environment variables.
+### Sistema de Diseño
 
-## 🎨 Design System
+- Componentes reutilizables con API consistente
+- Soporte completo para TypeScript
+- Características de accesibilidad
+- Soporte para tema oscuro/claro
+- Diseño responsive
 
-The project includes a comprehensive design system with:
+### Funcionalidades Implementadas
 
-- Consistent component API
-- TypeScript support
-- Accessibility features
-- Dark/Light theme support
-- Responsive design
+- 🌐 Internacionalización (Español/Inglés)
+- 🔍 Sistema de filtros avanzado
+- 📱 Diseño responsive y mobile-first
+- 🖼️ Carrusel de imágenes interactivo
+- ♾️ Scroll infinito para propiedades
+- 📊 Gestión de estado eficiente con Zustand
+- ⚡ Optimizaciones de rendimiento con React Query
 
-## 🔒 Security
+## 🔒 Seguridad y Rendimiento
 
-- Environment variable validation with Zod
-- Secure API client with interceptors
-- Error boundaries for graceful error handling
-- TypeScript strict mode enabled
+- Validación de formularios con Zod
+- Error boundaries para manejo graceful de errores
+- Modo estricto de TypeScript habilitado
+- Optimizaciones de Next.js 15 con Turbopack
+- Optimización de imágenes automática
+- Lazy loading de componentes
 
-## 📈 Performance
+## 🌟 Sobre esta Prueba Técnica
 
-- Next.js 15 optimizations
-- Image optimization
-- Bundle analysis
-- Vercel Speed Insights integration
-- React Query for efficient data fetching
+Este proyecto demuestra:
 
-## 🤝 Contributing
+- **Arquitectura escalable**: Organización clara de código y separación de responsabilidades
+- **Mejores prácticas**: Uso de TypeScript, testing, y herramientas de calidad
+- **UX moderna**: Interfaz responsive con animaciones y feedback visual
+- **Rendimiento**: Optimizaciones de carga y manejo eficiente de datos
+- **Mantenibilidad**: Código limpio, documentado y bien estructurado
 
-1. Follow the conventional commit format
-2. Write tests for new features
-3. Ensure all checks pass before committing
-4. Update documentation as needed
+## 📄 Licencia
 
-## 📄 License
-
-This project is private and proprietary.
+Este proyecto es privado y está desarrollado para fines de evaluación técnica.
