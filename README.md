@@ -116,7 +116,11 @@ cd million-properties-frontend
 pnpm install
 ```
 
-3. Ejecutar el servidor de desarrollo
+3. Variables de entorno
+
+El proyecto incluye un archivo `.env` con las variables necesarias. **Nota**: Este archivo está incluido temporalmente en el repositorio únicamente para facilitar la evaluación de la prueba técnica. En un entorno real, este archivo no debería estar versionado.
+
+4. Ejecutar el servidor de desarrollo
 
 ```bash
 pnpm dev
@@ -208,6 +212,8 @@ pnpm start
 - Optimizaciones de Next.js 15 con Turbopack
 - Optimización de imágenes automática
 - Lazy loading de componentes
+
+**Nota sobre variables de entorno**: El archivo `.env` está incluido en el repositorio únicamente para facilitar la evaluación de esta prueba técnica. En un proyecto real, las variables de entorno sensibles deben manejarse de forma segura y nunca versionarse.
 
 ## 🌟 Sobre esta Prueba Técnica
 
