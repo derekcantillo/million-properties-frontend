@@ -234,7 +234,7 @@ Este proyecto demuestra:
 
 ### 🚀 Demo en Vivo
 
-- **Aplicación**: [https://million-properties-frontend-lfw9.vercel.app/es](https://million-properties-frontend.vercel.app/es)
+- **Aplicación**: [https://million-properties-frontend.vercel.app/es](https://million-properties-frontend.vercel.app/es)
 - **API Backend**: [https://api.derekcantillo.com/api/](https://api.derekcantillo.com/api/)
 
 La aplicación está completamente funcional con datos reales y desplegada en infraestructura de producción.
