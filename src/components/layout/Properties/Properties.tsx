@@ -19,8 +19,10 @@ import {
 	FunnelIcon
 } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
+import { useTranslations } from 'next-intl'
 
 export const Properties = () => {
+	const t = useTranslations()
 	const {
 		loading,
 		error,
@@ -57,9 +59,23 @@ export const Properties = () => {
 		return (
 			<ErrorMessage
 				buttonAction={() => refresh()}
-				buttonText="Try Again"
-				title="Ups! Algo salió mal"
-				description="Por favor, intenta nuevamente."
+				buttonText={t('common.refresh') ?? 'Refresh'}
+				title={t('common.somethingWentWrong') ?? 'Something went wrong'}
+				description={t('common.pleaseTryAgain') ?? 'Please try again.'}
+			/>
+		)
+	}
+
+	if (!loading && properties.length === 0) {
+		return (
+			<ErrorMessage
+				buttonAction={() => refresh()}
+				buttonText={t('common.refresh')}
+				title={t('properties.noPropertiesFound') ?? 'No properties found'}
+				description={
+					t('properties.noPropertiesDescription') ??
+					'No properties match your search criteria. Try adjusting your filters or refresh to see all properties.'
+				}
 			/>
 		)
 	}

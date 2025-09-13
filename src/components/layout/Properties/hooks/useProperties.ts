@@ -66,6 +66,10 @@ export const useProperties = () => {
 	}
 
 	useEffect(() => {
+		void refetchProperties()
+	}, [storeFilters, refetchProperties])
+
+	useEffect(() => {
 		setStoreProperties(properties)
 	}, [properties, setStoreProperties])
 

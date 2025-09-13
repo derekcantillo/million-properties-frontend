@@ -64,7 +64,9 @@
 		"comfortable": "Cómoda",
 		"sortByPrice": "Ordenar por precio",
 		"sortByName": "Ordenar por nombre",
-		"viewOptions": "Opciones de vista"
+		"viewOptions": "Opciones de vista",
+		"noPropertiesFound": "No se encontraron propiedades",
+		"noPropertiesDescription": "No hay propiedades que coincidan con tus criterios de búsqueda. Intenta ajustar los filtros o actualizar para ver todas las propiedades."
 	},
 	"propertyDetail": {
 		"backToProperties": "Volver a propiedades",

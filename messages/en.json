@@ -64,7 +64,9 @@
 		"comfortable": "Comfortable",
 		"sortByPrice": "Order for price",
 		"sortByName": "Order by name",
-		"viewOptions": "View options"
+		"viewOptions": "View options",
+		"noPropertiesFound": "No properties found",
+		"noPropertiesDescription": "No properties match your search criteria. Try adjusting your filters or refresh to see all properties."
 	},
 	"propertyDetail": {
 		"backToProperties": "Back to properties",

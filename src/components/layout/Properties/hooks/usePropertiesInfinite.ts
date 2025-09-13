@@ -33,7 +33,10 @@ export const usePropertiesInfinite = (params?: UsePropertiesInfiniteParams) => {
 		staleTime: 0,
 		refetchOnMount: 'always',
 		refetchOnReconnect: true,
-		refetchOnWindowFocus: false
+		refetchOnWindowFocus: false,
+		select: data => {
+			return data
+		}
 	})
 
 	const properties = useMemo(() => {

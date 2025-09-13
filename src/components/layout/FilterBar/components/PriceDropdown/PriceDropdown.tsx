@@ -26,6 +26,7 @@ export const PriceDropdown: React.FC<BaseDropdownProps> = ({
 		setValue(value)
 		form.setValue('minPrice', value[0])
 		form.setValue('maxPrice', value[1])
+		form.trigger(['minPrice', 'maxPrice'])
 	}
 
 	useEffect(() => {

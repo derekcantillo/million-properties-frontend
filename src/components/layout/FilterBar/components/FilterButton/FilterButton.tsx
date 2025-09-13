@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import {
 	Typography,
 	TypographyVariant,
@@ -10,6 +10,7 @@ import {
 import { FilterButtonProps } from '@/components/layout'
 import clsx from 'clsx'
 import { useFormContext } from 'react-hook-form'
+import { formatPropertyPrice } from '@/lib/utils/format'
 
 export const FilterButton: React.FC<FilterButtonProps> = ({
 	label,
@@ -27,12 +28,108 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 		maxPrice?: number
 	}>()
 
-	const fieldName = React.useMemo(() => {
+	const fieldName = useMemo(() => {
 		if (label.toLowerCase().includes('nombre')) return 'name'
 		if (label.toLowerCase().includes('dirección')) return 'address'
-		if (label.toLowerCase().includes('precio')) return 'minPrice'
+		if (label.toLowerCase().includes('precio')) return 'price'
 		return undefined
 	}, [label])
+
+	const isPriceField = fieldName === 'price'
+
+	const nameValue = form.watch('name')
+	const addressValue = form.watch('address')
+	const minPrice = form.watch('minPrice')
+	const maxPrice = form.watch('maxPrice')
+
+	const getCurrentValue = () => {
+		if (fieldName === 'name') return nameValue || ''
+		if (fieldName === 'address') return addressValue || ''
+		return ''
+	}
+
+	const formatPriceRange = React.useCallback(() => {
+		if (typeof minPrice === 'number' && typeof maxPrice === 'number') {
+			return `${formatPropertyPrice(minPrice)} - ${formatPropertyPrice(maxPrice)}`
+		}
+
+		return ''
+	}, [minPrice, maxPrice])
+
+	const [priceInputValue, setPriceInputValue] = React.useState(() => {
+		if (typeof minPrice === 'number' && typeof maxPrice === 'number') {
+			return `${formatPropertyPrice(minPrice)} - ${formatPropertyPrice(maxPrice)}`
+		}
+		return ''
+	})
+
+	useEffect(() => {
+		if (isPriceField) {
+			const formattedValue = formatPriceRange()
+			setPriceInputValue(formattedValue)
+		}
+	}, [isPriceField, formatPriceRange, minPrice, maxPrice])
+
+	const handleInputChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const value = e.target.value
+			if (fieldName && fieldName !== 'price') {
+				form.setValue(fieldName, value)
+			}
+		},
+		[fieldName, form]
+	)
+
+	const parseAndSetPriceRange = useCallback(
+		(inputValue: string) => {
+			const cleanInput = inputValue.replace(/[^\d\s-]/g, '')
+			const parts = cleanInput.split('-').map(part => part.trim())
+
+			if (parts.length === 2 && parts[0] && parts[1]) {
+				const min = parseInt(parts[0]) || 0
+				const max = parseInt(parts[1]) || 5000000
+
+				if (min >= 0 && max <= 5000000 && min <= max) {
+					form.setValue('minPrice', min)
+					form.setValue('maxPrice', max)
+					return true
+				}
+			}
+
+			return false
+		},
+		[form]
+	)
+
+	const handlePriceInputChange = React.useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			setPriceInputValue(e.target.value)
+		},
+		[]
+	)
+
+	const handlePriceInputBlur = React.useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const success = parseAndSetPriceRange(e.target.value)
+			if (!success) {
+				setPriceInputValue(formatPriceRange())
+			}
+		},
+		[parseAndSetPriceRange, formatPriceRange]
+	)
+
+	const handlePriceInputKeyDown = React.useCallback(
+		(e: React.KeyboardEvent<HTMLInputElement>) => {
+			if (e.key === 'Enter') {
+				const target = e.target as HTMLInputElement
+				const success = parseAndSetPriceRange(target.value)
+				if (!success) {
+					setPriceInputValue(formatPriceRange())
+				}
+			}
+		},
+		[parseAndSetPriceRange, formatPriceRange]
+	)
 
 	return (
 		<button
@@ -63,13 +160,29 @@ export const FilterButton: React.FC<FilterButtonProps> = ({
 				{label}
 			</Typography>
 			{!compactMode && (
-				<input
-					type="text"
-					placeholder={placeholder}
-					className="font-cairo transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
-					{...(fieldName ? form.register(fieldName as 'name' | 'address') : {})}
-					autoComplete="off"
-				/>
+				<>
+					{isPriceField ? (
+						<input
+							type="text"
+							value={priceInputValue}
+							onChange={handlePriceInputChange}
+							onBlur={handlePriceInputBlur}
+							onKeyDown={handlePriceInputKeyDown}
+							placeholder={placeholder}
+							className="font-cairo text-start transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
+							autoComplete="off"
+						/>
+					) : (
+						<input
+							type="text"
+							value={getCurrentValue()}
+							onChange={handleInputChange}
+							placeholder={placeholder}
+							className="font-cairo transition-all duration-300 ease-in-out focus:ring-0 focus:ring-offset-0 focus:outline-none"
+							autoComplete="off"
+						/>
+					)}
+				</>
 			)}
 		</button>
 	)

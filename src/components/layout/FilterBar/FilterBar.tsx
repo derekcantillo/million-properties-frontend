@@ -37,7 +37,39 @@ export const FilterBar = ({
 	}>()
 	const setFilters = usePropertiesStore(s => s.setFilters)
 	const resetFilters = usePropertiesStore(s => s.resetFilters)
-	const [submitted, setSubmitted] = React.useState(false)
+	const currentFilters = usePropertiesStore(s => s.filters)
+	const [resetKey, setResetKey] = React.useState(0)
+
+	const hasActiveFilters = React.useMemo(() => {
+		return (
+			Object.keys(currentFilters).length > 0 &&
+			Object.values(currentFilters).some(
+				value => value !== undefined && value !== null && value !== ''
+			)
+		)
+	}, [currentFilters])
+
+	const watchedValues = methods.watch()
+	const hasFormChanges = React.useMemo(() => {
+		const formHasValues = Object.values(watchedValues).some(
+			value => value !== undefined && value !== null && value !== ''
+		)
+
+		if (!hasActiveFilters && !formHasValues) return false
+
+		if (hasActiveFilters && !formHasValues) return true
+
+		const formValues = {
+			...(watchedValues.name && { name: watchedValues.name }),
+			...(watchedValues.address && { address: watchedValues.address }),
+			...(watchedValues.minPrice && { minPrice: watchedValues.minPrice }),
+			...(watchedValues.maxPrice && { maxPrice: watchedValues.maxPrice })
+		}
+
+		return JSON.stringify(formValues) !== JSON.stringify(currentFilters)
+	}, [watchedValues, currentFilters, hasActiveFilters])
+
+	const showClearButton = hasActiveFilters && !hasFormChanges
 
 	const {
 		activeDropdown,
@@ -47,6 +79,12 @@ export const FilterBar = ({
 		containerRef
 	} = useFilterBar({ onCollapse, onExpand })
 
+	React.useEffect(() => {
+		if (Object.keys(currentFilters).length > 0) {
+			methods.reset(currentFilters)
+		}
+	}, [currentFilters, methods])
+
 	const onSubmit = methods.handleSubmit(values => {
 		const next: Record<string, unknown> = {}
 		if (values.name) next.name = values.name
@@ -54,10 +92,23 @@ export const FilterBar = ({
 		if (values.minPrice) next.minPrice = values.minPrice
 		if (values.maxPrice) next.maxPrice = values.maxPrice
 		setFilters(next)
-		setSubmitted(true)
 		setActiveDropdown(null)
 		onCollapse?.()
 	})
+
+	const handleClearFilters = React.useCallback(() => {
+		methods.setValue('name', '')
+		methods.setValue('address', '')
+		methods.setValue('minPrice', undefined)
+		methods.setValue('maxPrice', undefined)
+
+		resetFilters()
+
+		setResetKey(prev => prev + 1)
+
+		setActiveDropdown(null)
+		onCollapse?.()
+	}, [methods, resetFilters, setResetKey, setActiveDropdown, onCollapse])
 
 	return (
 		<div
@@ -65,7 +116,7 @@ export const FilterBar = ({
 			className={clsx('relative bg-white shadow-lg', 'w-full')}
 		>
 			{!isMobile ? (
-				<FormProvider {...methods}>
+				<FormProvider {...methods} key={resetKey}>
 					<form
 						onSubmit={onSubmit}
 						className="flex w-full items-center divide-x divide-gray-200 overflow-hidden rounded-lg"
@@ -117,16 +168,14 @@ export const FilterBar = ({
 							)}
 							onClick={e => {
 								e.preventDefault()
-								if (!submitted) {
-									void onSubmit()
+								if (showClearButton) {
+									handleClearFilters()
 								} else {
-									methods.reset()
-									resetFilters()
-									setSubmitted(false)
+									void onSubmit()
 								}
 							}}
 						>
-							{submitted ? (
+							{showClearButton ? (
 								<XMarkIcon className="h-4 w-4 text-white" />
 							) : (
 								<ArrowRightIcon className="h-4 w-4 text-white" />
