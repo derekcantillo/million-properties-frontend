@@ -184,6 +184,13 @@ pnpm build
 pnpm start
 ```
 
+### Despliegue
+
+Este proyecto está desplegado y disponible en:
+
+- **Frontend**: [https://million-properties-frontend-lfw9.vercel.app/es](https://million-properties-frontend-lfw9.vercel.app/es) (Vercel)
+- **Backend API**: [https://api.derekcantillo.com/api/](https://api.derekcantillo.com/api/) (AWS)
+
 ## 🎨 Características del Proyecto
 
 ### Sistema de Diseño
@@ -224,6 +231,13 @@ Este proyecto demuestra:
 - **UX moderna**: Interfaz responsive con animaciones y feedback visual
 - **Rendimiento**: Optimizaciones de carga y manejo eficiente de datos
 - **Mantenibilidad**: Código limpio, documentado y bien estructurado
+
+### 🚀 Demo en Vivo
+
+- **Aplicación**: [https://million-properties-frontend-lfw9.vercel.app/es](https://million-properties-frontend-lfw9.vercel.app/es)
+- **API Backend**: [https://api.derekcantillo.com/api/](https://api.derekcantillo.com/api/)
+
+La aplicación está completamente funcional con datos reales y desplegada en infraestructura de producción.
 
 ## 📄 Licencia
 
