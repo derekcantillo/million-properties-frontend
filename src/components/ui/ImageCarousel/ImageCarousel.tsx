@@ -1,6 +1,6 @@
 'use client'
 
-import { PropertyImage } from '@/types/property.types'
+import { PropertyImage } from '@/api'
 import {
 	LinkSlashIcon,
 	ChevronLeftIcon,
